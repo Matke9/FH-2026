@@ -1,11 +1,18 @@
-import './Hero.css'
+import HeroMain from "./HeroMain";
 
 function Hero(){
     return(
         <>
-            <h1 class="main-title">FON HAKATON 2026</h1>
-            <h2 class="secondary-title">Use your &lt;code&gt; to change the =road=</h2>
-            <button class="btn-sign-up">PRIJAVI SE!</button>
+            <nav style={{
+                width:'100%',
+                height: '100px',
+                backgroundColor: '#2e2d2d',
+                color: 'white',
+                textAlign: 'center'
+            }}>
+                <h1>NAVIGATION PLACEHOLDER</h1>
+            </nav>
+            <HeroMain/>
         </>
     );
 };
