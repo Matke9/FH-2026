@@ -1,4 +1,4 @@
-import "./HeroMain.css"
+import "./ButtonSignUp.css"
 import hourglass from './assets/hero/hourglass.png'
 
 function ButtonSignUp(){

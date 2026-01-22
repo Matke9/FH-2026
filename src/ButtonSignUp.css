@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'Montserrat Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Montserrat Bold'), url('./assets/fonts/Montserrat-Bold.woff') format('woff');
+}
+
+.btn-sign-up{
+    width: 277px;
+    height: 69px;
+    margin-top: 2%;
+
+    font-family: 'Montserrat Bold';
+    font-weight: bold;
+    font-size: 31px;
+    line-height: 100%;
+
+    border: none;
+    cursor: pointer;
+    background-color: #002440;
+    border-radius: 9999px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-sign-up img{
+    padding-left: 10px;
+}

@@ -1,5 +1,5 @@
-import './HeroMain.css'
 import ButtonSignUp from './ButtonSignUp';
+import './HeroMain.css'
 
 function HeroMain(){
     return(

@@ -7,7 +7,7 @@ function Hero(){
             <div class="hero-main">
                     <nav style={{
                         width:'100%',
-                        height: '100px',
+                        height: '150px',
                         color: 'white',
                         textAlign: 'center'
                     }}>
