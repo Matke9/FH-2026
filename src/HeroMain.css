@@ -45,21 +45,28 @@
 .btn-sign-up{
     width: 277px;
     height: 69px;
+    margin-top: 2%;
 
     font-family: 'Montserrat Bold';
-    font-weight: 700;
+    font-weight: bold;
     font-size: 31px;
     line-height: 100%;
 
+    border: none;
+    cursor: pointer;
     background-color: #002440;
     border-radius: 9999px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-content{
     width: 100%;
     height: 100vh;
-    background-color: #232323;
-
+    padding-top: 2%;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
