@@ -5,12 +5,7 @@ function Hero(){
     return(
         <>
             <div class="hero-main">
-                    <nav style={{
-                        width:'100%',
-                        height: '150px',
-                        color: 'white',
-                        textAlign: 'center'
-                    }}>
+                    <nav class="nav-placeholder">
                         <h1>NAVIGATION PLACEHOLDER</h1>
                     </nav>
                     <HeroMain/>

@@ -1,6 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+    box-sizing: border-box;
+}
+
 .hero-main{
     background-image: url('./assets/hero/background-main.png');
     background-size: cover;
-    background-position: center;
+    background-position: top left; /* Ensures it starts at the very top left */
+    
     background-repeat: no-repeat;
+}
+
+.nav-placeholder{
+    width: 100%;
+    height: 200px;
+    color: white;
+    text-align: center;
+}
+
+@media screen and (max-width: 450px) {
+    .hero-main{
+        background-position: center /* Ensures it starts at the very top left */
+    }
+    .nav-placeholder{
+        font-size: 15px;
+        height: 100px;
+    }
+
 }

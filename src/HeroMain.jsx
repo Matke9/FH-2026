@@ -6,11 +6,18 @@ function HeroMain(){
     return(
         <>
             <div class="main-content">
-                <h1 class="main-title">FON HAKATON 2026</h1>
-                <h2 class="secondary-title">Use your &lt;code&gt; to change the =road=</h2>
+                <h1 class="main-title">
+                    <span>FON </span>
+                    <span>HAKATON </span>
+                    <span>2026</span>
+                </h1>
+                <h2 class="secondary-title">
+                    <span>Use your &lt;code&gt; to change </span>
+                    <span>the =road=</span> 
+                </h2>
                 <ButtonSignUp/>
                 <div class="powered-by">
-                    Powered by:
+                    Powered by:<br/>
                     <img src={fonisLogo}/>
                 </div>
             </div>

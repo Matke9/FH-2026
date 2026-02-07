@@ -16,6 +16,8 @@
     margin: 0;
     padding: 0;
     color: white;
+    box-sizing: border-box;
+    /*overflow-x: hidden;*/
 }
 
 .main-title{
@@ -24,6 +26,11 @@
     font-size: 70px;
     line-height: 100%;
     letter-spacing: 0;
+}
+
+.main-title span,
+.secondary-title span {
+  display: inline;
 }
 
 .secondary-title{
@@ -41,11 +48,8 @@
     font-size: 12px;
 
     position: absolute;
-    top: 800px;
+    bottom: -160px;
     right: 50px;
-
-    display: flex;
-    flex-direction: column;
 }
 
 .powered-by img{
@@ -60,4 +64,42 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@media screen and (max-width: 450px) {
+    .main-content{
+        padding-left: 20px;
+        align-items: baseline;
+        justify-content: left;
+    }
+
+    .main-title{
+        font-size: 36px;
+    }
+    .secondary-title{
+        margin-top: 10px;
+        font-size: 20px;
+    }
+    .main-title span,
+    .secondary-title span{
+        display: block;
+    }
+
+    .btn-sign-up{
+        margin-top: 15px;
+        width: 158px;
+        height: 34px;
+        font-size: 17px;
+    }
+
+    .btn-sign-up img{
+        width: 14px;
+        height: 21px;
+        margin-left: 5px;
+    }
+
+    .powered-by{
+        visibility: hidden;
+        position: relative;
+    }
 }
