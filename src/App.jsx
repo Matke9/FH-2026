@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import OTakmicenju from './OTakmicenju'
+import OTakmicenju from './pages/OTakmicenju'
 
 function App() {
   return (
