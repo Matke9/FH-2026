@@ -9,12 +9,12 @@
   font-display: swap;
 }
 
-/* ===== Pozadina sekcije - tamno plavi gradijent ===== */
+/* Pozadina sekcije - tamno plavi gradijent */
 .org-tim-section {
   background: linear-gradient(180deg, #101842 0%, #182460 40%, #14204e 100%);
 }
 
-/* ===== Zvezdice u pozadini ===== */
+/* Zvezdice u pozadini */
 .star {
   position: absolute;
   background: white;
@@ -28,13 +28,13 @@
   50% { opacity: 1; }
 }
 
-/* ===== Naslov - Dune Rise font ===== */
+/* Naslov - Dune Rise font */
 .org-tim-naslov {
   font-family: 'Dune Rise', sans-serif;
   font-weight: normal;
 }
 
-/* ===== Leva slika tima - horizontalna, zaobljena gore ===== */
+/* Leva slika tima - horizontalna, zaobljena gore */
 .team-image-container {
   width: 320px;
   height: 220px;
@@ -51,7 +51,7 @@
   }
 }
 
-/* ===== Kruzna slika clana ===== */
+/* Kruzna slika clana */
 .member-circle {
   width: 140px;
   height: 140px;
@@ -68,7 +68,7 @@
   }
 }
 
-/* ===== Strelice za navigaciju ===== */
+/* Strelice za navigaciju */
 .nav-arrow {
   background: none;
   border: none;
@@ -91,7 +91,7 @@
   }
 }
 
-/* ===== Fade animacija pri menjanju clanova ===== */
+/* Fade animacija pri menjanju clanova */
 .member-fade-enter {
   opacity: 0;
   transform: translateX(20px);
