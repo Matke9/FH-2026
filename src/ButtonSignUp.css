@@ -6,6 +6,8 @@
 }
 
 .btn-sign-up{
+    padding: 0;
+    
     width: 277px;
     height: 69px;
     margin-top: 2%;

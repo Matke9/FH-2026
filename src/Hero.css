@@ -5,7 +5,14 @@
     box-sizing: border-box;
 }
 
+body {
+    display: block; 
+    place-items: unset; 
+}
+
 .hero-main{
+    display: flex;
+    flex-direction: column;
     background-image: url('./assets/hero/background-main.png');
     background-size: cover;
     background-position: top left; /* Ensures it starts at the very top left */
@@ -22,7 +29,7 @@
 
 @media screen and (max-width: 450px) {
     .hero-main{
-        background-position: center /* Ensures it starts at the very top left */
+        background-position: center;
     }
     .nav-placeholder{
         font-size: 15px;

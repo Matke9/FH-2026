@@ -3,7 +3,7 @@ import hourglass from './assets/hero/hourglass.png'
 
 function ButtonSignUp(){
     return (
-        <button class="btn-sign-up">
+        <button className="btn-sign-up">
             <span>PRIJAVI SE!</span>
             <img src={hourglass} alt='hourglass'/>
         </button>
