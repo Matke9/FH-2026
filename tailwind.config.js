@@ -6,7 +6,11 @@ export default {
   ],
   theme: {
     extend: {
-      // Discipline-specific colour tokens – override as needed
+      // Font za naslove (Dune Rise) - koristimo font-dune-rise klasu
+      fontFamily: {
+        'dune-rise': ['"Dune Rise"', 'sans-serif'],
+      },
+      // Boje za discipline
       colors: {
         'fon-hackathon': {
           DEFAULT: '#6366f1', // indigo

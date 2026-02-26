@@ -1,0 +1,110 @@
+/* Stilovi za OrganizacioniTim komponentu */
+
+/* Dune Rise font - putanja do fonta (dodati fajl kad bude dostupan) */
+@font-face {
+  font-family: 'Dune Rise';
+  src: url('/fonts/DuneRise.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== Pozadina sekcije - tamno plavi gradijent ===== */
+.org-tim-section {
+  background: linear-gradient(180deg, #101842 0%, #182460 40%, #14204e 100%);
+}
+
+/* ===== Zvezdice u pozadini ===== */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* ===== Naslov - Dune Rise font ===== */
+.org-tim-naslov {
+  font-family: 'Dune Rise', sans-serif;
+  font-weight: normal;
+}
+
+/* ===== Leva slika tima - horizontalna, zaobljena gore ===== */
+.team-image-container {
+  width: 320px;
+  height: 220px;
+  border-radius: 40px 40px 8px 8px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@media (min-width: 768px) {
+  .team-image-container {
+    width: 380px;
+    height: 260px;
+  }
+}
+
+/* ===== Kruzna slika clana ===== */
+.member-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@media (min-width: 768px) {
+  .member-circle {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* ===== Strelice za navigaciju ===== */
+.nav-arrow {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: color 0.3s ease, transform 0.2s ease;
+  opacity: 0.7;
+}
+
+.nav-arrow:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+@media (min-width: 768px) {
+  .nav-arrow {
+    font-size: 2.5rem;
+  }
+}
+
+/* ===== Fade animacija pri menjanju clanova ===== */
+.member-fade-enter {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.member-fade-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.member-fade-exit {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
