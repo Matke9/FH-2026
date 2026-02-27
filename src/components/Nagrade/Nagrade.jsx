@@ -32,30 +32,30 @@ export default function Nagrade() {
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
 
-      <div className="relative w-full min-h-screen pt-[10vh]">
+      <div className="relative w-full min-h-screen pt-[10vh] z-10">
         {/* Naslov */}
-        <h2 className="text-center w-full font-['Dune_Rise'] text-[6vw] text-white">
+        <h2 className="text-center mt-[10%] w-full font-['Dune_Rise'] text-[8vw] text-white">
           nagrade
         </h2>
 
         {/* 700€ */}
         <div className="absolute left-[23%] -translate-x-1/2 top-[115%] -translate-y-[100%]">
-          <PrizeGlowText >700e</PrizeGlowText>
+          <PrizeGlowText size="text-[clamp(20px,5vw,80px)]">700e</PrizeGlowText>
         </div>
 
         {/* 1000€ */}
         <div className="absolute left-[50%] -translate-x-1/2 top-[100%] -translate-y-[100%]">
-          <PrizeGlowText>1000e</PrizeGlowText>
+          <PrizeGlowText size="text-[clamp(28px,8vw,130px)]">1000e</PrizeGlowText>
         </div>
 
         {/* 500€ */}
-        <div className="absolute left-[77%] -translate-x-1/2 top-[120%] -translate-y-[100%]">
-          <PrizeGlowText>500e</PrizeGlowText>
+        <div className="absolute left-[77%] -translate-x-1/2 top-[125%] -translate-y-[100%]">
+          <PrizeGlowText size="text-[clamp(18px,6vw,70px)]">500e</PrizeGlowText>
         </div>
       </div>
 
       {/* Pustinja */}
-      <div className="relative z-20 w-full mt-auto leading-[0]">
+      <div className="relative z-5 w-full mt-auto leading-[0]">
         <img src={pustinja} alt="" className="w-full h-auto block" />
       </div>
     </section>
