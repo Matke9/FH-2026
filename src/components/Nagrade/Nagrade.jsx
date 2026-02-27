@@ -24,7 +24,7 @@ function PrizeGlowText({ children, size = "text-[64px]" }) {
 
 export default function Nagrade() {
   return (
-    <section className="relative w-full min-h-screen flex flex-col overflow-hidden bg-[#0B1C2D]">
+    <section className="relative w-full min-h-screen overflow-hidden bg-[#0B1C2D]">
       {/* Zvezde*/}
       <img
         src={zvezde}
@@ -32,28 +32,25 @@ export default function Nagrade() {
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
 
-      {/* Sadrzaj */}
-      <div className="relative z-10 flex flex-col items-center pt-[8vh] flex-grow w-full">
-        <h2 className="font-['Dune_Rise'] text-[7vw] md:text-[6vw] tracking-[0.35em] text-white mb-[5vh] text-center px-4">
-          NAGRADE
+      <div className="relative w-full min-h-screen pt-[10vh]">
+        {/* Naslov */}
+        <h2 className="text-center w-full font-['Dune_Rise'] text-[6vw] text-white">
+          nagrade
         </h2>
 
-        {/* Kontejner za nagrade */}
-        <div className="relative w-full h-[300px]">
-          {/* 700€ */}
-          <div className="absolute left-[15%] bottom-[20px]">
-            <PrizeGlowText size="text-[5vw]">700€</PrizeGlowText>
-          </div>
+        {/* 700€ */}
+        <div className="absolute left-[23%] -translate-x-1/2 top-[115%] -translate-y-[100%]">
+          <PrizeGlowText >700e</PrizeGlowText>
+        </div>
 
-          {/* 1000€ */}
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-[80px]">
-            <PrizeGlowText size="text-[8vw]">1000€</PrizeGlowText>
-          </div>
+        {/* 1000€ */}
+        <div className="absolute left-[50%] -translate-x-1/2 top-[100%] -translate-y-[100%]">
+          <PrizeGlowText>1000e</PrizeGlowText>
+        </div>
 
-          {/* 500€ */}
-          <div className="absolute right-[15%] bottom-[10px]">
-            <PrizeGlowText size="text-[7vw]">500€</PrizeGlowText>
-          </div>
+        {/* 500€ */}
+        <div className="absolute left-[77%] -translate-x-1/2 top-[120%] -translate-y-[100%]">
+          <PrizeGlowText>500e</PrizeGlowText>
         </div>
       </div>
 
