@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        dune: ['Dune', 'sans-serif'],
-        noto: ['Noto Sans', 'sans-serif'],
+        dune: ['DuneRise', 'sans-serif'],
+        noto: ['NotoSans', 'sans-serif'],
       },
       colors: {
         'fon-hackathon': {
