@@ -1,4 +1,3 @@
-
 const navItems = [
   { label: "O TAKMIČANJU", href: "#o-takmicenju" },
   { label: "AGENDA", href: "#agenda" },
@@ -9,6 +8,7 @@ const navItems = [
   { label: "PARTNERI", href: "#partneri" },
   { label: "PRAVILNIK", href: "#pravilnik" },
 ];
+import logo from "../../assets/NavBar/logo.png";
 
 
 export default  function NavBar(){
@@ -16,9 +16,9 @@ export default  function NavBar(){
     <header>
         <div className="">
             <a href="/" className="flex items-center gap-2">
-            {}
+            
             <img
-              src="/logo.png"
+              src={logo}
               alt="FON hakaton"
               className="h-9 w-auto"
             />
