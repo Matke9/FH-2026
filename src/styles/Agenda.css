@@ -6,8 +6,78 @@
 }
 
 .agenda-wrapper {
-    background: linear-gradient(180deg, --back-light 0%, --back-dark 100%);
+    position: relative;
+    background: linear-gradient(var(--back-light) 0%, var(--back-dark) 100%);
     min-height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.agenda-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    margin-bottom: 50px;
+}
+
+.closed-scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.open-scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.map-container {
+  position: relative;
+  display: inline-block;
+}
+
+.section-subtitle-side {
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.section-subtitle-center {
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    font-size: 1.8rem;
+}
+
+/* Prikaz za tablet */
+
+@media (max-width: 1023px) {
+  .agenda-title {
+    font-size: 3rem;
+  }
+  .map-container {
+    transform: scale(0.8);
+  }
+}
+
+/* Prikaz za telefon */
+
+@media (max-width: 767px) {
+  .agenda-title {
+    font-size: 2rem;
+    letter-spacing: 5px;
+  }
+
+  .closed-scroll {
+    display: none; 
+  }
+  
+  .map-container {
+    transform: scale(0.6);
+    margin-top: -50px;
+  } 
 }

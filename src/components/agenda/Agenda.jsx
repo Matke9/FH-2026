@@ -1,29 +1,43 @@
-import '../../styles/Agenda.css'
+import '../../styles/Agenda.css';
+import closedScroll from '../../assets/agenda/mali_scroll.svg';
+import openScroll from '../../assets/agenda/otvoreni_veliki_scroll.svg';
 
 const Agenda = () => {
     return (
         <div className="agenda-wrapper">
-
             {/* Naslov */}
-            <h1 className="text-5xl font-orbitron text-center mb-12 uppercase tracking-widest">
-                Agenda
+            <h1 className="agenda-title">
+                AGENDA
             </h1>
 
-            <div className="flex justify-between items-center max-w-6xl mx-auto">
-                {/* Levi stubovi */}
-                <div className="w-1/4">
-                    <img src="../assets/agenda/mali_scroll.svg" alt="stubovi" className="drop-shadow-2xl" />
+            { /* Deo za scrollove */}
+            <div className="flex justify-between items-end max-w-7xl mx-auto w-full px-10">
+                <div>
+                    
+                </div>
+
+                {/* Levi scroll */}
+                <div className="closed-scroll">
+                    <div className="section-subtitle-side">Web4 challenge</div>
+                    <div className="w-48">
+                        <img src={closedScroll} alt="left closed scroll" />
+                    </div>
                 </div>
 
                 {/* Centralni deo sa mapom */}
-                <div className="relative w-1/2 flex justify-center">
-                    <img src="/assets/scroll-mapa.png" alt="mapa" />
-                    {/* Ovde ćeš posle dodati tekst preko mape koristeći absolute klasu */}
+                <div className="open-scroll">
+                    <div className="section-subtitle-center">Hakaton</div>
+                    <div className="map-container">
+                        <img src={openScroll} alt="mapa" />
+                    </div>
                 </div>
 
-                {/* Desni stubovi */}
-                <div className="w-1/4">
-                    <img src="/assets/stubovi-right.png" alt="stubovi" />
+                {/* Desni scroll */}
+                <div className="closed-scroll">
+                    <div className="section-subtitle-side">Game jam</div>
+                    <div className="w-48">
+                        <img src={closedScroll} alt="right closed scroll" />
+                    </div>
                 </div>
             </div>
         </div>
