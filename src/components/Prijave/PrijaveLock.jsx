@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 // Dates are local. Adjust if you prefer UTC.
-const OPEN_DATE = new Date('2026-03-05T00:00:00');
+const OPEN_DATE = new Date('2026-01-05T00:00:00');
 const CLOSE_DATE = new Date('2026-03-15T23:59:59');
 
 function getTimeLeft(target) {
