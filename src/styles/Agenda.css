@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+:root {
+    --back-dark: #002440;
+    --back-light: #3C4286;
+}
+
+.agenda-wrapper {
+    background: linear-gradient(180deg, --back-light 0%, --back-dark 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
