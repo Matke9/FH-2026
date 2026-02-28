@@ -13,7 +13,7 @@ body {
 .hero-main{
     display: flex;
     flex-direction: column;
-    background-image: url('./assets/hero/background-main.png');
+    background-image: url('../../assets/hero/background-main.png');
     background-size: cover;
     background-position: top left; /* Ensures it starts at the very top left */
     

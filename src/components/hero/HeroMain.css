@@ -2,14 +2,14 @@
     font-family: 'Dune Rise Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Dune Rise Regular'), url('./assets/fonts/Dune_Rise.woff') format('woff');
+    src: local('Dune Rise Regular'), url('../../assets/fonts/Dune_Rise.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Montserrat Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Montserrat Regular'), url('./assets/fonts/Montserrat-Regular.woff') format('woff');
+    src: local('Montserrat Regular'), url('../../assets/fonts/Montserrat-Regular.woff') format('woff');
 }
 
 *{

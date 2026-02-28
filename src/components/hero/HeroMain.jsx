@@ -1,22 +1,22 @@
 import ButtonSignUp from './ButtonSignUp';
 import './HeroMain.css'
-import fonisLogo from './assets/hero/fonisLogo.png'
+import fonisLogo from '../../assets/hero/fonisLogo.png'
 
 function HeroMain(){
     return(
         <>
-            <div class="main-content">
-                <h1 class="main-title">
+            <div className="main-content">
+                <h1 className="main-title">
                     <span>FON </span>
                     <span>HAKATON </span>
                     <span>2026</span>
                 </h1>
-                <h2 class="secondary-title">
+                <h2 className="secondary-title">
                     <span>Use your &lt;code&gt; to change </span>
                     <span>the =road=</span> 
                 </h2>
                 <ButtonSignUp/>
-                <div class="powered-by">
+                <div className="powered-by">
                     Powered by:<br/>
                     <img src={fonisLogo}/>
                 </div>
