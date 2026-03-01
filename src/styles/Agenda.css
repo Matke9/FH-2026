@@ -73,6 +73,17 @@ body {
   font-size: clamp(1.3rem, 3vw + 0.5rem, 2rem);
 }
 
+.glitch-action {
+    animation: dune-move 0.4s steps(1) infinite;
+}
+
+@keyframes dune-move {
+    0% { transform: translate(0, 0); filter: hue-rotate(280deg) brightness(1.5) drop-shadow(0 0 10px #bc13fe); }
+    25% { transform: translate(15px, -15px); filter: hue-rotate(120deg) brightness(1.2) drop-shadow(0 0 15px #39ff14); }
+    50% { transform: translate(-15px, 15px); filter: hue-rotate(280deg) contrast(150%); }
+    100% { transform: translate(0, 0); filter: none; }
+}
+
 /* ==========================================
    TABLET (min-width: 768px)
    ========================================== */

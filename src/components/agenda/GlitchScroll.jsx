@@ -1,29 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const GlitchScroll = ({ title, type, onClick, isSmall = true }) => {
-  const [glitching, setGlitching] = useState(false);
+const GlitchScroll = ({ desktopImg, mobileImg, className, onClick, triggerGlitch }) => {
+    const [isGlitching, setIsGlitching] = useState(false);
 
-  const handleClick = () => {
-    setGlitching(true);
-    onClick();
-    setTimeout(() => setGlitching(false), 400);
-  };
+    // Okidamo glitch efekat svaki put kada se triggerGlitch promeni (npr. pri promeni mape)
+    useEffect(() => {
+        if (triggerGlitch) {
+            setIsGlitching(true);
+            const timer = setTimeout(() => setIsGlitching(false), 400);
+            return () => clearTimeout(timer);
+        }
+    }, [triggerGlitch]);
 
-  return (
-    <div 
-      className={`scroll-unit ${isSmall ? 'small-unit' : 'big-unit'} ${glitching ? 'glitch-run' : ''}`}
-      onClick={handleClick}
-    >
-      <h3 className="font-dune scroll-label">{title}</h3>
-      <div className="scroll-wrapper">
-        <img 
-          src={type === 'open' ? '/map-image.svg' : '/closed-scroll.svg'} 
-          className="scroll-img" 
-          alt="scroll" 
-        />
-      </div>
-    </div>
-  );
+    const handleClick = () => {
+        setIsGlitching(true);
+        if (onClick) onClick();
+        setTimeout(() => setIsGlitching(false), 400);
+    };
+
+    return (
+        <div 
+            className={`${className} ${isGlitching ? 'glitch-action' : ''}`} 
+            onClick={handleClick}
+            style={{ cursor: 'pointer' }}
+        >
+            <picture>
+                <source media="(max-width: 768px)" srcSet={mobileImg} />
+                <img src={desktopImg} alt="scroll" style={{ width: '100%', height: 'auto' }} />
+            </picture>
+        </div>
+    );
 };
 
 export default GlitchScroll;
