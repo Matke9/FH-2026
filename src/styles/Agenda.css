@@ -67,21 +67,61 @@ body {
 
 .section-subtitle-side {
   font-size: clamp(1rem, 2.5vw + 0.5rem, 1.5rem);
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
 }
 
 .section-subtitle-center {
   font-size: clamp(1.3rem, 3vw + 0.5rem, 2rem);
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.8),
+    0 0 15px rgba(255, 255, 255, 0.5),
+    0 0 25px rgba(255, 255, 255, 0.3);
+  animation: white-glow-pulse 3s infinite ease-in-out;
+}
+
+@keyframes white-glow-pulse {
+
+  0%,
+  100% {
+    text-shadow:
+      0 0 5px rgba(255, 255, 255, 0.8),
+      0 0 15px rgba(255, 255, 255, 0.5),
+      0 0 25px rgba(255, 255, 255, 0.3);
+  }
+
+  50% {
+    text-shadow:
+      0 0 8px rgba(255, 255, 255, 0.9),
+      0 0 20px rgba(255, 255, 255, 0.7),
+      0 0 35px rgba(255, 255, 255, 0.4);
+  }
 }
 
 .glitch-action {
-    animation: dune-move 0.4s steps(1) infinite;
+  animation: dune-move 0.4s steps(1) infinite;
 }
 
 @keyframes dune-move {
-    0% { transform: translate(0, 0); filter: hue-rotate(280deg) brightness(1.5) drop-shadow(0 0 10px #bc13fe); }
-    25% { transform: translate(15px, -15px); filter: hue-rotate(120deg) brightness(1.2) drop-shadow(0 0 15px #39ff14); }
-    50% { transform: translate(-15px, 15px); filter: hue-rotate(280deg) contrast(150%); }
-    100% { transform: translate(0, 0); filter: none; }
+  0% {
+    transform: translate(0, 0);
+    filter: hue-rotate(280deg) brightness(1.5) drop-shadow(0 0 10px #bc13fe);
+  }
+
+  25% {
+    transform: translate(15px, -15px);
+    filter: hue-rotate(120deg) brightness(1.2) drop-shadow(0 0 15px #39ff14);
+  }
+
+  50% {
+    transform: translate(-15px, 15px);
+    filter: hue-rotate(280deg) contrast(150%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+    filter: none;
+  }
 }
 
 /* ==========================================
@@ -148,7 +188,8 @@ body {
   }
 
   .closed-scroll:hover .section-subtitle-side {
-    filter: drop-shadow(0px 0px 15px rgba(60, 66, 134, 1));
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
   }
 
   .big-scroll {
