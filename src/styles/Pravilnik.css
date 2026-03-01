@@ -1,0 +1,97 @@
+.naslov-pravilnik{
+    font-family: 'DuneRise', sans-serif;
+    font-size: 80px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 50px;
+    color: white;
+}
+
+.pravilnik-page-wrapper{
+    min-height: 100vh;
+    background-color: #1a1b3a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.svitak-placeholder{
+    width: 90%;
+    max-width: 800px;
+    min-height: 400px;
+    background: rgba(139,92,246,0.2);
+    border: 4px dashed #8b5cf6;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    gap: 10px;
+    padding: 20px 40px;
+}
+
+.podnaslov-pravilnik{
+    font-family: 'Dune-Rise', sans-serif;
+    font-size: 28px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tekst-pravilnik{
+    font-size: 18px;
+    line-height: 1.6;
+    font-family: sans-serif;
+    text-align:justify;
+    width: 100%;
+}
+
+.navigacija-pravilnik{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    font-family: 'DuneRise', sans-serif;
+}
+
+.strelica{
+    background: none;
+    border: none;
+    color: #8b5cf6;
+    font-size: 32px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+    transition: transform 0.2s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.strelica:hover{
+    transform: scale(1.2);
+    color: #8b5cf6;
+}
+
+.strelica:focus, .strelica:active{
+    outline: none;
+    border: none;
+}
+
+.broj-strane{
+    font-size: 24px;
+    color: #8b5cf6;
+}
+
+@media (max-width: 767px) {
+    .naslov-pravilnik{
+        font-size: 40px;
+    }
+
+    .svitak-placeholder{
+        width: 95%;
+        min-height: 300px;
+    }
+}
