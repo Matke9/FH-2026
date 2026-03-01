@@ -1,0 +1,125 @@
+.faq-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+/* ===== POZADINA ===== */
+
+.bg-main {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bg-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== NASLOV ===== */
+
+.faq-title {
+  position: relative;
+  text-align: center;
+  font-size: 80px;
+  color: white;
+  margin-top: 80px;
+  z-index: 6;
+}
+
+/* ===== SLIDER ===== */
+
+.slider-wrapper {
+  width: 100%; 
+  overflow: hidden; 
+  margin-top: 30px; 
+  position: relative;
+  z-index: 4;
+  cursor: grab;
+}
+
+.slider-wrapper:active {
+  cursor: grabbing;
+}
+
+.slider-track {
+  display: flex;
+  gap: 40px;
+  width: max-content;
+}
+
+
+/* ===== PROJEKTOR ===== */
+
+/*.lamp {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+  z-index: 2;
+}*/
+
+.lamp {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max(600px, 55vw);
+  height: 600px;
+}
+
+.lamp-light,
+.lamp-base,
+.lamp-glow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+
+/*.lamp-light {
+  position: absolute;
+  bottom: -135px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  max-width: 90vw;
+  height: 500px;
+  object-fit: contain;
+  z-index: 1;
+}*/
+
+.lamp-light {
+  position: absolute;
+  bottom: -140px;
+  width: 100%;
+  height: 500px;
+  z-index: 1;
+}
+
+.lamp-base {
+  bottom: 0;
+  width: 320px;
+  height: 80px;
+}
+
+.lamp-glow {
+  bottom: 34px;
+  width: 120px;
+  height: 40px;
+}
+
+.lamp-light img,
+.lamp-base img,
+.lamp-glow img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
