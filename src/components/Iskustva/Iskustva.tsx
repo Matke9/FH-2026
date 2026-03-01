@@ -36,21 +36,23 @@ const Iskustva = () => {
 
   return (
     <section
-      className="relative w-full overflow-hidden flex items-center justify-center
+      className="relative left-1/2 -translate-x-1/2 overflow-hidden flex items-center justify-center
       h-[600px] sm:h-[650px] md:h-[750px] lg:h-[800px]"
       style={{
+        width: "100vw",
+        maxWidth: "100vw",
         backgroundColor: "rgba(0, 24, 40, 0.98)",
         backgroundImage:
           "linear-gradient(180deg, rgba(0, 24, 40, 0.98) 0%, rgba(83, 20, 91, 0.4) 80%, rgba(0, 0, 0, 0.5) 100%)",
       }}
     >
-      <h2 className = "font-['DuneRise'] font-bold text-4xl md:text-5xl lg:text-6xl text-white text-center absolute top-6">
+      <h2 className = "font-dune font-bold text-4xl md:text-5xl lg:text-6xl text-white text-center absolute top-6">
         Iskustva
       </h2>
 
 
       {/* Kamile */}
-      <div className="absolute bottom-0 left-0 w-full z-0 leading-[0]">
+      <div className="absolute bottom-0 w-full  max-w-[1800px] z-0 leading-[0]">
         <img
           src={IskustvaKamile}
           alt="Kamile"
@@ -59,86 +61,88 @@ const Iskustva = () => {
       </div>
 
       {/* Kontejner – slider malo više ulevo */}
-      <div className="flex flex-row items-center w-full pl-2 pr-6 md:pl-6 md:pr-12 lg:pl-10 lg:pr-24 relative z-10">
-        
-        {/* Slider */}
-        <div className="w-[90px] md:w-[150px] flex-shrink-0 flex flex-col items-center gap-6">
+      <div id="iskustva-inner-wrap" className="w-full xl:max-w-[1200px] 2xl:max-w-[1300px]">
+        <div className="flex flex-row items-center w-full pl-2 pr-6 md:pl-6 md:pr-12 lg:pl-10 lg:pr-24 relative z-10">
           
-          <button
-            onClick={rotateUp}
-            className="bg-transparent border-none outline-none focus:outline-none focus:ring-0 p-0 hover:scale-110 active:scale-90 transition-transform duration-300 cursor-pointer"
-          >
-            <img src={StrelicaGore} alt="Gore" className="w-8 md:w-12" />
-          </button>
+          {/* Slider */}
+          <div className="w-[90px] md:w-[150px] flex-shrink-0 flex flex-col items-center gap-6">
+            
+            <button
+              onClick={rotateUp}
+              className="bg-transparent border-none outline-none focus:outline-none focus:ring-0 p-0 hover:scale-110 active:scale-90 transition-transform duration-300 cursor-pointer"
+            >
+              <img src={StrelicaGore} alt="Gore" className="w-8 md:w-12" />
+            </button>
 
-          <div className="flex flex-col items-center gap-4">
-            {people.map((person, index) => {
-              
-              let scale = "scale-75 opacity-30";
-              
-              if (index === 1 || index === 3) {
-                scale = "scale-90 opacity-60";
-              } else if (index === 2) {
-                scale = "scale-110 opacity-100";
-              }
+            <div className="flex flex-col items-center gap-4">
+              {people.map((person, index) => {
+                
+                let scale = "scale-75 opacity-30";
+                
+                if (index === 1 || index === 3) {
+                  scale = "scale-90 opacity-60";
+                } else if (index === 2) {
+                  scale = "scale-110 opacity-100";
+                }
 
-              return (
-                <div
-                  key={person.id}
-                  onClick={
-                    index < 2
-                      ? rotateUp
-                      : index > 2
-                      ? rotateDown
-                      : undefined
-                  }
-                  className={`
-                    w-14 h-14 md:w-24 md:h-24
-                    rounded-full overflow-hidden border-2 border-white
-                    transition-all duration-500 ease-in-out
-                    transform ${scale}
-                    cursor-pointer
-                  `}
-                >
-                  <img
-                    src={person.image}
-                    alt="avatar"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              );
-            })}
+                return (
+                  <div
+                    key={person.id}
+                    onClick={
+                      index < 2
+                        ? rotateUp
+                        : index > 2
+                        ? rotateDown
+                        : undefined
+                    }
+                    className={`
+                      w-14 h-14 md:w-24 md:h-24
+                      rounded-full overflow-hidden border-2 border-white
+                      transition-all duration-500 ease-in-out
+                      transform ${scale}
+                      cursor-pointer
+                    `}
+                  >
+                    <img
+                      src={person.image}
+                      alt="avatar"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+
+            <button
+              onClick={rotateDown}
+              className="bg-transparent border-none outline-none focus:outline-none focus:ring-0 p-0 hover:scale-110 active:scale-90 transition-transform duration-300 cursor-pointer"
+            >
+              <img src={StrelicaDole} alt="Dole" className="w-8 md:w-12" />
+            </button>
           </div>
 
-          <button
-            onClick={rotateDown}
-            className="bg-transparent border-none outline-none focus:outline-none focus:ring-0 p-0 hover:scale-110 active:scale-90 transition-transform duration-300 cursor-pointer"
-          >
-            <img src={StrelicaDole} alt="Dole" className="w-8 md:w-12" />
-          </button>
+          {/* Tekst */}
+          <div className="flex-1 relative flex items-center justify-center min-h-[400px]">
+            
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+              <img
+                src={slikaOblak}
+                alt="Cloud"
+                className="w-full max-w-[650px] h-auto object-contain opacity-20"
+              />
+            </div>
+
+            <div
+              key={activePerson.id}
+              className="relative z-10 w-full max-w-3xl px-4 md:px-12 text-center md:text-left transition-opacity duration-500"
+            >
+              <p className="font-noto text-gray-100 text-[14px] sm:text-[18px] md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
+                "{activePerson.description}"
+              </p>
+            </div>
+          </div>
+
         </div>
-
-        {/* Tekst */}
-        <div className="flex-1 relative flex items-center justify-center min-h-[400px]">
-          
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-            <img
-              src={slikaOblak}
-              alt="Cloud"
-              className="w-full max-w-[650px] h-auto object-contain opacity-20"
-            />
-          </div>
-
-          <div
-            key={activePerson.id}
-            className="relative z-10 w-full max-w-3xl px-4 md:px-12 text-center md:text-left transition-opacity duration-500"
-          >
-            <p className="font-['NotoSans'] text-gray-100 text-[13px] sm:text-base md:text-xl">
-              "{activePerson.description}"
-            </p>
-          </div>
-        </div>
-
       </div>
     </section>
   );
