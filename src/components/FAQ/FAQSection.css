@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "DuneRise";
+  src: url("../../assets/fonts/Dune_Rise.otf") format("opentype");
+}
+
 .faq-section {
   position: relative;
   min-height: 100vh;
@@ -27,6 +32,7 @@
   font-size: 80px;
   color: white;
   margin-top: 80px;
+  font-family: "DuneRise", sans-serif;
   z-index: 6;
 }
 

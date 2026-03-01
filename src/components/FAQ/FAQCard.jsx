@@ -1,6 +1,6 @@
 import "./FAQCard.css";
-import cardFront from "../assets/FAQ/FAQKarticaNapred.svg";
-import cardBack from "../assets/FAQ/FAQKarticaNazad.svg";
+import cardFront from "../../assets/FAQ/FAQKarticaNapred.svg";
+import cardBack from "../../assets/FAQ/FAQKarticaNazad.svg";
 
 export default function FAQCard({ question, answer, isFlipped, onFlip }) {
   return (
