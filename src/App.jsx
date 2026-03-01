@@ -1,5 +1,7 @@
 import {useState} from 'react';
 import { stranice } from './features/pravilnik-data';
+import svitak from './assets/svitak.svg';
+import svitakPhone from './assets/svitakPhone.svg';
 import './index.css';
 import './styles/Pravilnik.css';
 
@@ -16,12 +18,18 @@ function App(){
 
   return(
     <div className='pravilnik-page-wrapper'>
+      <div className='bg-overlay'></div>
       <h1 className='naslov-pravilnik'>
         Pravilnik
       </h1>
-      <div className='svitak-placeholder'>
-        <h2 className='podnaslov-pravilnik'>{stranice[index].naslov}</h2>
-        <p className='tekst-pravilnik'>{stranice[index].tekst}</p>
+      <div className='svitak-container'>
+        <img src={svitak} className='svitak-bg desktop-only' alt="scroll" />
+        <img src={svitakPhone} className='svitak-bg mobile-only' alt="scroll-mobile" />
+        <div className='svitak-boja'></div>
+        <div className='svitak-content'>
+          <h2 className='podnaslov-pravilnik'>{stranice[index].naslov}</h2>
+          <p className='tekst-pravilnik'>{stranice[index].tekst}</p>
+        </div>
       </div>
       <div className='navigacija-pravilnik'>
         <button onClick={prethodnaStrana} className='strelica'>
