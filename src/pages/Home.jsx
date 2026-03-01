@@ -4,7 +4,7 @@ import Nagrade from '../components/Nagrade/Nagrade'
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Nagrade />
+      <Nagrade type="Hackathon"/>
     </main>
   )
 }
