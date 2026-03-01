@@ -1,83 +1,162 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 :root {
-    --back-dark: #002440;
-    --back-light: #3C4286;
+  --back-dark: #002440;
+  --back-light: #3C4286;
 }
 
 .agenda-wrapper {
-    position: relative;
-    background: linear-gradient(var(--back-light) 0%, var(--back-dark) 100%);
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 50px;
+  position: relative;
+  background: linear-gradient(var(--back-light) 0%, var(--back-dark) 100%);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  /* Smanjen padding za mobilni da sadržaj ne bude preuzak */
 }
 
 .agenda-title {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 4rem;
-    margin-bottom: 50px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 5px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.agenda-subtitles {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+}
+
+.agenda-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .closed-scroll {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .open-scroll {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-.map-container {
-  position: relative;
-  display: inline-block;
+.small-scroll,
+.big-scroll {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+.section-subtitle-side,
+.section-subtitle-center {
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  margin: 10px 0;
 }
 
 .section-subtitle-side {
-    font-family: 'Orbitron', sans-serif;
-    color: white;
-    font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .section-subtitle-center {
-    font-family: 'Orbitron', sans-serif;
-    color: white;
-    font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
-/* Prikaz za tablet */
-
-@media (max-width: 1023px) {
+/* ==========================================
+   TABLET (min-width: 768px)
+   ========================================== */
+@media (min-width: 768px) {
   .agenda-title {
     font-size: 3rem;
   }
-  .map-container {
-    transform: scale(0.8);
+
+  .agenda-wrapper {
+    padding: 30px;
   }
 }
 
-/* Prikaz za telefon */
-
-@media (max-width: 767px) {
+/* ==========================================
+   DESKTOP / PC (min-width: 1024px)
+   ========================================== */
+@media (min-width: 1024px) {
   .agenda-title {
-    font-size: 2rem;
-    letter-spacing: 5px;
+    font-size: 4rem;
+    letter-spacing: normal;
+    margin-bottom: 70px;
+  }
+
+  .agenda-subtitles {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .agenda-content {
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .closed-scroll .open-scroll {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .closed-scroll {
-    display: none; 
+    min-height: 100%;
+    max-width: 20%;
   }
-  
-  .map-container {
-    transform: scale(0.6);
-    margin-top: -50px;
-  } 
+
+  .open-scroll {
+    min-height: 100%;
+    max-width: 60%;
+  }
+
+  .small-scroll {
+    max-width: 315px;
+  }
+
+  .big-scroll {
+    max-width: 912px;
+  }
+
+  .small-scroll,
+  .big-scroll {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .section-subtitle-side {
+    padding-top: 10px;
+    flex: 1;
+    font-size: 1.5rem;
+  }
+
+  .section-subtitle-center {
+    flex: 1;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .section-subtitle-side,
+  .section-subtitle-center {
+    margin-top: 0;
+    text-align: center;
+  }
 }

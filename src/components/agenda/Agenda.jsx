@@ -1,6 +1,11 @@
+import ResponsiveScroll from './ResponsiveScroll';
+
 import '../../styles/Agenda.css';
-import closedScroll from '../../assets/agenda/mali_scroll.svg';
-import openScroll from '../../assets/agenda/otvoreni_veliki_scroll.svg';
+import closedScroll from '../../assets/agenda/zatvoren_scroll.svg';
+import openScroll from '../../assets/agenda/hologram.svg';
+
+import closedScrollPhone from '../../assets/agenda/zatvoren_scroll_telefon.svg';
+import openScrollPhone from '../../assets/agenda/hologram_telefon.svg';
 
 const Agenda = () => {
     return (
@@ -10,34 +15,36 @@ const Agenda = () => {
                 AGENDA
             </h1>
 
-            { /* Deo za scrollove */}
-            <div className="flex justify-between items-end max-w-7xl mx-auto w-full px-10">
-                <div>
-                    
-                </div>
-
-                {/* Levi scroll */}
+            { /* Scrollovi deo */}
+            <div className="agenda-content">
+                {/* Kolona 1 */}
                 <div className="closed-scroll">
-                    <div className="section-subtitle-side">Web4 challenge</div>
-                    <div className="w-48">
-                        <img src={closedScroll} alt="left closed scroll" />
-                    </div>
+                    <h3 className="section-subtitle-side">Web4 challenge</h3>
+                    <ResponsiveScroll
+                        desktopImg={closedScroll}
+                        mobileImg={closedScrollPhone}
+                        className="small-scroll"
+                    />
                 </div>
 
-                {/* Centralni deo sa mapom */}
+                {/* Kolona 2 - Centralna */}
                 <div className="open-scroll">
-                    <div className="section-subtitle-center">Hakaton</div>
-                    <div className="map-container">
-                        <img src={openScroll} alt="mapa" />
-                    </div>
+                    <h2 className="section-subtitle-center">Hakaton</h2>
+                    <ResponsiveScroll
+                        desktopImg={openScrollDesktop}
+                        mobileImg={openScrollMobile}
+                        className="big-scroll"
+                    />
                 </div>
 
-                {/* Desni scroll */}
+                {/* Kolona 3 */}
                 <div className="closed-scroll">
-                    <div className="section-subtitle-side">Game jam</div>
-                    <div className="w-48">
-                        <img src={closedScroll} alt="right closed scroll" />
-                    </div>
+                    <h3 className="section-subtitle-side">Game jam</h3>
+                    <ResponsiveScroll
+                        desktopImg={closedScroll}
+                        mobileImg={closedScrollPhone}
+                        className="small-scroll"
+                    />
                 </div>
             </div>
         </div>
