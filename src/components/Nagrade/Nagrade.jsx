@@ -7,27 +7,26 @@ import GJ_pustinja from "../../assets/Nagrade/GJ_pustinja.svg";
 import GJ_pomracenje from "../../assets/Nagrade/GJ_pomracenje.svg";
 import GJ_planina from "../../assets/Nagrade/GJ_planina.svg";
 
-
-function PrizeGlowText({ children, size = "text-[64px]", glow = true }) {
+function PrizeGlowText({ children, size = "text-[4rem]", glow = true }) {
   return (
-    <span className={`relative inline-block text-white font-['DuneRise'] ${size}`}>
-      
+    <span
+      className={`relative inline-block text-white font-['DuneRise'] ${size}`}
+    >
       {glow && (
         <span
-          className="absolute inset-0 blur-[30px] opacity-80 select-none"
+          className="absolute inset-0 blur-[2rem] opacity-80 select-none"
           aria-hidden="true"
         >
           {children}
         </span>
       )}
 
-      <span className="relative [webkit-text-stroke:1px_rgba(255,255,255,0.6)]">
+      <span className="relative [webkit-text-stroke:0.0625rem_rgba(255,255,255,0.6)]">
         {children}
       </span>
     </span>
   );
 }
-
 
 const variants = {
   Hackathon: {
@@ -62,13 +61,11 @@ const variants = {
   },
 };
 
-
 export default function Nagrade({ type = "Hackathon" }) {
   const config = variants[type];
 
   return (
     <section className="relative w-full min-h-screen overflow-hidden">
-
       {/* Zvezde */}
       <img
         src={zvezde}
@@ -78,14 +75,13 @@ export default function Nagrade({ type = "Hackathon" }) {
 
       {/* Naslov */}
       <div className="relative w-full h-screen pt-[10vh] z-30">
-        <h2 className="text-center mt-[25vh] w-full font-['DuneRise'] text-[clamp(20px,8vw,120px)] text-white md:mt-[10vh]">
+        <h2 className="text-center mt-[25vh] w-full font-['DuneRise'] text-[clamp(1.25rem,8vw,7.5rem)] text-white md:mt-[10vh]">
           nagrade
         </h2>
       </div>
 
       {/* Donji deo */}
       <div className="absolute bottom-0 w-full z-20 md:relative md:bottom-auto">
-
         {/* Pustinja */}
         <img
           src={config.pustinja}
@@ -98,10 +94,9 @@ export default function Nagrade({ type = "Hackathon" }) {
 
         {/* Nagrade */}
         <div className="absolute inset-0 pointer-events-none z-30">
-
           {/* 700e */}
           <div className="absolute left-[24%] -translate-x-1/2 bottom-[80%]">
-            <PrizeGlowText size="text-[clamp(12px,5vw,110px)]">
+            <PrizeGlowText size="text-[clamp(0.75rem,5vw,7rem)]">
               700e
             </PrizeGlowText>
           </div>
@@ -109,7 +104,7 @@ export default function Nagrade({ type = "Hackathon" }) {
           {/* 1000e glow je isključen samo za Gamejam */}
           <div className="absolute left-1/2 -translate-x-1/2 bottom-[100%]">
             <PrizeGlowText
-              size="text-[clamp(15px,8vw,130px)]"
+              size="text-[clamp(1rem,8vw,8rem)]"
               glow={type !== "Gamejam"}
             >
               1000e
@@ -118,11 +113,10 @@ export default function Nagrade({ type = "Hackathon" }) {
 
           {/* 500e */}
           <div className="absolute left-[75%] -translate-x-1/2 bottom-[70%]">
-            <PrizeGlowText size="text-[clamp(10px,6vw,70px)]">
+            <PrizeGlowText size="text-[clamp(0.75rem,6vw,4.5rem)]">
               500e
             </PrizeGlowText>
           </div>
-
         </div>
       </div>
     </section>
