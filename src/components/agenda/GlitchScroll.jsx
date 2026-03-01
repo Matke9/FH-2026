@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 const GlitchScroll = ({ desktopImg, mobileImg, className, onClick, triggerGlitch }) => {
     const [isGlitching, setIsGlitching] = useState(false);
 
-    // Okidamo glitch efekat svaki put kada se triggerGlitch promeni (npr. pri promeni mape)
     useEffect(() => {
         if (triggerGlitch) {
             setIsGlitching(true);
@@ -25,7 +24,7 @@ const GlitchScroll = ({ desktopImg, mobileImg, className, onClick, triggerGlitch
             style={{ cursor: 'pointer' }}
         >
             <picture>
-                <source media="(max-width: 768px)" srcSet={mobileImg} />
+                <source media="(max-width: 1024px)" srcSet={mobileImg} />
                 <img src={desktopImg} alt="scroll" style={{ width: '100%', height: 'auto' }} />
             </picture>
         </div>

@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import ResponsiveScroll from './ResponsiveScroll.jsx';
+import { useState, useEffect } from 'react';
 import GlitchScroll from './GlitchScroll.jsx';
 
 import '../../styles/Agenda.css';
@@ -14,27 +13,41 @@ import openGamejamPhone from '../../assets/agenda/gamejam_mapa_telefon.svg';
 import openWeb4Phone from '../../assets/agenda/web4_mapa_telefon.svg';
 
 const Agenda = () => {
-    // Početno stanje: Niz koji definiše redosled (0=Levo, 1=Sredina, 2=Desno)
-    const [items, setItems] = useState([
-        { id: 'web4', title: 'Web4 challenge', desk: openWeb4, mob: openWeb4Phone },
+    // Pocetni redosled za mobilni prikaz
+    const initialItems = [
         { id: 'hakaton', title: 'Hakaton', desk: openHakaton, mob: openHakatonPhone },
-        { id: 'gamejam', title: 'Game jam', desk: openGamejam, mob: openGamejamPhone }
-    ]);
+        { id: 'gamejam', title: 'Game jam', desk: openGamejam, mob: openGamejamPhone },
+        { id: 'web4', title: 'Web4 challenge', desk: openWeb4, mob: openWeb4Phone }
+    ];
 
-    // Postavlja nova stanja
-    const handleSwitch = (clickedIndex) => {
-        if (clickedIndex === 1) return;
-        const newItems = [...items];
-        
-        if (clickedIndex === 0) {
-            const last = newItems.pop();
-            newItems.unshift(last);
+    const [items, setItems] = useState(initialItems);
+    const [activeId, setActiveId] = useState('hakaton');
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+    // Deo za responzivnost
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 1024);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const handleSwitch = (clickedId, clickedIndex) => {
+        if (isMobile) {
+            // MOBILNI + TABLET: Samo otvori kliknuti, ostali se zatvaraju
+            setActiveId(clickedId);
         } else {
-            const first = newItems.shift();
-            newItems.push(first);
+            // DESKTOP: rotira mape
+            if (clickedIndex === 1) return;
+            const newItems = [...items];
+            if (clickedIndex === 0) {
+                const last = newItems.pop();
+                newItems.unshift(last);
+            } else {
+                const first = newItems.shift();
+                newItems.push(first);
+            }
+            setItems(newItems);
         }
-
-        setItems(newItems);
     };
 
     return (
@@ -42,40 +55,29 @@ const Agenda = () => {
             <h1 className="agenda-title font-dune">AGENDA</h1>
 
             <div className="agenda-content">
-                {/* Kolona 1 - LEVO */}
-                <div className="closed-scroll">
-                    <h3 className="section-subtitle-side font-dune">{items[0].title}</h3>
-                    <GlitchScroll
-                        desktopImg={closedScroll}
-                        mobileImg={closedScrollPhone}
-                        className="small-scroll"
-                        onClick={() => handleSwitch(0)}
-                        triggerGlitch={items[0].id} 
-                    />
-                </div>
+                {items.map((item, index) => {
+                    const isOpen = isMobile 
+                        ? item.id === activeId 
+                        : index === 1;
 
-                {/* Kolona 2 - SREDINA */}
-                <div className="open-scroll">
-                    <h2 className="section-subtitle-center font-dune">{items[1].title}</h2>
-                    <GlitchScroll
-                        desktopImg={items[1].desk} // Menja se mapa
-                        mobileImg={items[1].mob}
-                        className="big-scroll"
-                        triggerGlitch={items[1].id}
-                    />
-                </div>
-
-                {/* Kolona 3 - DESNO */}
-                <div className="closed-scroll">
-                    <h3 className="section-subtitle-side font-dune">{items[2].title}</h3>
-                    <GlitchScroll
-                        desktopImg={closedScroll}
-                        mobileImg={closedScrollPhone}
-                        className="small-scroll"
-                        onClick={() => handleSwitch(2)}
-                        triggerGlitch={items[2].id}
-                    />
-                </div>
+                    return (
+                        <div 
+                            key={item.id} 
+                            className={isOpen ? "open-scroll" : "closed-scroll"}
+                        >
+                            <h3 className={`font-dune ${isOpen ? 'section-subtitle-center' : 'section-subtitle-side'}`}>
+                                {item.title}
+                            </h3>
+                            <GlitchScroll
+                                desktopImg={isOpen ? item.desk : closedScroll}
+                                mobileImg={isOpen ? item.mob : closedScrollPhone}
+                                className={isOpen ? "big-scroll" : "small-scroll"}
+                                onClick={() => handleSwitch(item.id, index)}
+                                triggerGlitch={item.id}
+                            />
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );
