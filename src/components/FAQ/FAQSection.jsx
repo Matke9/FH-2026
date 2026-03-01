@@ -2,10 +2,10 @@ import FAQCard from "./FAQCard";
 import "./FAQSection.css";
 import { useRef, useState, useEffect } from "react";
 
-import bg from "../assets/FAQ/FAQPozadina.svg";
-import postolje from "../assets/FAQ/FAQPostolje.svg";
-import glow from "../assets/FAQ/FAQSvetloPostolje.svg";
-import light from "../assets/FAQ/FAQSvetlo.svg";
+import bg from "../../assets/FAQ/FAQPozadina.svg";
+import postolje from "../../assets/FAQ/FAQPostolje.svg";
+import glow from "../../assets/FAQ/FAQSvetloPostolje.svg";
+import light from "../../assets/FAQ/FAQSvetlo.svg";
 
 export default function FAQSection() {
   const cards = [

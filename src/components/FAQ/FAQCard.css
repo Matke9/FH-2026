@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "DuneRise";
+  src: url("../../assets/fonts/Dune_Rise.otf") format("opentype");
+}
+
 .faq-card-wrapper {
   width: 380px;
   height: 280px;
