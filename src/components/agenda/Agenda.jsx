@@ -1,8 +1,8 @@
-import ResponsiveScroll from './ResponsiveScroll';
+import ResponsiveScroll from './ResponsiveScroll.jsx';
 
 import '../../styles/Agenda.css';
-import closedScroll from '../../assets/agenda/zatvoren_scroll.svg';
-import openScroll from '../../assets/agenda/hologram.svg';
+import closedScroll from '../../assets/agenda/zatvoren_scroll_1.svg';
+import openScroll from '../../assets/agenda/hologram_1.svg';
 
 import closedScrollPhone from '../../assets/agenda/zatvoren_scroll_telefon.svg';
 import openScrollPhone from '../../assets/agenda/hologram_telefon.svg';
@@ -31,8 +31,8 @@ const Agenda = () => {
                 <div className="open-scroll">
                     <h2 className="section-subtitle-center">Hakaton</h2>
                     <ResponsiveScroll
-                        desktopImg={openScrollDesktop}
-                        mobileImg={openScrollMobile}
+                        desktopImg={openScroll}
+                        mobileImg={openScrollPhone}
                         className="big-scroll"
                     />
                 </div>
