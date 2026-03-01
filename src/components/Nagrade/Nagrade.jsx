@@ -4,7 +4,7 @@ import pustinja from "../../assets/pustinja.png";
 function PrizeGlowText({ children, size = "text-[64px]" }) {
   return (
     <span
-      className={`relative inline-block text-white font-['Dune_Rise'] ${size}`}
+      className={`relative inline-block text-white font-['DuneRise'] ${size}`}
     >
       {/* Glow */}
       <span
@@ -35,7 +35,7 @@ export default function Nagrade() {
       {/* Naslov */}
       <div className="relative w-full h-screen pt-[10vh] z-10">
         <h2 className="
-              text-center mt-[33vh] w-full font-['Dune_Rise'] text-[clamp(20px,8vw,120px)] text-white
+              text-center mt-[33vh] w-full font-['DuneRise'] text-[clamp(20px,8vw,120px)] text-white
               md: mt-[20vh]"
         >
           nagrade
