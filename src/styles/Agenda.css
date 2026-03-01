@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -128,7 +129,17 @@ html, body {
   }
 
   .small-scroll {
+    transition: filter 0.4s ease-in-out, transform 0.3s ease;
     max-width: 315px;
+  }
+
+  .closed-scroll:hover .small-scroll {
+    filter: drop-shadow(0px 0px 10px rgba(146, 225, 255, 0.6));
+    transform: scale(1.02);
+  }
+
+  .closed-scroll:hover .section-subtitle-side {
+    filter: drop-shadow(0px 0px 15px rgba(60, 66, 134, 1));
   }
 
   .big-scroll {
@@ -137,7 +148,6 @@ html, body {
 
   .small-scroll,
   .big-scroll {
-    display: block;
     width: 100%;
     height: auto;
     margin-top: auto;
