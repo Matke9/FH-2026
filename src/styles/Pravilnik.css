@@ -10,10 +10,9 @@
 .pravilnik-page-wrapper{
     position:relative;
     min-height: 100vh;
-    background-color: #0b0c1f;
-    background-image: url('../assets/background-placeholder.svg');
+    background-image: url('../assets/pozadina.svg');
     background-size: cover;
-    background-position: center;
+    background-position: center bottom;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,8 +26,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, #002440 0%, #832091 100%);
-    opacity: 0.9;
+    opacity: 0.4;
     pointer-events: none;
     z-index: 1;
 }
@@ -47,38 +45,41 @@
     align-items: center;
     margin: 10px 0;
     min-height: 500px;
-    background: none;
 }
 
 .svitak-bg{
-    display: block;
+    position: absolute;
     width: 100%;
     height: auto;
-    position: relative;
-    z-index: 2;
-    filter: contrast(1.2) brightness(0.8) sepia(100%) hue-rotate(240deg) saturate(200%);
+    z-index: 3;
     mix-blend-mode: multiply;
+    opacity: 0.8;
+    pointer-events: none;
 }
 
 .svitak-boja{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 85%;
-    height: 70%;
-    background: linear-gradient(180deg, #4c1d95 0%, #832091 100%);
+    width: 100%;
+    height: 100%;
     z-index: 1;
-    border-radius: 20px;
-    filter: blur(15px);
+
+    -webkit-mask-image: url('../assets/svitak.svg');
+    mask-image: url('../assets/svitak.svg');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    opacity: 0.8;
 }
 
 .svitak-content{
     position: absolute;
-    top: 45%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 65%;
+    width: 60%;
     text-align: center;
     color: white;
     z-index: 3;
@@ -154,6 +155,48 @@
     color: #8b5cf6;
 }
 
+.theme-toggle{
+    position: top;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid white;
+    color: white;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-family: 'DuneRise', sans-serif;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+.theme-toggle:hover{
+    color: black;
+}
+
+.tema-plava .bg-overlay{
+    background: linear-gradient(180deg, #002440 0%, #832091 100%);
+}
+
+.tema-plava .svitak-boja{
+    /*background: radial-gradient(circle, #832091 0%, #4c1d95 70%, rgba(11, 12, 31, 0.9) 100%);*/
+    background: linear-gradient(180deg, blue 0%, red 100%);
+}
+
+.tema-crvena .bg-overlay{
+    background: linear-gradient(180deg, #002440  0%, #800517 100%);
+}
+
+
+.tema-crvena .svitak-boja{
+    /*background: radial-gradient(circle, #dc2626 0%, #7f1d1d 70%, rgba(43, 0, 0, 0.9) 100%);*/
+    background: linear-gradient(180deg, blue 0%, red 100%);
+}
+
+.bg-overlay, .svitak-boja, .svitak-bg{
+    transition: all 0.5s ease-in-out;
+}
+
 .mobile-only {display: none;}
 
 @media (max-width: 767px) {
@@ -168,8 +211,7 @@
 
     .svitak-container{
         max-width: 95%;
-        min-height: 600px;
-        margin: 0;
+        min-height: 600px;  
     }
 
     .svitak-bg{
@@ -178,9 +220,8 @@
     }
 
     .svitak-boja{
-        width: 75%;
-        height: 85%;
-        filter: blur(25px);
+        -webkit-mask-image: url('../assets/svitak.svg');
+        mask-image: url('../assets/svitak.svg');
     }
 
     .svitak-content{
