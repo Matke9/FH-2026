@@ -1,0 +1,64 @@
+.faq-card-wrapper {
+  width: 380px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.faq-card-wrapper:hover {
+  transform: scale(1.05);
+}
+
+.faq-card-inner {
+  width: 350px;
+  height: 250px;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.faq-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.faq-card-front,
+.faq-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.faq-card-back {
+  transform: rotateY(180deg);
+}
+
+/* SVG kao pozadina */
+.card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* TEKST PREKO SVG-a */
+.card-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  font-size: 22px;
+  color: white;
+  z-index: 2;
+}
