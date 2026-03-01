@@ -180,8 +180,8 @@
 }
 
 .tema-plava .svitak-boja{
-    /*background: radial-gradient(circle, #832091 0%, #4c1d95 70%, rgba(11, 12, 31, 0.9) 100%);*/
-    background: linear-gradient(180deg, blue 0%, red 100%);
+    /*background: linear-gradient(180deg, blue 0%, red 100%);*/
+    background: none;
 }
 
 .tema-crvena .bg-overlay{
@@ -190,8 +190,8 @@
 
 
 .tema-crvena .svitak-boja{
-    /*background: radial-gradient(circle, #dc2626 0%, #7f1d1d 70%, rgba(43, 0, 0, 0.9) 100%);*/
-    background: linear-gradient(180deg, blue 0%, red 100%);
+    /*background: linear-gradient(180deg, blue 0%, red 100%);*/
+    background: none;
 }
 
 .bg-overlay, .svitak-boja, .svitak-bg{
@@ -219,15 +219,11 @@
     .svitak-bg{
         height: 100%;
         object-fit: fill;
-        opacity: 0.4;
+        opacity: 0.2;
     }
 
     .svitak-boja{
-        -webkit-mask-image: url('../assets/svitak.svg');
-        mask-image: url('../assets/svitak.svg');
-        -webkit-mask-size: contain;
-        mask-size: contain;
-        opacity: 0.7;
+        background: none;
     }
 
     .svitak-content{
