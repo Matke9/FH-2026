@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../../assets/NavBar/logo.png";
+import logo from "../../assets/NavBar/logo1.svg";
 
 const navItems = [
   { label: "O TAKMIČANJU", href: "#o-takmicenju" },
@@ -46,18 +46,25 @@ export default function NavBar() {
         </nav>
 
         {/* Mobile hamburger (vidljiv samo na telefonu) */}
-        <button
-          type="button"
-          className="md:hidden inline-flex items-center justify-center p-2 text-white"
-          onClick={() => setIsOpen(true)}
-          aria-label="Open menu"
-          aria-expanded={isOpen}
-        >
-          {/* jednostavan hamburger ikon */}
-          <span className="block h-[2px] w-7 bg-white mb-1.5" />
-          <span className="block h-[2px] w-7 bg-white mb-1.5" />
-          <span className="block h-[2px] w-7 bg-white" />
-        </button>
+              <button
+              type="button"
+              className="
+                md:hidden
+                flex flex-col
+                justify-center
+                items-center
+                gap-1.5
+                p-2
+                bg-transparent
+              "
+              onClick={() => setIsOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={isOpen}
+            >
+              <span className="h-[2px] w-7 bg-white" />
+              <span className="h-[2px] w-7 bg-white" />
+              <span className="h-[2px] w-7 bg-white" />
+            </button>
       </div>
 
       {/* Mobile overlay menu */}
