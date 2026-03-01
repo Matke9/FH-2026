@@ -24,7 +24,6 @@ body {
 }
 
 .agenda-title {
-  font-family: 'Orbitron', sans-serif;
   font-size: clamp(2rem, 5vw + 1rem, 4rem);
   letter-spacing: 5px;
   margin-bottom: 30px;
@@ -62,7 +61,6 @@ body {
 
 .section-subtitle-side,
 .section-subtitle-center {
-  font-family: 'Orbitron', sans-serif;
   color: white;
   margin: 10px 0;
 }
