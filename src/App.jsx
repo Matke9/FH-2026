@@ -30,6 +30,7 @@ function App() {
       </p>
       <Footer/>
     </>
+    
   )
 }
 
