@@ -1,4 +1,4 @@
-import FAQSection from "./components/FAQSection";
+import FAQSection from "./components/FAQ/FAQSection";
 
 function App() {
   return <FAQSection />;
