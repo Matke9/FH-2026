@@ -10,9 +10,7 @@ import GJ_planina from "../../assets/Nagrade/GJ_planina.svg";
 
 function PrizeGlowText({ children, size = "text-[4rem]", glow = true }) {
   return (
-    <span
-      className={`relative inline-block text-white font-['DuneRise'] ${size}`}
-    >
+    <span className={`relative inline-block text-white font-['DuneRise'] ${size}`}>
       {glow && (
         <span
           className="absolute inset-0 blur-[2rem] opacity-80 select-none"
@@ -62,11 +60,20 @@ const variants = {
   },
 };
 
-export default function Nagrade({ type = "Hackathon" }) {
+export default function NagradeContent({ type, onBack }) {
   const config = variants[type];
 
   return (
     <section className="relative w-full min-h-screen overflow-hidden">
+      
+      {/* Back dugme */}
+      <button
+        onClick={onBack}
+        className="absolute top-10 left-10 z-50 text-white bg-black/40 px-4 py-2 rounded-xl backdrop-blur-md"
+      >
+        Nazad
+      </button>
+
       {/* Zvezde */}
       <img
         src={zvezde}
@@ -83,26 +90,23 @@ export default function Nagrade({ type = "Hackathon" }) {
 
       {/* Donji deo */}
       <div className="absolute bottom-0 w-full z-20 md:relative md:bottom-auto">
-        {/* Pustinja */}
+        
         <img
           src={config.pustinja}
           alt=""
           className="relative w-full h-auto block z-20"
         />
 
-        {/* Gamejam dodatni layeri */}
         {config.extraLayers}
 
-        {/* Nagrade */}
         <div className="absolute inset-0 pointer-events-none z-30">
-          {/* 700e */}
+
           <div className="absolute left-[24%] -translate-x-1/2 bottom-[80%]">
             <PrizeGlowText size="text-[clamp(0.75rem,5vw,7rem)]">
               700e
             </PrizeGlowText>
           </div>
 
-          {/* 1000e glow je isključen samo za Gamejam */}
           <div className="absolute left-1/2 -translate-x-1/2 bottom-[100%]">
             <PrizeGlowText
               size="text-[clamp(1rem,8vw,8rem)]"
@@ -112,22 +116,20 @@ export default function Nagrade({ type = "Hackathon" }) {
             </PrizeGlowText>
           </div>
 
-          {/* 500e */}
           <div className="absolute left-[75%] -translate-x-1/2 bottom-[70%]">
             <PrizeGlowText size="text-[clamp(0.75rem,6vw,4.5rem)]">
               500e
             </PrizeGlowText>
           </div>
+
         </div>
       </div>
 
-      {/* Fade */}
-        <img
-          src={fade}
-          alt=""
-          className="absolute w-full h-auto block z-40 bottom-0 translate-y-[30%]"
-        />
-
+      <img
+        src={fade}
+        alt=""
+        className="absolute w-full h-auto block z-40 bottom-0 translate-y-[30%]"
+      />
     </section>
   );
 }
