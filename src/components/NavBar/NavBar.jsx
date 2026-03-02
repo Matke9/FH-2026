@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logo from "../../assets/NavBar/logo1.svg";
+import pozadina from "../../assets/NavBar/Group.svg"
 
 const navItems = [
   { label: "O TAKMIČANJU", href: "#o-takmicenju" },
@@ -18,7 +19,8 @@ export default function NavBar() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full">
+    <>
+    <header className="fixed left-0 top-0 z-[70] w-full">
       <div className="mx-auto flex h-24 max-w-6xl items-center justify-between px-4">
         {/* slika*/}
         <a href="/" className="flex items-center gap-2" onClick={closeMenu}>
@@ -48,71 +50,94 @@ export default function NavBar() {
         {/* hamburger meni*/}
               <button
               type="button"
-              className="
-                md:hidden
-                flex flex-col
-                justify-center
-                items-center
-                gap-1.5
-                p-2
-                bg-transparent
-              "
-              onClick={() => setIsOpen(true)}
-              aria-label="Open menu"
+              className="md:hidden flex flex-col justify-center items-center gap-1.5 p-2 bg-transparent"
+              onClick={() => setIsOpen((v) => !v)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
             >
-              <span className="h-[2px] w-7 bg-white" />
-              <span className="h-[2px] w-7 bg-white" />
-              <span className="h-[2px] w-7 bg-white" />
+              {isOpen ? (
+                // X ikonica
+                <span className="text-white text-3xl leading-none select-none z-[70]">×</span>
+              ) : (
+                // hamburger
+                <>
+                  <span className="h-[2px] w-7 bg-white" />
+                  <span className="h-[2px] w-7 bg-white" />
+                  <span className="h-[2px] w-7 bg-white" />
+                </>
+              )}
             </button>
       </div>
+    </header>
 
-      {/* Mobile overlay menu */}
-      {isOpen && (
-        <div className="md:hidden fixed inset-0 z-[60]">
-          {/* klik van menija zatvara */}
-          <button
-            className="absolute inset-0 w-full h-full"
-            onClick={closeMenu}
-            aria-label="Close menu overlay"
-          />
-
-          {/* Panel */}
-          <div className="relative ml-auto h-full w-[78%] max-w-xs bg-[#071B3A] px-6 pt-6 pb-10">
-            {/* X dugme */}
-            <button
-              type="button"
-              className="absolute right-4 top-4 text-white text-3xl leading-none"
-              onClick={closeMenu}
-              aria-label="Close menu"
+    {/*meni za telefon*/}
+            {isOpen && (
+          <div
+            className="
+              fixed inset-0 z-[60]
+              bg-black/60 backdrop-opacity-sm
+              flex items-center
+              justify-center
+              px-4
+            "
+          >
+            {/* Panel */}
+            <div
+              className="
+                  w-full
+                  max-w-sm
+                  max-h-[85vh]
+                  overflow-y-auto
+                  rounded-2xl
+                  shadow-2xl
+              "
+           
             >
-              ×
-            </button>
-
-            <div className="mt-10 flex flex-col gap-6">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={closeMenu}
-                  className="flex items-center gap-3 text-white font-noto uppercase tracking-wider"
-                >
-                  <span className="h-2.5 w-2.5 bg-pink-500" />
-                  {item.label}
-                </a>
-              ))}
-
-              <a
-                href="#prijava"
-                onClick={closeMenu}
-                className="mt-6 inline-flex w-fit px-6 py-3 rounded-full bg-pink-600 text-white font-bold uppercase tracking-wider"
+              <div
+                className="
+                  p-8
+                  text-white
+                  bg-[#002440]
+                  bg-contain bg-top-left
+                  bg-no-repeat
+                "
+              style={{
+                      backgroundImage: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${pozadina})`,
+                    }}
               >
-                PRIJAVI SE!
-              </a>
+                
+                <nav className="flex flex-col gap-6 font-noto tracking-wide items-end  text-right">
+                  {navItems.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="text-white flex items-center gap-3 hover:text-pink-400 transition"
+                      onClick={() => setIsOpen(false)} // zatvaranje kad se stisne link
+                    >
+                      <span className="h-2 w-2 bg-pink-500" />
+                      {item.label}
+                    </a>
+                  ))}
+
+                  <a
+                    href="#prijava"
+                    className="
+                      text-white
+                      mt-6 self-center
+                      rounded-full
+                      bg-pink-500 px-8 py-3
+                      font-bold
+                      hover:bg-pink-400 transition
+                    "
+                    onClick={() => setIsOpen(false)}
+                  >
+                    PRIJAVI SE!
+                  </a>
+                </nav>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </header>
+        )}
+    </>
   );
 }
