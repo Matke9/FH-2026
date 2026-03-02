@@ -20,18 +20,18 @@ export default function NavBar() {
   return (
     <header className="fixed left-0 top-0 z-50 w-full">
       <div className="mx-auto flex h-24 max-w-6xl items-center justify-between px-4">
-        {/* Logo */}
+        {/* slika*/}
         <a href="/" className="flex items-center gap-2" onClick={closeMenu}>
           <img src={logo} alt="FON hakaton" className="max-h-16 w-auto" />
         </a>
 
-        {/* Desktop nav (sakriven na telefonu) */}
+        {/* Desktop*/}
         <nav className="hidden md:flex items-center">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="px-4 py-2 text-sm font-semibold uppercase tracking-wider text-white hover:text-pink-400 transition duration-300"
+              className="px-4 py-2 text-sm font-noto uppercase tracking-wider text-white hover:text-pink-400 transition duration-300"
             >
               {item.label}
             </a>
@@ -45,7 +45,7 @@ export default function NavBar() {
           </a>
         </nav>
 
-        {/* Mobile hamburger (vidljiv samo na telefonu) */}
+        {/* hamburger meni*/}
               <button
               type="button"
               className="
@@ -95,7 +95,7 @@ export default function NavBar() {
                   key={item.label}
                   href={item.href}
                   onClick={closeMenu}
-                  className="flex items-center gap-3 text-white font-semibold uppercase tracking-wider"
+                  className="flex items-center gap-3 text-white font-noto uppercase tracking-wider"
                 >
                   <span className="h-2.5 w-2.5 bg-pink-500" />
                   {item.label}
