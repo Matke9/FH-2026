@@ -27,7 +27,7 @@ const Agenda = () => {
 
     const [activeId, setActiveId] = useState('hakaton');
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
-    const [glitchTrigger, setGlitchTrigger] = useState(Date.now());
+    const [glitchingIds, setGlitchingIds] = useState({});
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 1024);
@@ -36,8 +36,21 @@ const Agenda = () => {
     }, []);
 
     const handleSwitch = (clickedId) => {
-        setGlitchTrigger(Date.now());
-        setActiveId(clickedId);
+        const now = Date.now();
+        const currentItems = isMobile ? mobileOrderedItems : desktopOrderedItems;
+
+        if (clickedId === activeId) {
+            // Samo kliknuti dobija novi timestamp
+            setGlitchingIds({ [clickedId]: now });
+        } else {
+            // Svi iz niza dobijaju isti timestamp
+            const allGlitches = {};
+            currentItems.forEach(item => {
+                allGlitches[item.id] = now;
+            });
+            setGlitchingIds(allGlitches);
+            setActiveId(clickedId);
+        }
     };
 
     const currentItems = isMobile ? mobileOrderedItems : desktopOrderedItems;
@@ -45,16 +58,11 @@ const Agenda = () => {
     return (
         <div className="agenda-wrapper">
             <h1 className="agenda-title font-dune">AGENDA</h1>
-
             <div className="agenda-content">
                 {currentItems.map((item) => {
                     const isOpen = item.id === activeId;
-
                     return (
-                        <div 
-                            key={item.id} 
-                            className={isOpen ? "open-scroll" : "closed-scroll"}
-                        >
+                        <div key={item.id} className={isOpen ? "open-scroll" : "closed-scroll"}>
                             <h3 className={`font-dune ${isOpen ? 'section-subtitle-center' : 'section-subtitle-side'}`}>
                                 {item.title}
                             </h3>
@@ -63,7 +71,7 @@ const Agenda = () => {
                                 mobileImg={isOpen ? item.mob : closedScrollPhone}
                                 className={isOpen ? "big-scroll" : "small-scroll"}
                                 onClick={() => handleSwitch(item.id)}
-                                triggerGlitch={glitchTrigger}
+                                triggerGlitch={glitchingIds[item.id] || null}
                             />
                         </div>
                     );
