@@ -49,7 +49,7 @@ export const getAllClanovi = async () => {
   const { data, error } = await supabase
     .from('clanovi')
     .select('*')
-    .order('broj_clana', { ascending: true });
+    .order('created_at', { ascending: true });
   
   if (error) throw error;
   return data;
@@ -61,7 +61,7 @@ export const getClanoveBeztima = async () => {
     .from('clanovi')
     .select('*')
     .is('tim_id', null)
-    .order('broj_clana', { ascending: true });
+    .order('created_at', { ascending: true });
   
   if (error) throw error;
   return data;

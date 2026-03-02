@@ -26,10 +26,78 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
 
   // Čuvamo podatke za sve 4 člana
   const [clanoviData, setClanoviData] = useState({
-    1: { selectedStatus: '', formData: { imePrezime: '', email: '', telefon: '', fakultetSkola: '', godinaStudija: '', cvLink: '', githubLink: '' }, message: { type: '', text: '' } },
-    2: { selectedStatus: '', formData: { imePrezime: '', email: '', telefon: '', fakultetSkola: '', godinaStudija: '', cvLink: '', githubLink: '' }, message: { type: '', text: '' } },
-    3: { selectedStatus: '', formData: { imePrezime: '', email: '', telefon: '', fakultetSkola: '', godinaStudija: '', cvLink: '', githubLink: '' }, message: { type: '', text: '' } },
-    4: { selectedStatus: '', formData: { imePrezime: '', email: '', telefon: '', fakultetSkola: '', godinaStudija: '', cvLink: '', githubLink: '' }, message: { type: '', text: '' } }
+    1: { 
+      selectedStatus: [], 
+      formData: { 
+        imePrezime: '', 
+        email: '', 
+        telefon: '', 
+        kapiten: false,
+        godine: 18,
+        grad: '',
+        srednjaSkola: '',
+        godinaSkolovanja: '',
+        fakultetSkola: '', 
+        godinaStudija: '', 
+        cvLink: '', 
+        githubLink: '' 
+      }, 
+      message: { type: '', text: '' } 
+    },
+    2: { 
+      selectedStatus: [], 
+      formData: { 
+        imePrezime: '', 
+        email: '', 
+        telefon: '', 
+        kapiten: false,
+        godine: 18,
+        grad: '',
+        srednjaSkola: '',
+        godinaSkolovanja: '',
+        fakultetSkola: '', 
+        godinaStudija: '', 
+        cvLink: '', 
+        githubLink: '' 
+      }, 
+      message: { type: '', text: '' } 
+    },
+    3: { 
+      selectedStatus: [], 
+      formData: { 
+        imePrezime: '', 
+        email: '', 
+        telefon: '', 
+        kapiten: false,
+        godine: 18,
+        grad: '',
+        srednjaSkola: '',
+        godinaSkolovanja: '',
+        fakultetSkola: '', 
+        godinaStudija: '', 
+        cvLink: '', 
+        githubLink: '' 
+      }, 
+      message: { type: '', text: '' } 
+    },
+    4: { 
+      selectedStatus: [], 
+      formData: { 
+        imePrezime: '', 
+        email: '', 
+        telefon: '', 
+        kapiten: false,
+        godine: 18,
+        grad: '',
+        srednjaSkola: '',
+        godinaSkolovanja: '',
+        fakultetSkola: '', 
+        godinaStudija: '', 
+        cvLink: '', 
+        githubLink: '' 
+      }, 
+      message: { type: '', text: '' } 
+    }
   });
 
   const updateClanData = (clanNumber, data) => {
@@ -41,10 +109,78 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
 
   const resetAllData = () => {
     setClanoviData({
-      1: { selectedStatus: '', formData: { imePrezime: '', email: '', telefon: '', fakultetSkola: '', godinaStudija: '', cvLink: '', githubLink: '' }, message: { type: '', text: '' } },
-      2: { selectedStatus: '', formData: { imePrezime: '', email: '', telefon: '', fakultetSkola: '', godinaStudija: '', cvLink: '', githubLink: '' }, message: { type: '', text: '' } },
-      3: { selectedStatus: '', formData: { imePrezime: '', email: '', telefon: '', fakultetSkola: '', godinaStudija: '', cvLink: '', githubLink: '' }, message: { type: '', text: '' } },
-      4: { selectedStatus: '', formData: { imePrezime: '', email: '', telefon: '', fakultetSkola: '', godinaStudija: '', cvLink: '', githubLink: '' }, message: { type: '', text: '' } }
+      1: { 
+        selectedStatus: [], 
+        formData: { 
+          imePrezime: '', 
+          email: '', 
+          telefon: '', 
+          kapiten: false,
+          godine: 18,
+          grad: '',
+          srednjaSkola: '',
+          godinaSkolovanja: '',
+          fakultetSkola: '', 
+          godinaStudija: '', 
+          cvLink: '', 
+          githubLink: '' 
+        }, 
+        message: { type: '', text: '' } 
+      },
+      2: { 
+        selectedStatus: [], 
+        formData: { 
+          imePrezime: '', 
+          email: '', 
+          telefon: '', 
+          kapiten: false,
+          godine: 18,
+          grad: '',
+          srednjaSkola: '',
+          godinaSkolovanja: '',
+          fakultetSkola: '', 
+          godinaStudija: '', 
+          cvLink: '', 
+          githubLink: '' 
+        }, 
+        message: { type: '', text: '' } 
+      },
+      3: { 
+        selectedStatus: [], 
+        formData: { 
+          imePrezime: '', 
+          email: '', 
+          telefon: '', 
+          kapiten: false,
+          godine: 18,
+          grad: '',
+          srednjaSkola: '',
+          godinaSkolovanja: '',
+          fakultetSkola: '', 
+          godinaStudija: '', 
+          cvLink: '', 
+          githubLink: '' 
+        }, 
+        message: { type: '', text: '' } 
+      },
+      4: { 
+        selectedStatus: [], 
+        formData: { 
+          imePrezime: '', 
+          email: '', 
+          telefon: '', 
+          kapiten: false,
+          godine: 18,
+          grad: '',
+          srednjaSkola: '',
+          godinaSkolovanja: '',
+          fakultetSkola: '', 
+          godinaStudija: '', 
+          cvLink: '', 
+          githubLink: '' 
+        }, 
+        message: { type: '', text: '' } 
+      }
     });
   };
 
@@ -54,6 +190,17 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
     const members = Object.values(clanoviData).filter(c => c.formData && c.formData.imePrezime && c.formData.imePrezime.trim() !== '');
     if (members.length < 3) {
       setPopup({ visible: true, type: 'error', text: 'Ne možete poslati prijavu: tim mora imati najmanje 3 člana.' });
+      return;
+    }
+
+    // Validacija kapitena
+    const kapiteni = members.filter(m => m.formData && m.formData.kapiten === true);
+    if (kapiteni.length === 0) {
+      setPopup({ visible: true, type: 'error', text: 'Tim mora imati kapitena! Izaberite jednog člana kao kapitena.' });
+      return;
+    }
+    if (kapiteni.length > 1) {
+      setPopup({ visible: true, type: 'error', text: 'Tim može imati samo jednog kapitena!' });
       return;
     }
 
@@ -94,12 +241,16 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
         return;
       }
 
-      const localMembers = localMembersRaw.map((c, idx) => ({
-        broj_clana: idx + 1,
+      const localMembers = localMembersRaw.map((c) => ({
         ime_prezime: c.formData.imePrezime,
         email: c.formData.email,
         telefon: c.formData.telefon,
-        status: c.selectedStatus || null,
+        kapiten: c.formData.kapiten || false,
+        godine: c.formData.godine || 18,
+        grad: c.formData.grad || '',
+        status: Array.isArray(c.selectedStatus) ? c.selectedStatus : (c.selectedStatus ? [c.selectedStatus] : []),
+        srednja_skola: c.formData.srednjaSkola || null,
+        godina_skolovanja: c.formData.godinaSkolovanja || null,
         fakultet_skola: c.formData.fakultetSkola || null,
         godina_studija: c.formData.godinaStudija || null,
         cv_link: c.formData.cvLink,
@@ -110,10 +261,13 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
       await createPrijavaSaTimovimaIClanovima(
         {
           ime_tima: createdTim.ime_tima,
-          discipline: discipline,
-          prethodna_iskustva: createdTim.prethodna_iskustva,
+          discipline: createdTim.discipline || discipline,
+          kako_ste_culi: createdTim.kako_ste_culi || [],
           motivacija: createdTim.motivacija,
-          vestine_mane: createdTim.vestine_mane
+          prethodna_iskustva: createdTim.prethodna_iskustva,
+          konflikt_resenje: createdTim.konflikt_resenje,
+          prioriteti_vreme: createdTim.prioriteti_vreme || null,
+          iskustvo_video_igre: createdTim.iskustvo_video_igre || null
         },
         localMembers
       );
@@ -147,6 +301,7 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
         onBack={() => setShowTimForma(false)}
         onTimSubmitted={(tim) => { setCreatedTim(tim); setShowTimForma(false); }}
         localClanovi={Object.values(clanoviData).filter(c => c.formData && c.formData.imePrezime && c.formData.imePrezime.trim() !== '').map(c => c.formData)}
+        discipline={discipline}
       />
     );
   }

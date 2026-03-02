@@ -3,11 +3,17 @@ import { checkEmailOrPhoneExists } from '../../lib/database';
 
 const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClanovi = {} }) => {
   const containerRef = useRef(null);
-  const [selectedStatus, setSelectedStatus] = useState(initialData?.selectedStatus || '');
+  const timeoutRef = useRef(null);
+  const [selectedStatus, setSelectedStatus] = useState(initialData?.selectedStatus || []);
   const [formData, setFormData] = useState(initialData?.formData || {
     imePrezime: '',
     email: '',
     telefon: '',
+    kapiten: false,
+    godine: 18,
+    grad: '',
+    srednjaSkola: '',
+    godinaSkolovanja: '',
     fakultetSkola: '',
     godinaStudija: '',
     cvLink: '',
@@ -19,6 +25,15 @@ const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClano
   // Resetuj poruku kada se komponenta mount-uje
   useEffect(() => {
     setMessage({ type: '', text: '' });
+  }, []);
+
+  // Očisti timeout kada se komponenta unmount-uje
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, []);
 
   // Čuvaj promene u parent komponenti
@@ -33,9 +48,30 @@ const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClano
   }, [selectedStatus, formData]);
 
   const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: type === 'checkbox' ? checked : value
+    });
+  };
+
+  const handleStatusToggle = (status) => {
+    setSelectedStatus(prev => {
+      if (prev.includes(status)) {
+        // Deselektuj status
+        return prev.filter(s => s !== status);
+      } else {
+        // Ako bira student, ukloni srednjoškolac
+        if (status === 'student') {
+          return [...prev.filter(s => s !== 'srednjoskolac'), status];
+        }
+        // Ako bira srednjoškolac, ukloni student
+        if (status === 'srednjoskolac') {
+          return [...prev.filter(s => s !== 'student'), status];
+        }
+        // Zaposleni može biti sa bilo kojim
+        return [...prev, status];
+      }
     });
   };
 
@@ -43,16 +79,46 @@ const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClano
     e.preventDefault();
     
     // Validacija
-    if (!selectedStatus) {
-      setMessage({ type: 'error', text: 'Molimo izaberite status!' });
+    if (selectedStatus.length === 0) {
+      setMessage({ type: 'error', text: 'Molimo izaberite bar jedan status!' });
       if (containerRef.current) containerRef.current.scrollTop = 0;
       return;
     }
 
-    if (!formData.imePrezime || !formData.email || !formData.telefon || !formData.cvLink) {
+    if (!formData.imePrezime || !formData.email || !formData.telefon || !formData.grad || !formData.cvLink) {
       setMessage({ type: 'error', text: 'Molimo popunite sva obavezna polja!' });
       if (containerRef.current) containerRef.current.scrollTop = 0;
       return;
+    }
+
+    // Validacija specifična za status
+    const isStudent = selectedStatus.includes('student');
+    const isSrednjoskolac = selectedStatus.includes('srednjoskolac');
+    const isZaposlen = selectedStatus.includes('zaposlen');
+    
+    if (isSrednjoskolac) {
+      if (!formData.srednjaSkola || !formData.godinaSkolovanja) {
+        setMessage({ type: 'error', text: 'Molimo popunite polja za srednjoškolce!' });
+        if (containerRef.current) containerRef.current.scrollTop = 0;
+        return;
+      }
+    }
+
+    if (isStudent) {
+      if (!formData.fakultetSkola || !formData.godinaStudija) {
+        setMessage({ type: 'error', text: 'Molimo popunite polja za studente!' });
+        if (containerRef.current) containerRef.current.scrollTop = 0;
+        return;
+      }
+    }
+    
+    // Ako je samo zaposleni (bez studenta/srednjoškolca), mora uneti srednju školu
+    if (isZaposlen && !isStudent && !isSrednjoskolac) {
+      if (!formData.srednjaSkola || !formData.godinaSkolovanja) {
+        setMessage({ type: 'error', text: 'Molimo popunite polja za srednju školu!' });
+        if (containerRef.current) containerRef.current.scrollTop = 0;
+        return;
+      }
     }
 
     // Validacija email formata
@@ -81,21 +147,6 @@ const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClano
     }
     if (phoneTrimmed.length < 6 || phoneTrimmed.length > 15) {
       setMessage({ type: 'error', text: 'Broj telefona mora imati između 6 i 15 cifara!' });
-      if (containerRef.current) containerRef.current.scrollTop = 0;
-      return;
-    }
-
-    // Year of study must be numeric and in a reasonable range (1-10)
-    const yearDigits = /^\d+$/;
-    const yearTrimmed = (formData.godinaStudija || '').trim();
-    if (!yearDigits.test(yearTrimmed)) {
-      setMessage({ type: 'error', text: 'Godina studija mora biti broj!' });
-      if (containerRef.current) containerRef.current.scrollTop = 0;
-      return;
-    }
-    const yearNum = parseInt(yearTrimmed, 10);
-    if (yearNum < 1 || yearNum > 10) {
-      setMessage({ type: 'error', text: 'Godina studija mora biti između 1 i 10!' });
       if (containerRef.current) containerRef.current.scrollTop = 0;
       return;
     }
@@ -148,19 +199,21 @@ const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClano
     // Save to parent via onDataChange (effect already syncs on change) and show success
     setMessage({ type: 'success', text: 'Član uspešno dodat!' });
     if (containerRef.current) containerRef.current.scrollTop = 0;
-    setTimeout(() => {
+    
+    // Automatski vrati nazad posle 1.5s
+    timeoutRef.current = setTimeout(() => {
       if (onBack) onBack();
     }, 1500);
+    
     setIsSubmitting(false);
   };
 
   return (
-        <div 
-          ref={containerRef}
-          className="max-w-2xl bg-black/40 border-2 border-white rounded-2xl p-8 max-h-[580px] overflow-y-auto" 
-         style={{ 
-           fontFamily: 'Montserrat, sans-serif'
-         }}>
+    <div 
+      ref={containerRef}
+      className="max-w-2xl bg-black/40 border-2 border-white rounded-2xl p-8 max-h-[580px] overflow-y-auto" 
+      style={{ fontFamily: 'Montserrat, sans-serif' }}
+    >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Poruke */}
         {message.text && (
@@ -179,7 +232,14 @@ const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClano
             {onBack && (
               <button
                 type="button"
-                onClick={onBack}
+                onClick={() => {
+                  // Očisti timeout ako korisnik ručno klikne nazad
+                  if (timeoutRef.current) {
+                    clearTimeout(timeoutRef.current);
+                    timeoutRef.current = null;
+                  }
+                  onBack();
+                }}
                 className="bg-transparent border border-white text-white px-4 py-1.5 rounded-full 
                            font-normal text-sm hover:bg-white hover:text-gray-700 transition-colors"
               >
@@ -204,6 +264,64 @@ const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClano
               type="text"
               name="imePrezime"
               value={formData.imePrezime}
+              onChange={handleChange}
+              required
+              className="w-full bg-transparent border-2 border-white rounded-full px-6 py-3 text-white 
+                         placeholder-gray-300 focus:outline-none focus:border-white"
+              placeholder=""
+            />
+          </div>
+
+          {/* Kapiten tima checkbox */}
+          <div className="flex items-center justify-center gap-3">
+            <input
+              type="checkbox"
+              id="kapiten"
+              name="kapiten"
+              checked={formData.kapiten}
+              onChange={handleChange}
+              className="w-5 h-5 rounded border-2 border-white bg-transparent checked:bg-white"
+            />
+            <label htmlFor="kapiten" className="text-white text-base font-normal cursor-pointer">
+              Kapiten tima
+            </label>
+          </div>
+
+          {/* Godine - Slider */}
+          <div className="space-y-2">
+            <label className="text-white text-base text-center block font-normal">
+              Koliko imate godina? <span className="font-semibold">{formData.godine}</span>
+            </label>
+            <input
+              type="range"
+              name="godine"
+              min="16"
+              max="26"
+              value={formData.godine}
+              onChange={handleChange}
+              className="w-full h-2 bg-white/30 rounded-lg appearance-none cursor-pointer
+                         [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 
+                         [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:bg-white 
+                         [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer
+                         [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 
+                         [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:rounded-full 
+                         [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer"
+            />
+            <div className="flex justify-between text-white text-sm px-1">
+              <span>16</span>
+              <span>26</span>
+            </div>
+          </div>
+
+          {/* Grad */}
+          <div className="space-y-2">
+            <label className="text-white text-base text-center block font-normal">
+              Grad
+            </label>
+            <input
+              type="text"
+              name="grad"
+              value={formData.grad}
               onChange={handleChange}
               required
               className="w-full bg-transparent border-2 border-white rounded-full px-6 py-3 text-white 
@@ -246,74 +364,121 @@ const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClano
             />
           </div>
 
-          {/* Status buttons */}
-          <div className="flex justify-center gap-3 pt-2">
-            <button
-              onClick={() => setSelectedStatus('srednjoskolac')}
-              className={`px-6 py-2 rounded-full font-normal text-sm transition-colors
-                         ${selectedStatus === 'srednjoskolac' 
-                           ? 'bg-white text-gray-700' 
-                           : 'bg-transparent border border-white text-white hover:bg-white hover:text-gray-700'}`}
-            >
-              Srednjoškolac
-            </button>
-            <button
-              onClick={() => setSelectedStatus('student')}
-              className={`px-6 py-2 rounded-full font-normal text-sm transition-colors
-                         ${selectedStatus === 'student' 
-                           ? 'bg-white text-gray-700' 
-                           : 'bg-transparent border border-white text-white hover:bg-white hover:text-gray-700'}`}
-            >
-              Student
-            </button>
-            <button
-              onClick={() => setSelectedStatus('zaposlen')}
-              className={`px-6 py-2 rounded-full font-normal text-sm transition-colors
-                         ${selectedStatus === 'zaposlen' 
-                           ? 'bg-white text-gray-700' 
-                           : 'bg-transparent border border-white text-white hover:bg-white hover:text-gray-700'}`}
-            >
-              Zaposlen
-            </button>
-          </div>
-
-          {/* Naziv fakulteta/srednje škole */}
+          {/* Status checkboxes */}
           <div className="space-y-2">
             <label className="text-white text-base text-center block font-normal">
-              Naziv fakulteta/srednje škole
+              Status
             </label>
-            <input
-              type="text"
-              name="fakultetSkola"
-              value={formData.fakultetSkola}
-              onChange={handleChange}
-              required
-              className="w-full bg-transparent border-2 border-white rounded-full px-6 py-3 text-white 
-                         placeholder-gray-300 focus:outline-none focus:border-white"
-              placeholder=""
-            />
+            <p className="text-white text-xs text-center font-light px-4">
+              Izaberite srednjoškolac ILI student. Zaposleni se može kombinovati.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3 pt-2">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={selectedStatus.includes('srednjoskolac')}
+                  onChange={() => handleStatusToggle('srednjoskolac')}
+                  className="w-5 h-5 rounded border-2 border-white bg-transparent checked:bg-white"
+                />
+                <span className="text-white font-normal text-sm">Srednjoškolac</span>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={selectedStatus.includes('student')}
+                  onChange={() => handleStatusToggle('student')}
+                  className="w-5 h-5 rounded border-2 border-white bg-transparent checked:bg-white"
+                />
+                <span className="text-white font-normal text-sm">Student</span>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={selectedStatus.includes('zaposlen')}
+                  onChange={() => handleStatusToggle('zaposlen')}
+                  className="w-5 h-5 rounded border-2 border-white bg-transparent checked:bg-white"
+                />
+                <span className="text-white font-normal text-sm">Zaposlen</span>
+              </label>
+            </div>
           </div>
+
+          {/* Polja za srednjoškolce ili zaposlene bez fakulteta */}
+          {(selectedStatus.includes('srednjoskolac') || 
+            (selectedStatus.includes('zaposlen') && !selectedStatus.includes('student'))) && (
+            <>
+              <div className="space-y-2">
+                <label className="text-white text-base text-center block font-normal">
+                  Naziv srednje škole
+                </label>
+                <input
+                  type="text"
+                  name="srednjaSkola"
+                  value={formData.srednjaSkola}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-transparent border-2 border-white rounded-full px-6 py-3 text-white 
+                             placeholder-gray-300 focus:outline-none focus:border-white"
+                  placeholder=""
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-white text-base text-center block font-normal">
+                  Godina školovanja
+                </label>
+                <input
+                  type="text"
+                  name="godinaSkolovanja"
+                  value={formData.godinaSkolovanja}
+                  onChange={handleChange}
+                  required
+                  placeholder="Npr. 1, 2, 3, 4"
+                  className="w-full bg-transparent border-2 border-white rounded-full px-6 py-3 text-white 
+                             placeholder-gray-300 focus:outline-none focus:border-white"
+                />
+              </div>
+            </>
+          )}
+
+          {/* Polja za studente */}
+          {selectedStatus.includes('student') && (
+            <>
+              <div className="space-y-2">
+                <label className="text-white text-base text-center block font-normal">
+                  Naziv fakulteta
+                </label>
+                <input
+                  type="text"
+                  name="fakultetSkola"
+                  value={formData.fakultetSkola}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-transparent border-2 border-white rounded-full px-6 py-3 text-white 
+                             placeholder-gray-300 focus:outline-none focus:border-white"
+                  placeholder=""
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-white text-base text-center block font-normal">
+                  Godina studija
+                </label>
+                <input
+                  type="text"
+                  name="godinaStudija"
+                  value={formData.godinaStudija}
+                  onChange={handleChange}
+                  required
+                  placeholder="Npr. 1, 2, 3, 4, master, doktorske"
+                  className="w-full bg-transparent border-2 border-white rounded-full px-6 py-3 text-white 
+                             placeholder-gray-300 focus:outline-none focus:border-white"
+                />
+              </div>
+            </>
+          )}
         </div>
 
         {/* Separator */}
         <div className="border-t border-gray-400 my-6"></div>
-
-        {/* Godina studija/školovanja sekcija */}
-        <div className="space-y-2">
-          <h2 className="text-white text-base text-center font-normal">
-            Godina studija/školovanja
-          </h2>
-          <input
-            type="text"
-            name="godinaStudija"
-            value={formData.godinaStudija}
-            onChange={handleChange}
-            required
-            className="w-full bg-transparent border-2 border-white rounded-full px-6 py-3 text-white 
-                       placeholder-gray-300 focus:outline-none focus:border-white"
-            placeholder=""
-          />
-        </div>
 
         {/* Link ka CV-u sekcija */}
         <div className="space-y-2">
