@@ -90,23 +90,18 @@ export default function NavBar() {
                   overflow-y-auto
                   rounded-2xl
                   shadow-2xl
+                
               "
-           
             >
               <div
-                className="
-                  p-8
-                  text-white
-                  bg-[#002440]
-                  bg-contain bg-top-left
-                  bg-no-repeat
-                "
-              style={{
-                      backgroundImage: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${pozadina})`,
-                    }}
+                 className="relative p-8 text-white bg-[#002440] overflow-hidden"
               >
-                
-                <nav className="flex flex-col gap-6 font-noto tracking-wide items-end  text-right">
+                  <img
+                    src={pozadina}
+                    alt=""
+                    className="pointer-events-none absolute left-0 top-0 z-0"
+                  />
+                 <nav className="flex flex-col gap-6 font-noto tracking-wide items-end  text-right">
                   {navItems.map((item) => (
                     <a
                       key={item.label}
@@ -134,6 +129,7 @@ export default function NavBar() {
                     PRIJAVI SE!
                   </a>
                 </nav>
+               
               </div>
             </div>
           </div>
