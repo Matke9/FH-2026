@@ -99,9 +99,9 @@ export default function NavBar() {
                   <img
                     src={pozadina}
                     alt=""
-                    className="pointer-events-none absolute left-0 top-0 z-0"
+                    className="pointer-events-none absolute inset-0 z-0 h-full w-full object-contain object-top"
                   />
-                 <nav className="flex flex-col gap-6 font-noto tracking-wide items-end  text-right">
+                 <nav className="relative z-10 flex flex-col gap-5 font-noto tracking-wide items-end  text-right">
                   {navItems.map((item) => (
                     <a
                       key={item.label}
