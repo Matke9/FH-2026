@@ -23,8 +23,8 @@ const Agenda = () => {
     const [items, setItems] = useState(initialItems);
     const [activeId, setActiveId] = useState('hakaton');
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+    const [glitchTrigger, setGlitchTrigger] = useState(Date.now());
 
-    // Deo za responzivnost
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 1024);
         window.addEventListener('resize', handleResize);
@@ -32,11 +32,11 @@ const Agenda = () => {
     }, []);
 
     const handleSwitch = (clickedId, clickedIndex) => {
+        setGlitchTrigger(Date.now());
+
         if (isMobile) {
-            // MOBILNI + TABLET: Samo otvori kliknuti, ostali se zatvaraju
             setActiveId(clickedId);
         } else {
-            // DESKTOP: rotira mape
             if (clickedIndex === 1) return;
             const newItems = [...items];
             if (clickedIndex === 0) {
@@ -56,15 +56,10 @@ const Agenda = () => {
 
             <div className="agenda-content">
                 {items.map((item, index) => {
-                    const isOpen = isMobile 
-                        ? item.id === activeId 
-                        : index === 1;
+                    const isOpen = isMobile ? item.id === activeId : index === 1;
 
                     return (
-                        <div 
-                            key={item.id} 
-                            className={isOpen ? "open-scroll" : "closed-scroll"}
-                        >
+                        <div key={item.id} className={isOpen ? "open-scroll" : "closed-scroll"}>
                             <h3 className={`font-dune ${isOpen ? 'section-subtitle-center' : 'section-subtitle-side'}`}>
                                 {item.title}
                             </h3>
@@ -73,7 +68,7 @@ const Agenda = () => {
                                 mobileImg={isOpen ? item.mob : closedScrollPhone}
                                 className={isOpen ? "big-scroll" : "small-scroll"}
                                 onClick={() => handleSwitch(item.id, index)}
-                                triggerGlitch={item.id}
+                                triggerGlitch={glitchTrigger}
                             />
                         </div>
                     );
