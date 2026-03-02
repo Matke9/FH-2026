@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { straniceHackathon, straniceGameJam} from './features/pravilnik-data';
 import svitak from './assets/svitak.svg';
