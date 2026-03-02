@@ -4,7 +4,7 @@ import PrijaveLock from '../../../components/Prijave/PrijaveLock';
 
 const GJPrijave = () => {
   return (
-    <div className="relative w-screen h-screen bg-center bg-cover bg-no-repeat" style={{ backgroundImage: "url('/gj-bg.png')" }}>
+    <div className="relative w-screen h-screen bg-center bg-cover bg-no-repeat" style={{ backgroundImage: "url('/gj-bg.svg')" }}>
       {/* Glavni kontejner koji centrira sve */}
       <div className="absolute top-0 w-full text-center py-4">
         {/* Naslov */}
