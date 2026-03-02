@@ -3,7 +3,7 @@ import logo from "../../assets/NavBar/logo1.svg";
 import pozadina from "../../assets/NavBar/Group.svg"
 
 const navItems = [
-  { label: "O TAKMIČANJU", href: "#o-takmicenju" },
+  { label: "O TAKMICENJU", href: "#o-takmicenju" },
   { label: "AGENDA", href: "#agenda" },
   { label: "NAGRADE", href: "#nagrade" },
   { label: "ISKUSTVA", href: "#iskustva" },
