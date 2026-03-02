@@ -1,4 +1,5 @@
 import zvezde from "../../assets/Nagrade/zvezde.svg";
+import fade from "../../assets/Nagrade/fade.svg";
 
 import HT_pustinja from "../../assets/Nagrade/HT_pustinja.svg";
 import BC_pustinja from "../../assets/Nagrade/BC_pustinja.svg";
@@ -119,6 +120,14 @@ export default function Nagrade({ type = "Hackathon" }) {
           </div>
         </div>
       </div>
+
+      {/* Fade */}
+        <img
+          src={fade}
+          alt=""
+          className="absolute w-full h-auto block z-40 bottom-0 translate-y-[30%]"
+        />
+
     </section>
   );
 }
