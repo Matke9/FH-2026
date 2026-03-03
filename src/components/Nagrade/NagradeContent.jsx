@@ -1,16 +1,19 @@
 import zvezde from "../../assets/Nagrade/zvezde.svg";
 import fade from "../../assets/Nagrade/fade.svg";
+import strelica from "../../assets/Nagrade/strelica.svg";
 
-import HT_pustinja from "../../assets/Nagrade/HT_pustinja.svg";
-import BC_pustinja from "../../assets/Nagrade/BC_pustinja.svg";
-import GJ_pustinja from "../../assets/Nagrade/GJ_pustinja.svg";
+import HT_pustinja from "../../assets/Nagrade/content/HT_pustinja.svg";
+import BC_pustinja from "../../assets/Nagrade/content/BC_pustinja.svg";
 
-import GJ_pomracenje from "../../assets/Nagrade/GJ_pomracenje.svg";
-import GJ_planina from "../../assets/Nagrade/GJ_planina.svg";
+import GJ_pustinja from "../../assets/Nagrade/content/GJ_pustinja.svg";
+import GJ_pomracenje from "../../assets/Nagrade/content/GJ_pomracenje.svg";
+import GJ_planina from "../../assets/Nagrade/content/GJ_planina.svg";
 
 function PrizeGlowText({ children, size = "text-[4rem]", glow = true }) {
   return (
-    <span className={`relative inline-block text-white font-['DuneRise'] ${size}`}>
+    <span
+      className={`relative inline-block text-white font-['DuneRise'] ${size}`}
+    >
       {glow && (
         <span
           className="absolute inset-0 blur-[2rem] opacity-80 select-none"
@@ -65,13 +68,28 @@ export default function NagradeContent({ type, onBack }) {
 
   return (
     <section className="relative w-full min-h-screen overflow-hidden">
-      
       {/* Back dugme */}
       <button
         onClick={onBack}
-        className="absolute top-10 left-10 z-50 text-white bg-black/40 px-4 py-2 rounded-xl backdrop-blur-md"
+        className="
+    absolute top-[3vw] left-[3vw] z-50
+    flex items-center justify-center
+    w-[clamp(40px,6vw,60px)]
+    h-[clamp(40px,6vw,60px)]
+    bg-black/30
+    backdrop-blur-md
+    rounded-[clamp(8px,1.2vw,16px)]
+    transition-all duration-300 ease-out
+    hover:bg-black/40
+    hover:scale-105
+    hover:shadow-[0_0_20px_rgba(255,255,255,0.5),0_0_50px_rgba(255,255,255,0.3)]
+  "
       >
-        Nazad
+        <img
+          src={strelica}
+          alt="Back"
+          className="w-full h-full object-fit pointer-events-none translate-y-[2%]"
+        />
       </button>
 
       {/* Zvezde */}
@@ -83,14 +101,13 @@ export default function NagradeContent({ type, onBack }) {
 
       {/* Naslov */}
       <div className="relative w-full h-screen pt-[10vh] z-30">
-        <h2 className="text-center mt-[25vh] w-full font-['DuneRise'] text-[clamp(1.25rem,8vw,7.5rem)] text-white md:mt-[10vh]">
+        <h2 className="text-center mt-[clamp[50px,25vh,80px]] w-full font-['DuneRise'] text-[8vw] text-white md:mt-[10vh]">
           nagrade
         </h2>
       </div>
 
       {/* Donji deo */}
-      <div className="absolute bottom-0 w-full z-20 md:relative md:bottom-auto">
-        
+      <div className="absolute bottom-0 w-full max-w-[1600px] left-1/2 -translate-x-1/2 z-20 md:relative md:bottom-auto">
         <img
           src={config.pustinja}
           alt=""
@@ -100,7 +117,6 @@ export default function NagradeContent({ type, onBack }) {
         {config.extraLayers}
 
         <div className="absolute inset-0 pointer-events-none z-30">
-
           <div className="absolute left-[24%] -translate-x-1/2 bottom-[80%]">
             <PrizeGlowText size="text-[clamp(0.75rem,5vw,7rem)]">
               700e
@@ -121,7 +137,6 @@ export default function NagradeContent({ type, onBack }) {
               500e
             </PrizeGlowText>
           </div>
-
         </div>
       </div>
 
