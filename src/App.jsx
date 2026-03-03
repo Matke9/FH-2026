@@ -1,11 +1,10 @@
-import Hero from './components/hero/Hero.jsx'
+import Home from './pages/Home'
 
 function App() {
-  return (
-    <>
-      <Hero />
-    </>
-  )
+    return (
+        <div>
+            <Home/>
+        </div>
+    )
 }
-
 export default App
