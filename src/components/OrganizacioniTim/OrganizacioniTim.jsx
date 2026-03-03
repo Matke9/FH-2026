@@ -149,7 +149,9 @@ export default function OrganizacioniTim() {
             className="nav-arrow"
             aria-label="Prethodni član"
           >
-            &lt;
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
           </button>
 
           {/* Kruzna slika i info o clanu */}
@@ -168,10 +170,10 @@ export default function OrganizacioniTim() {
                 </div>
               )}
             </div>
-            <p className="text-white text-lg md:text-xl font-semibold mt-2">
+            <p className="text-white text-lg md:text-xl font-semibold mt-2 text-center">
               {currentMember.name}
             </p>
-            <p className="text-white/60 text-sm md:text-base">
+            <p className="text-white/60 text-sm md:text-base text-center">
               {currentMember.role}
             </p>
           </div>
@@ -182,7 +184,9 @@ export default function OrganizacioniTim() {
             className="nav-arrow"
             aria-label="Sledeći član"
           >
-            &gt;
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
           </button>
         </div>
       </div>
