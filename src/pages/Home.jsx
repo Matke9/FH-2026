@@ -4,17 +4,18 @@ import Agenda from "../components/agenda/Agenda.jsx";
 import Partneri from "../components/Partneri/Partneri.tsx";
 import Hero from "../components/hero/Hero.jsx"
 import Iskustva from "../components/Iskustva/Iskustva.tsx";
-import {FaQ} from "react-icons/fa6";
+import OTakmicenju from "./OTakmicenju.jsx";
+import FAQSection from "../components/FAQ/FAQSection.jsx";
 
 export default function Home() {
     return (
         <main className="min-h-screen">
             <Hero/>
-            {/*o takm*/}
+            <OTakmicenju/>
             <Nagrade type="Hackathon"/>
             <Agenda/>
             <Iskustva/>
-            <FaQ/>
+            <FAQSection/>
             {/*org tim*/}
             <Partneri/>
         </main>
