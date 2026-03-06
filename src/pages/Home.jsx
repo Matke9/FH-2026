@@ -17,12 +17,12 @@ export default function Home() {
                 <OTakmicenju/>
             </section>
 
-            <section id="agenda">
-                <Agenda/>
-            </section>
-
             <section id="nagrade">
                 <Nagrade type="Hackathon"/>
+            </section>
+
+            <section id="agenda">
+                <Agenda/>
             </section>
 
             <section id="iskustva">

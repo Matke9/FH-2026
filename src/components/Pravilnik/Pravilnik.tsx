@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { straniceHackathon, straniceGameJam} from '../../features/pravilnik-data';
+// @ts-ignore
 import svitak from '../../assets/svitak.svg';
+// @ts-ignore
 import svitakPhone from '../../assets/svitakPhone.svg';
 import '../../index.css';
 import './Pravilnik.css';

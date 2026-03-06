@@ -15,7 +15,7 @@
         background-attachment: fixed;
         background-size: cover;
         background-repeat: no-repeat;
-        background-color: #041339;
+        background-color: #002440;
     }
 
     .glavni-naslov{
@@ -24,7 +24,7 @@
         color: white;
         text-transform: uppercase;
         text-align: center;
-        text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4);
+        text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
     }   
 
     .podnaslov-kartice{
@@ -34,7 +34,7 @@
         text-align: center;
         margin: 0;
 
-        text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4);
+        text-shadow: 6px 6px 0 rgba(0, 0, 0, 0.4);
     }
 
     .border-fon-hackathon {
@@ -63,6 +63,6 @@
 
     @media (min-width: 768px) {
     .glavni-naslov {
-        text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4);
+        text-shadow: 6px 6px 0 rgba(0, 0, 0, 0.4);
     }
 }
