@@ -10,7 +10,7 @@
 .pravilnik-page-wrapper{
     position:relative;
     min-height: 100vh;
-    background-image: url('../assets/pozadina.svg');
+    background-image: url('../../assets/pozadina.svg');
     background-size: cover;
     background-position: center bottom;
     display: flex;
@@ -61,8 +61,8 @@
     inset: 0;
     z-index: 1;
 
-    -webkit-mask-image: url('../assets/svitak.svg');
-    mask-image: url('../assets/svitak.svg');
+    -webkit-mask-image: url('../../assets/svitak.svg');
+    mask-image: url('../../assets/svitak.svg');
     -webkit-mask-size: contain;
     mask-size: contain;
     -webkit-mask-repeat: no-repeat;

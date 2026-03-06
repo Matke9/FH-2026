@@ -3,14 +3,16 @@ import logo from "../../assets/NavBar/logo1.svg";
 import pozadina from "../../assets/NavBar/Group.svg"
 
 const navItems = [
-  { label: "O TAKMICENJU", href: "#o-takmicenju" },
-  { label: "AGENDA", href: "#agenda" },
-  { label: "NAGRADE", href: "#nagrade" },
-  { label: "ISKUSTVA", href: "#iskustva" },
-  { label: "FAQ", href: "#faq" },
-  { label: "ORGANIZACIONI TIM", href: "#tim" },
-  { label: "PARTNERI", href: "#partneri" },
-  { label: "PRAVILNIK", href: "#pravilnik" },
+  { label: "O TAKMICENJU", href: "/#/#o-takmicenju" },
+  { label: "AGENDA", href: "/#/#agenda" },
+  { label: "NAGRADE", href: "/#/#nagrade" },
+  { label: "ISKUSTVA", href: "/#/#iskustva" },
+  { label: "FAQ", href: "/#/#faq" },
+  { label: "ORGANIZACIONI TIM", href: "/#/#tim" },
+  { label: "PARTNERI", href: "/#/#partneri" },
+
+  // zasebna stranica:
+  { label: "PRAVILNIK", href: "/#/pravilnik" },
 ];
 
 export default function NavBar() {
@@ -40,7 +42,7 @@ export default function NavBar() {
           ))}
 
           <a
-            href="#prijava"
+            href="prijava"
             className="ml-4 px-6 py-2.5 rounded-full bg-[#002440] text-white text-sm font-bold uppercase tracking-wider hover:opacity-90 transition duration-300"
           >
             PRIJAVI SE!
@@ -115,7 +117,7 @@ export default function NavBar() {
                   ))}
 
                   <a
-                    href="#prijava"
+                    href="prijava"
                     className="
                       text-white
                       mt-6 self-center

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { straniceHackathon, straniceGameJam} from '../../features/pravilnik-data';
 import svitak from '../../assets/svitak.svg';
 import svitakPhone from '../../assets/svitakPhone.svg';
-import './index.css';
-import './styles/Pravilnik.css';
+import '../../index.css';
+import './Pravilnik.css';
 
 export default function Pravilnik() {
 
@@ -32,7 +32,7 @@ export default function Pravilnik() {
         <div className={`pravilnik-page-wrapper tema-${tema}`}>
             <div className='bg-overlay'></div>
 
-            <button className='theme-toggle' onClick={toggleTema}>
+            <button className='theme-toggle mt-24' onClick={toggleTema}>
                 {tema === 'plava' ? 'GAME JAM': 'FON HACKATHON'}
             </button>
 
