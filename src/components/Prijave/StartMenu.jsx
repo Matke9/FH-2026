@@ -307,59 +307,59 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto bg-transparent rounded-2xl p-8" 
+    <div className="max-w-2xl w-full mx-auto bg-transparent rounded-2xl p-4 md:p-8" 
          style={{ 
            fontFamily: 'Montserrat, sans-serif'
          }}>
       {popup.visible && <Popup type={popup.type} text={popup.text} onClose={() => setPopup({ visible: false, type: 'success', text: '' })} />}
-      <div className="space-y-4">
+      <div className="space-y-3 md:space-y-4">
         {/* Član 1 dugme */}
         <button 
           onClick={() => setSelectedClan(1)}
-          className="w-full bg-transparent text-white rounded-1xl px-8 py-4 border-2 border-white
-                     font-normal text-lg hover:bg-white hover:text-gray-700 transition-colors">
+          className="w-full bg-transparent text-white rounded-xl px-6 md:px-8 py-3 md:py-4 border-2 border-white
+                     font-normal text-base md:text-lg hover:bg-white hover:text-gray-700 transition-colors">
           Član 1
         </button>
 
         {/* Član 2 dugme */}
         <button 
           onClick={() => setSelectedClan(2)}
-          className="w-full bg-transparent text-white rounded-1xl px-8 py-4 border-2 border-white
-                     font-normal text-lg hover:bg-white hover:text-gray-700 transition-colors">
+          className="w-full bg-transparent text-white rounded-xl px-6 md:px-8 py-3 md:py-4 border-2 border-white
+                     font-normal text-base md:text-lg hover:bg-white hover:text-gray-700 transition-colors">
           Član 2
         </button>
 
         {/* Član 3 dugme */}
         <button 
           onClick={() => setSelectedClan(3)}
-          className="w-full bg-transparent text-white rounded-1xl px-8 py-4 border-2 border-white
-                     font-normal text-lg hover:bg-white hover:text-gray-700 transition-colors">
+          className="w-full bg-transparent text-white rounded-xl px-6 md:px-8 py-3 md:py-4 border-2 border-white
+                     font-normal text-base md:text-lg hover:bg-white hover:text-gray-700 transition-colors">
           Član 3
         </button>
 
         {/* Član 4 dugme */}
         <button 
           onClick={() => setSelectedClan(4)}
-          className="w-full bg-transparent text-white rounded-1xl px-8 py-4 border-2 border-white
-                     font-normal text-lg hover:bg-white hover:text-gray-700 transition-colors">
+          className="w-full bg-transparent text-white rounded-xl px-6 md:px-8 py-3 md:py-4 border-2 border-white
+                     font-normal text-base md:text-lg hover:bg-white hover:text-gray-700 transition-colors">
           Član 4
         </button>
 
         {/* Više razmaka pre Tim dugmeta */}
-        <div className="pt-4">
+        <div className="pt-2 md:pt-4">
           <button 
             onClick={() => setShowTimForma(true)}
-            className="w-full bg-transparent text-white rounded-1xl px-8 py-4 border-2 border-white
-                           font-normal text-lg hover:bg-white hover:text-gray-700 transition-colors">
+            className="w-full bg-transparent text-white rounded-xl px-6 md:px-8 py-3 md:py-4 border-2 border-white
+                           font-normal text-base md:text-lg hover:bg-white hover:text-gray-700 transition-colors">
             Tim
           </button>
         </div>
 
         {/* Više razmaka pre Prijavi se dugmeta */}
-        <div className="pt-4">
+        <div className="pt-2 md:pt-4">
           <button
-            className="w-full bg-transparent border-2 border-white text-white rounded-full px-6 py-3 
-              font-normal text-base hover:bg-white hover:text-gray-700 transition-colors"
+            className="w-full bg-transparent border-2 border-white text-white rounded-full px-6 py-2.5 md:py-3 
+              font-normal text-sm md:text-base hover:bg-white hover:text-gray-700 transition-colors"
             onClick={handlePrijava}
           >
             Prijavi se
