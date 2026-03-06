@@ -42,7 +42,7 @@ export default function NavBar() {
           ))}
 
           <a
-            href="prijava"
+            href="/prijava"
             className="ml-4 px-6 py-2.5 rounded-full bg-[#002440] text-white text-sm font-bold uppercase tracking-wider hover:opacity-90 transition duration-300"
           >
             PRIJAVI SE!
@@ -117,7 +117,7 @@ export default function NavBar() {
                   ))}
 
                   <a
-                    href="prijava"
+                    href="/prijava"
                     className="
                       text-white
                       mt-6 self-center
