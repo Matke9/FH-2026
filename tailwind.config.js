@@ -6,20 +6,21 @@ export default {
   ],
   theme: {
     extend: {
-      // Font za naslove (Dune Rise) - koristimo font-dune-rise klasu
+      // Boje za discipline
       fontFamily: {
+        dune: ['DuneRise', 'sans-serif'],
+        noto: ['NotoSans', 'sans-serif'],
         'dune-rise': ['"Dune Rise"', 'sans-serif'],
       },
-      // Boje za discipline
       colors: {
         'fon-hackathon': {
-          DEFAULT: '#6366f1', // indigo
+          DEFAULT: '#002440',
         },
         'gamejam': {
-          DEFAULT: '#22c55e', // green
+          DEFAULT: '#A70803',
         },
         'blockchain-challenge': {
-          DEFAULT: '#f59e0b', // amber
+          DEFAULT: '#DB7080',
         },
       },
     },

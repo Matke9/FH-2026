@@ -1,0 +1,270 @@
+.naslov-pravilnik{
+    font-family: 'DuneRise', sans-serif;
+    font-size: 80px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 50px;
+    color: white;
+}
+
+.pravilnik-page-wrapper{
+    position:relative;
+    min-height: 100vh;
+    background-image: url('../assets/pozadina.svg');
+    background-size: cover;
+    background-position: center bottom;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.bg-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.naslov-pravilnik, .svitak-container, .navigacija-pravilnik{
+    position: relative;
+    z-index: 2;
+}
+
+.svitak-container{
+    position: relative;
+    width: 100%;
+    max-width: 850px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    min-height: 500px;
+}
+
+.svitak-bg{
+    width: 100%;
+    height: auto;
+    z-index: 2;
+    mix-blend-mode: multiply;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.svitak-boja{
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    -webkit-mask-image: url('../assets/svitak.svg');
+    mask-image: url('../assets/svitak.svg');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    opacity: 0.8;
+}
+
+.svitak-content{
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    text-align: center;
+    color: white;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.svitak-placeholder{
+    width: 90%;
+    max-width: 800px;
+    min-height: 400px;
+    background: rgba(139,92,246,0.2);
+    border: 4px dashed #8b5cf6;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    gap: 10px;
+    padding: 20px 40px;
+}
+
+.podnaslov-pravilnik{
+    font-family: 'Dune-Rise', sans-serif;
+    font-size: 28px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tekst-pravilnik{
+    font-size: 18px;
+    line-height: 1.6;
+    font-family: sans-serif;
+    text-align:justify;
+    width: 100%;
+}
+
+.navigacija-pravilnik{
+    margin-top: -80px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    font-family: 'DuneRise', sans-serif;
+    z-index: 4;
+}
+
+.strelica{
+    background: none;
+    border: none;
+    color: #8b5cf6;
+    font-size: 32px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+    transition: transform 0.2s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.strelica:hover{
+    transform: scale(1.2);
+    color: #8b5cf6;
+}
+
+.strelica:focus, .strelica:active{
+    outline: none;
+    border: none;
+}
+
+.broj-strane{
+    font-size: 24px;
+    color: #8b5cf6;
+}
+
+.theme-toggle{
+    position: top;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid white;
+    color: white;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-family: 'DuneRise', sans-serif;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+.theme-toggle:hover{
+    color: black;
+}
+
+.tema-plava .bg-overlay{
+    background: linear-gradient(180deg, #002440 0%, #832091 100%);
+}
+
+.tema-plava .svitak-boja{
+    /*background: linear-gradient(180deg, blue 0%, red 100%);*/
+    background: none;
+}
+
+.tema-crvena .bg-overlay{
+    background: linear-gradient(180deg, #002440  0%, #800517 100%);
+}
+
+
+.tema-crvena .svitak-boja{
+    /*background: linear-gradient(180deg, blue 0%, red 100%);*/
+    background: none;
+}
+
+.bg-overlay, .svitak-boja, .svitak-bg{
+    transition: all 0.5s ease-in-out;
+}
+
+.mobile-only {display: none;}
+
+@media (max-width: 767px) {
+
+    .desktop-only {display: none;}
+    .mobile-only {display: block;}
+
+    .naslov-pravilnik{
+        font-size: 40px;
+        margin-top: 30px;
+    }
+
+    .svitak-container{
+        max-width: 95%;
+        min-height: 70vh;
+        margin-top: 10px;  
+    }
+
+    .svitak-bg{
+        height: 100%;
+        object-fit: fill;
+        opacity: 0.2;
+    }
+
+    .svitak-boja{
+        background: none;
+    }
+
+    .svitak-content{
+       position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: none;
+        padding: 22% 12% 15% 12%; 
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .podnaslov-pravilnik{
+        font-family: sans-serif;
+        font-size: 38px;      
+        margin-top: 40px;     
+        margin-bottom: 20px;  
+        line-height: 1.2;
+    }
+
+    .tekst-pravilnik{
+        font-size: 24px;     
+        line-height: 1.5;    
+        text-align: center;
+        width: 80%;
+        overflow-y: auto;    
+        padding: 0 10px;
+        margin-top: 100px;
+    }
+
+    .navigacija-pravilnik{
+        margin-top: 10px;
+        gap: 30px;
+    }
+
+    .strelica{
+        font-size: 40px;
+    }
+}
