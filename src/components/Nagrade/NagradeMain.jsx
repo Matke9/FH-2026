@@ -1,8 +1,7 @@
 import { useState } from "react";
 import NagradeContent from "./NagradeContent";
+import "./NagradeBackground.css";
 
-import zvezde from "../../assets/Nagrade/zvezde.svg";
-import fade from "../../assets/Nagrade/fade.svg";
 
 import HT_bg_land from "../../assets/Nagrade/main/landscape/HT_bg.svg";
 import BC_bg_land from "../../assets/Nagrade/main/landscape/BC_bg.svg";
@@ -68,13 +67,13 @@ function NagradeSelector({ onSelect }) {
   ];
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-[#0B1C2D] px-6">
+    <section className="nagrade-background relative w-full min-h-screen overflow-hidden px-6">
       {/* ZVEZDE BACKGROUND */}
-      <img
-        src={zvezde}
-        alt=""
-        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
-      />
+      {/*<img*/}
+      {/*  src={zvezde}*/}
+      {/*  alt=""*/}
+      {/*  className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"*/}
+      {/*/>*/}
 
       {/* CONTENT WRAPPER */}
       <div className="relative z-10 flex flex-col items-center justify-center w-full min-h-screen">

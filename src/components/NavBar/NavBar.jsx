@@ -3,16 +3,16 @@ import logo from "../../assets/NavBar/logo1.svg";
 import pozadina from "../../assets/NavBar/Group.svg"
 
 const navItems = [
-  { label: "O TAKMICENJU", href: "/#/#o-takmicenju" },
-  { label: "AGENDA", href: "/#/#agenda" },
-  { label: "NAGRADE", href: "/#/#nagrade" },
-  { label: "ISKUSTVA", href: "/#/#iskustva" },
-  { label: "FAQ", href: "/#/#faq" },
-  { label: "ORGANIZACIONI TIM", href: "/#/#tim" },
-  { label: "PARTNERI", href: "/#/#partneri" },
+  { label: "O TAKMICENJU", href: "/#o-takmicenju" },
+  { label: "NAGRADE", href: "/#nagrade" },
+  { label: "AGENDA", href: "/#agenda" },
+  { label: "ISKUSTVA", href: "/#iskustva" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "ORGANIZACIONI TIM", href: "/#tim" },
+  { label: "PARTNERI", href: "/#partneri" },
 
   // zasebna stranica:
-  { label: "PRAVILNIK", href: "/#/pravilnik" },
+  { label: "PRAVILNIK", href: "/pravilnik" },
 ];
 
 export default function NavBar() {

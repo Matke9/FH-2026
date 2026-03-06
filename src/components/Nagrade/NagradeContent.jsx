@@ -1,6 +1,7 @@
 // import zvezde from "../../assets/Nagrade/zvezde.svg";
 import fade from "../../assets/Nagrade/fade.svg";
 import strelica from "../../assets/Nagrade/strelica.svg";
+import "./NagradeBackground.css";
 
 import HT_pustinja from "../../assets/Nagrade/content/HT_pustinja.svg";
 import BC_pustinja from "../../assets/Nagrade/content/BC_pustinja.svg";
@@ -67,7 +68,7 @@ export default function NagradeContent({ type, onBack }) {
   const config = variants[type];
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden">
+    <section className="nagrade-background relative w-full min-h-screen overflow-hidden">
       {/* Back dugme */}
       <button
         onClick={onBack}
@@ -76,11 +77,9 @@ export default function NagradeContent({ type, onBack }) {
     flex items-center justify-center
     w-[clamp(40px,6vw,60px)]
     h-[clamp(40px,6vw,60px)]
-    bg-black/30
     backdrop-blur-md
     rounded-[clamp(8px,1.2vw,16px)]
     transition-all duration-300 ease-out
-    hover:bg-black/40
     hover:scale-105
     hover:shadow-[0_0_20px_rgba(255,255,255,0.5),0_0_50px_rgba(255,255,255,0.3)]
   "
@@ -101,7 +100,7 @@ export default function NagradeContent({ type, onBack }) {
 
       {/* Naslov */}
       <div className="relative w-full h-screen pt-[10vh] z-30">
-        <h2 className="text-center mt-[clamp[50px,25vh,80px]] w-full font-['DuneRise'] text-[8vw] text-white md:mt-[10vh]">
+        <h2 className="text-center mt-[clamp[50px,25vh,80px]] w-full font-['DuneRise'] text-[4em] text-white md:mt-[10vh]">
           nagrade
         </h2>
       </div>

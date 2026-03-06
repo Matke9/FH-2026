@@ -15,18 +15,34 @@ body {
     flex-direction: column;
     background-image: url('../../assets/hero/background-main.svg');
     background-size: cover;
-    background-position: top left; /* Ensures it starts at the very top left */
-    
+    background-position: center;
     background-repeat: no-repeat;
+    width: 100%;
+    margin: auto;
+    min-height: 100vh;
+    max-height: 150vh;
+    max-width: 2000px;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 1200px) {
     .hero-main{
         background-position: center;
-    }
-    .nav-placeholder{
-        font-size: 15px;
-        height: 100px;
+        background-size: cover;
+        height: auto;
     }
 
 }
+@media screen and (max-width: 2000px) {
+    .hero-main{
+        min-height: 100vw;
+    }
+}
+/*@media screen and (min-width: 2001px) {*/
+/*    .hero-main{*/
+/*        background-position: center bottom;*/
+/*        background-size: cover;*/
+/*        min-height: 100vh;*/
+/*        max-width: 2000px;*/
+/*    }*/
+/*}*/
