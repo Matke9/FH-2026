@@ -1,4 +1,4 @@
-import zvezde from "../../assets/Nagrade/zvezde.svg";
+// import zvezde from "../../assets/Nagrade/zvezde.svg";
 import fade from "../../assets/Nagrade/fade.svg";
 import strelica from "../../assets/Nagrade/strelica.svg";
 
@@ -93,11 +93,11 @@ export default function NagradeContent({ type, onBack }) {
       </button>
 
       {/* Zvezde */}
-      <img
-        src={zvezde}
-        alt=""
-        className={`absolute inset-0 w-full h-full object-cover z-0 ${config.bg}`}
-      />
+      {/*<img*/}
+      {/*  src={zvezde}*/}
+      {/*  alt=""*/}
+      {/*  className={`absolute inset-0 w-full h-full object-cover z-0 ${config.bg}`}*/}
+      {/*/>*/}
 
       {/* Naslov */}
       <div className="relative w-full h-screen pt-[10vh] z-30">
