@@ -6,9 +6,11 @@ export default {
   ],
   theme: {
     extend: {
+      // Boje za discipline
       fontFamily: {
         dune: ['DuneRise', 'sans-serif'],
         noto: ['NotoSans', 'sans-serif'],
+        'dune-rise': ['"Dune Rise"', 'sans-serif'],
       },
       colors: {
         'fon-hackathon': {

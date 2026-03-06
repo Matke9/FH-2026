@@ -1,3 +1,4 @@
+
 // Home page – entry point for the FON Hackathon 2026 website
 import Nagrade from '../components/Nagrade/NagradeMain.jsx'
 import Agenda from "../components/agenda/Agenda.jsx";
@@ -16,7 +17,7 @@ export default function Home() {
             <Agenda/>
             <Iskustva/>
             <FAQSection/>
-            {/*org tim*/}
+            <OrganizacioniTim />
             <Partneri/>
         </main>
     )
