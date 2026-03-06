@@ -59,17 +59,7 @@ const Agenda = () => {
     return (
         <div className="agenda-wrapper">
             {/* Gradient transition from previous section */}
-            <div
-                style={{
-                    width: '100%',
-                    height: '120px',
-                    background: 'linear-gradient(to top, #3C4286, #002440)',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    zIndex: 0
-                }}
-            />
+
             <h1 className="agenda-title font-dune">AGENDA</h1>
             <div className="agenda-content">
                 {currentItems.map((item) => {
