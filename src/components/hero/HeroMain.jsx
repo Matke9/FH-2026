@@ -6,7 +6,7 @@ function HeroMain(){
     return(
         <>
             <div className="main-content">
-                <h1 className="main-title">
+                <h1 className="main-title font-dune">
                     <span>FON </span>
                     <span>HAKATON </span>
                     <span>2026</span>
@@ -18,11 +18,11 @@ function HeroMain(){
                 <ButtonSignUp/>
                 <div className="powered-by">
                     Powered by:<br/>
-                    <img src={fonisLogo}/>
+                    <img src={fonisLogo} alt={"fonis"}/>
                 </div>
             </div>
         </>
     );
-};
+}
 
 export default HeroMain
