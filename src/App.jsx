@@ -1,10 +1,7 @@
-import Home from './pages/Home'
+import FAQSection from "./components/FAQ/FAQSection";
 
 function App() {
-    return (
-        <div>
-            <Home/>
-        </div>
-    )
+  return <FAQSection />;
 }
-export default App
+
+export default App;
