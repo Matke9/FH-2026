@@ -1,6 +1,11 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
-  font-family: 'Dune Rise';
-  src: url('./assets/fonts/Dune_Rise.ttf') format('truetype');
+  font-family: 'DuneRise';
+  src: url('./assets/Dune_Rise.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -35,8 +40,8 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  /*display: flex;
+  place-items: center;*/
   min-width: 320px;
   min-height: 100vh;
 }
@@ -75,4 +80,10 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+*,
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
