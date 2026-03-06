@@ -41,9 +41,9 @@ const Iskustva = () => {
       style={{
         width: "100vw",
         maxWidth: "100vw",
-        backgroundColor: "rgba(0, 24, 40, 0.98)",
+        backgroundColor: "rgba(0, 36, 64, 0.98)",
         backgroundImage:
-          "linear-gradient(180deg, rgba(0, 24, 40, 0.98) 0%, rgba(83, 20, 91, 0.4) 80%, rgba(0, 0, 0, 0.5) 100%)",
+          "linear-gradient(180deg, rgba(0, 36, 64, 0.98) 0%, rgba(83, 20, 91, 0.4) 80%, rgba(0, 0, 0, 0.5) 100%)",
       }}
     >
       <h2 className = "font-dune font-bold text-4xl md:text-5xl lg:text-6xl text-white text-center absolute top-6">
