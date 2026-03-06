@@ -38,7 +38,8 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
         srednjaSkola: '',
         godinaSkolovanja: '',
         fakultetSkola: '', 
-        godinaStudija: '', 
+        godinaStudija: '',
+        firma: '',
         cvLink: '', 
         githubLink: '' 
       }, 
@@ -56,7 +57,8 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
         srednjaSkola: '',
         godinaSkolovanja: '',
         fakultetSkola: '', 
-        godinaStudija: '', 
+        godinaStudija: '',
+        firma: '',
         cvLink: '', 
         githubLink: '' 
       }, 
@@ -74,7 +76,8 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
         srednjaSkola: '',
         godinaSkolovanja: '',
         fakultetSkola: '', 
-        godinaStudija: '', 
+        godinaStudija: '',
+        firma: '',
         cvLink: '', 
         githubLink: '' 
       }, 
@@ -92,7 +95,8 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
         srednjaSkola: '',
         godinaSkolovanja: '',
         fakultetSkola: '', 
-        godinaStudija: '', 
+        godinaStudija: '',
+        firma: '',
         cvLink: '', 
         githubLink: '' 
       }, 
@@ -121,7 +125,8 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
           srednjaSkola: '',
           godinaSkolovanja: '',
           fakultetSkola: '', 
-          godinaStudija: '', 
+          godinaStudija: '',
+          firma: '',
           cvLink: '', 
           githubLink: '' 
         }, 
@@ -139,7 +144,8 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
           srednjaSkola: '',
           godinaSkolovanja: '',
           fakultetSkola: '', 
-          godinaStudija: '', 
+          godinaStudija: '',
+          firma: '',
           cvLink: '', 
           githubLink: '' 
         }, 
@@ -157,7 +163,8 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
           srednjaSkola: '',
           godinaSkolovanja: '',
           fakultetSkola: '', 
-          godinaStudija: '', 
+          godinaStudija: '',
+          firma: '',
           cvLink: '', 
           githubLink: '' 
         }, 
@@ -175,13 +182,19 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
           srednjaSkola: '',
           godinaSkolovanja: '',
           fakultetSkola: '', 
-          godinaStudija: '', 
+          godinaStudija: '',
+          firma: '',
           cvLink: '', 
           githubLink: '' 
         }, 
         message: { type: '', text: '' } 
       }
     });
+  };
+
+  // Funkcija koja broji unete članove
+  const getAddedMembersCount = () => {
+    return Object.values(clanoviData).filter(c => c.formData && c.formData.imePrezime && c.formData.imePrezime.trim() !== '').length;
   };
 
   // Handler za prijavu tima i članova
@@ -253,6 +266,7 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
         godina_skolovanja: c.formData.godinaSkolovanja || null,
         fakultet_skola: c.formData.fakultetSkola || null,
         godina_studija: c.formData.godinaStudija || null,
+        firma: c.formData.firma || null,
         cv_link: c.formData.cvLink,
         github_link: c.formData.githubLink || null
       }));

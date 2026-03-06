@@ -16,6 +16,7 @@ const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClano
     godinaSkolovanja: '',
     fakultetSkola: '',
     godinaStudija: '',
+    firma: '',
     cvLink: '',
     githubLink: ''
   });
@@ -112,10 +113,19 @@ const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClano
       }
     }
     
-    // Ako je samo zaposleni (bez studenta/srednjoškolca), mora uneti srednju školu
+    // Ako je samo zaposleni (bez studenta/srednjoškolca), mora uneti fakultet i firmu
     if (isZaposlen && !isStudent && !isSrednjoskolac) {
-      if (!formData.srednjaSkola || !formData.godinaSkolovanja) {
-        setMessage({ type: 'error', text: 'Molimo popunite polja za srednju školu!' });
+      if (!formData.fakultetSkola || !formData.firma) {
+        setMessage({ type: 'error', text: 'Molimo popunite polja za fakultet i firmu!' });
+        if (containerRef.current) containerRef.current.scrollTop = 0;
+        return;
+      }
+    }
+    
+    // Ako je zaposleni (bilo koja kombinacija), mora uneti firmu
+    if (isZaposlen) {
+      if (!formData.firma) {
+        setMessage({ type: 'error', text: 'Molimo popunite polje za firmu!' });
         if (containerRef.current) containerRef.current.scrollTop = 0;
         return;
       }
@@ -403,9 +413,8 @@ const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClano
             </div>
           </div>
 
-          {/* Polja za srednjoškolce ili zaposlene bez fakulteta */}
-          {(selectedStatus.includes('srednjoskolac') || 
-            (selectedStatus.includes('zaposlen') && !selectedStatus.includes('student'))) && (
+          {/* Polja za srednjoškolce */}
+          {selectedStatus.includes('srednjoskolac') && (
             <>
               <div className="space-y-2">
                 <label className="text-white text-base text-center block font-normal">
@@ -474,6 +483,46 @@ const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClano
                 />
               </div>
             </>
+          )}
+
+          {/* Polja za zaposlene - fakultet samo ako nije student/srednjoškolac */}
+          {selectedStatus.includes('zaposlen') && !selectedStatus.includes('student') && !selectedStatus.includes('srednjoskolac') && (
+            <>
+              <div className="space-y-2">
+                <label className="text-white text-base text-center block font-normal">
+                  Naziv fakulteta
+                </label>
+                <input
+                  type="text"
+                  name="fakultetSkola"
+                  value={formData.fakultetSkola}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-transparent border-2 border-white rounded-full px-6 py-3 text-white 
+                             placeholder-gray-300 focus:outline-none focus:border-white"
+                  placeholder=""
+                />
+              </div>
+            </>
+          )}
+
+          {/* Firma - za sve zaposlene */}
+          {selectedStatus.includes('zaposlen') && (
+            <div className="space-y-2">
+              <label className="text-white text-base text-center block font-normal">
+                Firma
+              </label>
+              <input
+                type="text"
+                name="firma"
+                value={formData.firma}
+                onChange={handleChange}
+                required
+                className="w-full bg-transparent border-2 border-white rounded-full px-6 py-3 text-white 
+                           placeholder-gray-300 focus:outline-none focus:border-white"
+                placeholder=""
+              />
+            </div>
           )}
         </div>
 
