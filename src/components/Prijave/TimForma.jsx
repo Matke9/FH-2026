@@ -115,9 +115,9 @@ const TimForma = ({ onBack, onTimSubmitted, localClanovi = [], discipline = 'fon
   };
 
   return (
-    <div 
+    <div
       ref={containerRef}
-      className="max-w-2xl bg-black/40 border-2 border-white rounded-2xl p-8 max-h-[580px] overflow-y-auto" 
+      className="max-w-2xl mx-auto bg-black/40 border-2 border-white rounded-2xl p-8 max-h-[580px] overflow-y-auto" 
       style={{ fontFamily: 'Montserrat, sans-serif' }}
     >
       <form onSubmit={handleSubmit} className="space-y-6">

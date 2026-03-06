@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 // Dates are local. Adjust if you prefer UTC.
 const OPEN_DATE = new Date('2026-01-05T00:00:00');
@@ -17,15 +17,8 @@ function getTimeLeft(target) {
 }
 
 export default function PrijaveLock({ children, discipline = 'fon-hackathon' }) {
-  const [, setTick] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => setTick((t) => t + 1), 1000);
-    return () => clearInterval(id);
-  }, []);
-
   const now = new Date();
-
+  
   // Use transparent background; form boxes should have no border
   if (now < OPEN_DATE) {
     const timeLeft = getTimeLeft(OPEN_DATE);
@@ -51,8 +44,8 @@ export default function PrijaveLock({ children, discipline = 'fon-hackathon' }) 
 
   if (now >= OPEN_DATE && now <= CLOSE_DATE) {
     return (
-      <div className="min-h-screen w-full flex items-center justify-center p-6">
-        <div className="w-full max-w-4xl p-6 rounded bg-transparent">
+      <div className="w-full flex items-center justify-center">
+        <div className="w-full max-w-4xl">
           {children}
         </div>
       </div>
