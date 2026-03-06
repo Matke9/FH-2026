@@ -2,10 +2,12 @@
 import Nagrade from '../components/Nagrade/Nagrade'
 import Agenda from "../components/agenda/Agenda.jsx";
 import Partneri from "../components/Partneri/Partneri.tsx";
+import Hero from "../components/hero/Hero.jsx"
 
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <Hero/>
       <Nagrade type="Hackathon"/>
       <Agenda/>
       <Partneri/>
