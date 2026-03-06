@@ -13,58 +13,56 @@ import openGamejamPhone from '../../assets/agenda/gamejam_mapa_telefon.svg';
 import openWeb4Phone from '../../assets/agenda/web4_mapa_telefon.svg';
 
 const Agenda = () => {
-    // Pocetni redosled za mobilni prikaz
-    const initialItems = [
+    const mobileOrderedItems = [
         { id: 'hakaton', title: 'Hakaton', desk: openHakaton, mob: openHakatonPhone },
         { id: 'gamejam', title: 'Game jam', desk: openGamejam, mob: openGamejamPhone },
         { id: 'web4', title: 'Web4 challenge', desk: openWeb4, mob: openWeb4Phone }
     ];
 
-    const [items, setItems] = useState(initialItems);
+    const desktopOrderedItems = [
+        { id: 'web4', title: 'Web4 challenge', desk: openWeb4, mob: openWeb4Phone },
+        { id: 'hakaton', title: 'Hakaton', desk: openHakaton, mob: openHakatonPhone },
+        { id: 'gamejam', title: 'Game jam', desk: openGamejam, mob: openGamejamPhone }
+    ];
+
     const [activeId, setActiveId] = useState('hakaton');
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+    const [glitchingIds, setGlitchingIds] = useState({});
 
-    // Deo za responzivnost
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 1024);
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const handleSwitch = (clickedId, clickedIndex) => {
-        if (isMobile) {
-            // MOBILNI + TABLET: Samo otvori kliknuti, ostali se zatvaraju
-            setActiveId(clickedId);
+    const handleSwitch = (clickedId) => {
+        const now = Date.now();
+        const currentItems = isMobile ? mobileOrderedItems : desktopOrderedItems;
+
+        if (clickedId === activeId) {
+            // Samo kliknuti dobija novi timestamp
+            setGlitchingIds({ [clickedId]: now });
         } else {
-            // DESKTOP: rotira mape
-            if (clickedIndex === 1) return;
-            const newItems = [...items];
-            if (clickedIndex === 0) {
-                const last = newItems.pop();
-                newItems.unshift(last);
-            } else {
-                const first = newItems.shift();
-                newItems.push(first);
-            }
-            setItems(newItems);
+            // Svi iz niza dobijaju isti timestamp
+            const allGlitches = {};
+            currentItems.forEach(item => {
+                allGlitches[item.id] = now;
+            });
+            setGlitchingIds(allGlitches);
+            setActiveId(clickedId);
         }
     };
+
+    const currentItems = isMobile ? mobileOrderedItems : desktopOrderedItems;
 
     return (
         <div className="agenda-wrapper">
             <h1 className="agenda-title font-dune">AGENDA</h1>
-
             <div className="agenda-content">
-                {items.map((item, index) => {
-                    const isOpen = isMobile 
-                        ? item.id === activeId 
-                        : index === 1;
-
+                {currentItems.map((item) => {
+                    const isOpen = item.id === activeId;
                     return (
-                        <div 
-                            key={item.id} 
-                            className={isOpen ? "open-scroll" : "closed-scroll"}
-                        >
+                        <div key={item.id} className={isOpen ? "open-scroll" : "closed-scroll"}>
                             <h3 className={`font-dune ${isOpen ? 'section-subtitle-center' : 'section-subtitle-side'}`}>
                                 {item.title}
                             </h3>
@@ -72,8 +70,8 @@ const Agenda = () => {
                                 desktopImg={isOpen ? item.desk : closedScroll}
                                 mobileImg={isOpen ? item.mob : closedScrollPhone}
                                 className={isOpen ? "big-scroll" : "small-scroll"}
-                                onClick={() => handleSwitch(item.id, index)}
-                                triggerGlitch={item.id}
+                                onClick={() => handleSwitch(item.id)}
+                                triggerGlitch={glitchingIds[item.id] || null}
                             />
                         </div>
                     );
