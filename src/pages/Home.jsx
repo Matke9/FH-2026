@@ -11,7 +11,10 @@ import {OrganizacioniTim} from "../components/index.js";
 export default function Home() {
     return (
         <main className="min-h-screen">
-            <Hero/>
+
+            <section id="hero">
+                <Hero/>
+            </section>
 
             <section id="o-takmicenju">
                 <OTakmicenju/>

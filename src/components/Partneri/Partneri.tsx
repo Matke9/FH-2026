@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -6,12 +6,19 @@ import 'swiper/css/navigation';
 import '../../styles/tailwind.css';
 
 // Importi slika
+// @ts-ignore
 import erste from "../../assets/Partneri/erste 1.png";
+// @ts-ignore
 import godisnji from "../../assets/Partneri/godisnji.png";
+// @ts-ignore
 import medijski from "../../assets/Partneri/medijski.png";
+// @ts-ignore
 import robni from "../../assets/Partneri/robni.png";
+// @ts-ignore
 import samsung from "../../assets/Partneri/samsung 4.png";
+// @ts-ignore
 import pesak from "../../assets/Partneri/pesakveliki.svg";
+// @ts-ignore
 import strelica from "../../assets/Partneri/strelica.svg";
 
 /* =========================
@@ -99,7 +106,7 @@ const Partneri: React.FC = () => {
       <div className="absolute bottom-0 left-0 w-full z-0 pointer-events-none flex justify-center">
         <img
           src={pesak}
-          className="w-full max-w-[1800px] h-auto object-cover object-top"
+          className="w-full max-w-[2400px] h-auto object-cover object-top"
           alt="Pesak"
         />
       </div>
@@ -166,7 +173,7 @@ const Partneri: React.FC = () => {
               bg-transparent border-0 outline-none focus:outline-none active:outline-none active:ring-0"
               aria-label="Previous"
             >
-              <img src={strelica} className="w-10" />
+              <img src={strelica} alt={"<"} className="w-10" />
             </button>
 
             <button
@@ -177,7 +184,7 @@ const Partneri: React.FC = () => {
               bg-transparent border-0 outline-none focus:outline-none active:outline-none active:ring-0"
               aria-label="Next"
             >
-              <img src={strelica} className="w-10" />
+              <img src={strelica} alt={">"} className="w-10" />
             </button>
           </div>
         </div>

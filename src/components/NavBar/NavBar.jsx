@@ -37,16 +37,16 @@ export default function NavBar() {
 
   return (
     <>
-    <header className="fixed left-0 top-0 z-[70] w-full">
+    <header className="fixed left-0 top-0 z-[70] w-full bg-[#000000]/[.2] backdrop-blur-sm">
       <div className="mx-auto flex h-24 max-w-6xl items-center justify-between px-4">
         {/* slika*/}
-        <Link to="/" className="flex items-center gap-2" onClick={closeMenu}>
+        <Link to="/" className="flex items-center gap-2" onClick={() => handleSectionClick("hero")}>
           <img src={logo} alt="FON hakaton" className="max-h-16 w-auto" />
         </Link>
 
         {/* Desktop*/}
-        <nav className="hidden md:flex items-center">
-          {navItems.map((item) => 
+        <nav className="hidden lg-plus:flex items-center">
+          {navItems.map((item) =>
             item.isAnchor ? (
               <button
                 key={item.label}
@@ -77,7 +77,7 @@ export default function NavBar() {
         {/* hamburger meni*/}
               <button
               type="button"
-              className="md:hidden flex flex-col justify-center items-center gap-1.5 p-2 bg-transparent"
+              className="lg-plus:hidden flex flex-col justify-center items-center gap-1.5 p-2 bg-transparent"
               onClick={() => setIsOpen((v) => !v)}
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}

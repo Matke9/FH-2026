@@ -176,3 +176,19 @@
         margin-left: 5px;
     }
 }
+
+@media screen and (max-width: 767px) {
+    .powered-by {
+        position: fixed;
+        top: 25px;
+        right: 100px;
+        bottom: auto;
+        z-index: 999;
+        font-size: 11px;
+    }
+
+    .powered-by img {
+        width: 80px;
+        height: auto;
+    }
+}

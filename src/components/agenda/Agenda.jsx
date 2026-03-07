@@ -14,15 +14,15 @@ import openWeb4Phone from '../../assets/agenda/web4_mapa_telefon.svg';
 
 const Agenda = () => {
     const mobileOrderedItems = [
-        { id: 'hakaton', title: 'Hakaton', desk: openHakaton, mob: openHakatonPhone },
-        { id: 'gamejam', title: 'Game jam', desk: openGamejam, mob: openGamejamPhone },
-        { id: 'web4', title: 'Web4 challenge', desk: openWeb4, mob: openWeb4Phone }
+        { id: 'hakaton', title: 'HAKATON', desk: openHakaton, mob: openHakatonPhone },
+        { id: 'gamejam', title: 'GAME JAM', desk: openGamejam, mob: openGamejamPhone },
+        { id: 'web4', title: 'WEB4 CHALLENGE', desk: openWeb4, mob: openWeb4Phone }
     ];
 
     const desktopOrderedItems = [
-        { id: 'web4', title: 'Web4 challenge', desk: openWeb4, mob: openWeb4Phone },
-        { id: 'hakaton', title: 'Hakaton', desk: openHakaton, mob: openHakatonPhone },
-        { id: 'gamejam', title: 'Game jam', desk: openGamejam, mob: openGamejamPhone }
+        { id: 'web4', title: 'WEB4 CHALLENGE', desk: openWeb4, mob: openWeb4Phone },
+        { id: 'hakaton', title: 'HAKATON', desk: openHakaton, mob: openHakatonPhone },
+        { id: 'gamejam', title: 'GAME JAM', desk: openGamejam, mob: openGamejamPhone }
     ];
 
     const [activeId, setActiveId] = useState('hakaton');
@@ -57,19 +57,9 @@ const Agenda = () => {
     const currentItems = isMobile ? mobileOrderedItems : desktopOrderedItems;
 
     return (
-        <div className="agenda-wrapper">
+        <div className="agenda-wrapper ">
             {/* Gradient transition from previous section */}
-            <div
-                style={{
-                    width: '100%',
-                    height: '120px',
-                    background: 'linear-gradient(to top, #3C4286, #002440)',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    zIndex: 0
-                }}
-            />
+
             <h1 className="agenda-title font-dune">AGENDA</h1>
             <div className="agenda-content">
                 {currentItems.map((item) => {

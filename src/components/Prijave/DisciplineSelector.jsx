@@ -5,8 +5,7 @@ export default function DisciplineSelector({ activeDiscipline, onDisciplineChang
         {/* Naslov */}
         <div className="text-center mb-6 md:mb-8">
           <h1 
-            className="text-white text-xl md:text-2xl lg:text-4xl tracking-[0.2em]" 
-            style={{ fontFamily: 'Dune Rise, Montserrat, sans-serif' }}
+            className="text-white text-xl md:text-2xl lg:text-4xl tracking-[0.2em] font-dune"
           >
             FORMA ZA PRIJAVU
           </h1>
@@ -40,7 +39,7 @@ export default function DisciplineSelector({ activeDiscipline, onDisciplineChang
             onClick={onBlockchainClick}
             className="bg-transparent text-white rounded-xl px-4 md:px-6 py-2 md:py-2.5 border-2 border-white/70 transition-all hover:bg-white hover:text-gray-800 text-sm md:text-base"
           >
-            BLOCKCHAIN
+            WEB4 CHALLENGE
           </button>
         </div>
       </div>
