@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import ClanForma from './ClanForma';
 import TimForma from './TimForma';
 import { createPrijavaSaTimovimaIClanovima, getAllClanovi, getTimByName } from '../../lib/database';
@@ -285,6 +286,20 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
         },
         localMembers
       );
+
+      // Slanje email potvrde svakom clanu (fire-and-forget)
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      if (serviceId && templateId && publicKey) {
+        localMembers.forEach(m => {
+          emailjs.send(serviceId, templateId, {
+            ime: m.ime_prezime,
+            tim: createdTim.ime_tima,
+            email: m.email,
+          }, publicKey).catch(err => console.warn('Email nije poslat:', err));
+        });
+      }
 
       setPopup({ visible: true, type: 'success', text: 'Prijava uspešno poslata!' });
       resetAllData();
