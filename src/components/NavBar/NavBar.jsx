@@ -5,8 +5,8 @@ import pozadina from "../../assets/NavBar/Group.svg"
 
 const navItems = [
   { label: "O TAKMICENJU", sectionId: "o-takmicenju", isAnchor: true },
-  { label: "AGENDA", sectionId: "agenda", isAnchor: true },
   { label: "NAGRADE", sectionId: "nagrade", isAnchor: true },
+  { label: "AGENDA", sectionId: "agenda", isAnchor: true },
   { label: "ISKUSTVA", sectionId: "iskustva", isAnchor: true },
   { label: "FAQ", sectionId: "faq", isAnchor: true },
   { label: "ORGANIZACIONI TIM", sectionId: "tim", isAnchor: true },
@@ -40,7 +40,7 @@ export default function NavBar() {
     <header className="fixed left-0 top-0 z-[70] w-full">
       <div className="mx-auto flex h-24 max-w-6xl items-center justify-between px-4">
         {/* slika*/}
-        <Link to="/" className="flex items-center gap-2" onClick={closeMenu}>
+        <Link to="/" className="flex items-center gap-2" onClick={() => handleSectionClick("hero")}>
           <img src={logo} alt="FON hakaton" className="max-h-16 w-auto" />
         </Link>
 
