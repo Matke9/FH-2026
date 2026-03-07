@@ -21,6 +21,29 @@ import pesak from "../../assets/Partneri/pesakveliki.svg";
 // @ts-ignore
 import strelica from "../../assets/Partneri/strelica.svg";
 
+//GODISNJI
+
+// @ts-ignore
+import wargaming from "../../assets/Partneri/godisnji/wargaming.png"
+// @ts-ignore
+import knjaz from "../../assets/Partneri/godisnji/knjaz.png"
+// @ts-ignore
+import fon from "../../assets/Partneri/godisnji/fon.png"
+
+//ROBNI I NAT
+
+// @ts-ignore
+import aleva from "../../assets/Partneri/naturalni-robni/aleva.png"
+// @ts-ignore
+import bedz from "../../assets/Partneri/naturalni-robni/bedz.png"
+// @ts-ignore
+import castellana from "../../assets/Partneri/naturalni-robni/Castellana.PNG"
+// @ts-ignore
+import gadget from "../../assets/Partneri/naturalni-robni/gadget.png"
+
+
+
+
 /* =========================
    PARTNER ELEMENT (new model)
    svaki partner ima:
@@ -29,20 +52,39 @@ import strelica from "../../assets/Partneri/strelica.svg";
    ========================= */
 const PartnerElement = ({
   cactus,
-  sponsor,
+  sponsors,
 }: {
   cactus: string;
-  sponsor?: string;
+  sponsors: string[];
 }) => {
-  // kaktus 90% na mobilnom slideru, na sm+ full
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (sponsors.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % sponsors.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [sponsors.length]);
+
   const kaktusClass = "w-[90%] sm:w-full h-auto object-contain";
 
   return (
     <div className="relative flex flex-col items-center justify-end w-full transition-transform duration-700 origin-bottom">
-      {/* Sponsor logo iznad kaktusa */}
-      <img src={sponsor} className="w-[60%] h-auto relative z-10 mb-[-5%]" alt="Sponsor logo" />
+      {/* Sponsor logo u belom krugu — fiksna velicina */}
+      <div className="relative z-10 mt-8 sm:mt-0 mb-3 sm:mb-4 md:mb-5 lg:mb-6 w-24 h-24 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full bg-white flex items-center justify-center overflow-hidden" style={{ boxShadow: '0 0 20px 8px rgba(255, 255, 255, 0.5), 0 0 40px 16px rgba(255, 255, 255, 0.25)' }}>
+        {sponsors.map((src, i) => (
+          <img
+            key={i}
+            src={src}
+            className="absolute w-[74%] h-[74%] object-contain transition-opacity duration-500"
+            style={{ opacity: i === currentIndex ? 1 : 0 }}
+            alt="Sponsor logo"
+          />
+        ))}
+      </div>
 
-      {/* Kaktus (sada je to cela slika partnera) */}
+      {/* Kaktus */}
       <div className="relative w-full flex justify-center items-end">
         <img src={cactus} className={kaktusClass} alt="Kaktus" />
       </div>
@@ -51,11 +93,12 @@ const PartnerElement = ({
 };
 
 const Partneri: React.FC = () => {
-  // novi model partnera: cactus + sponsor (sve sponsor logo-ovi mogu biti samsung)
+  // Svaka kategorija ima svoj pool sponsor logo-ova koji se rotiraju
+  // Dodaj vise slika u nizove i menjace se svake 2 sekunde
   const partners = [
-    { id: 1, cactus: robni, sponsor: samsung },
-    { id: 2, cactus: godisnji, sponsor: samsung },
-    { id: 3, cactus: medijski, sponsor: samsung },
+    { id: 1, cactus: robni, sponsors: [aleva, castellana, gadget, bedz] },
+    { id: 2, cactus: godisnji, sponsors: [wargaming, knjaz, fon] },
+    { id: 3, cactus: medijski, sponsors: [] },
   ];
 
   const prevRef = useRef<HTMLButtonElement | null>(null);
@@ -132,15 +175,15 @@ const Partneri: React.FC = () => {
         2xl:mb-[2%]
         ">
           <div className="w-40/100 flex justify-center items-end">
-            <PartnerElement cactus={partners[0].cactus} sponsor={partners[0].sponsor} />
+            <PartnerElement cactus={partners[0].cactus} sponsors={partners[0].sponsors} />
           </div>
 
           <div className="w-55/100 flex justify-center items-end">
-            <PartnerElement cactus={partners[1].cactus} sponsor={partners[1].sponsor} />
+            <PartnerElement cactus={partners[1].cactus} sponsors={partners[1].sponsors} />
           </div>
 
           <div className="w-40/100 flex justify-center items-end">
-            <PartnerElement cactus={partners[2].cactus} sponsor={partners[2].sponsor} />
+            <PartnerElement cactus={partners[2].cactus} sponsors={partners[2].sponsors} />
           </div>
         </div>
 
@@ -159,7 +202,7 @@ const Partneri: React.FC = () => {
               {partners.map((p) => (
                 <SwiperSlide key={p.id} className="flex justify-center items-end pb-10">
                   <div className="w-full">
-                    <PartnerElement cactus={p.cactus} sponsor={p.sponsor} />
+                    <PartnerElement cactus={p.cactus} sponsors={p.sponsors} />
                   </div>
                 </SwiperSlide>
               ))}
@@ -192,8 +235,8 @@ const Partneri: React.FC = () => {
 
       {/* Pokrovitelj footer */}
       <div className="absolute bottom-[0%] left-0 w-full z-30 flex flex-col items-center px-4">
-          {/* TODO: Zameni placeholder div sa logom pokrovitelja */}
-          <div className="w-[220px] md:w-64 xl:w-[350px] h-[80px] md:h-[90px] xl:h-[120px] mb-[2%] bg-white rounded-lg" />
+        {/* TODO: Zameni placeholder div sa logom pokrovitelja */}
+        <div className="w-[220px] md:w-64 xl:w-[350px] h-[80px] md:h-[90px] xl:h-[120px] mb-[2%] bg-white rounded-lg" />
         <p className="text-white text-[14px] md:text-[20px] lg:text-[24px] xl:text-[28px] 2xl:text-[32px] font-dune mt-[-1%] md:mt-[0%]">
           POKROVITELJ TAKMICENJA
         </p>
