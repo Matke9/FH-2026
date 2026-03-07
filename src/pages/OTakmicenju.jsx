@@ -2,6 +2,14 @@
   import InfoCard from "../components/Infocard";
   import '../styles/OTakmicenju.css';
 
+  const stars = Array.from({ length: 250 }, (_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    size: Math.random() * 2 + 1,
+    delay: Math.random() * 3,
+  }));
+
   const OTakmicenju = () =>{
 
     const fonTekstovi = [
@@ -24,6 +32,21 @@
 
     return(
       <div className = "stranica-kontejner pt-8 md:pt-32 px-4 md:px-20 flex flex-col items-center">
+        {/* Zvezdice u pozadini */}
+        {stars.map((star) => (
+          <div
+            key={star.id}
+            className="star"
+            style={{
+              left: `${star.left}%`,
+              top: `${star.top}%`,
+              width: `${star.size}px`,
+              height: `${star.size}px`,
+              animationDelay: `${star.delay}s`,
+            }}
+          />
+        ))}
+
         <h1 className = "glavni-naslov font-dune text-4xl md:text-7xl mt-10 mb-12 md:mb-48  ">
           O TAKMICENJU
         </h1>
