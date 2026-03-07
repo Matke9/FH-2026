@@ -4,20 +4,22 @@ const GlitchScroll = ({ desktopImg, mobileImg, className, onClick, triggerGlitch
     const [isGlitching, setIsGlitching] = useState(false);
     const timeoutRef = useRef(null);
 
-    useEffect(() => {
-        if (triggerGlitch) {
-            startGlitch();
-        }
-        return () => {
-            if (timeoutRef.current) clearTimeout(timeoutRef.current);
-        };
-    }, [triggerGlitch]);
-
     const startGlitch = () => {
         setIsGlitching(true);
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(() => setIsGlitching(false), 400);
     };
+
+    useEffect(() => {
+        if (triggerGlitch) {
+            if (triggerGlitch) {
+                setTimeout(() => startGlitch(), 0);
+            }
+        }
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+    }, [triggerGlitch]);
 
     const handleClick = () => {
         startGlitch();

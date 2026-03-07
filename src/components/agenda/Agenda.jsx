@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import GlitchScroll from './GlitchScroll.jsx';
 
 import '../../styles/Agenda.css';
@@ -29,6 +29,7 @@ const Agenda = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
     const [glitchingIds, setGlitchingIds] = useState({});
     const [isReady, setIsReady] = useState(true);
+    const glitchCounter = useRef(0);
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 1024);
@@ -37,19 +38,18 @@ const Agenda = () => {
     }, []);
 
     const handleSwitch = (clickedId) => {
-        const now = Date.now();
+        glitchCounter.current += 1;
+        const tick = glitchCounter.current;
         const currentItems = isMobile ? mobileOrderedItems : desktopOrderedItems;
 
         setIsReady(false);
 
         if (clickedId === activeId) {
-            // Samo kliknuti dobija novi timestamp
-            setGlitchingIds({ [clickedId]: now });
+            setGlitchingIds({ [clickedId]: tick });
         } else {
-            // Svi iz niza dobijaju isti timestamp
             const allGlitches = {};
             currentItems.forEach(item => {
-                allGlitches[item.id] = now;
+                allGlitches[item.id] = tick;
             });
             setGlitchingIds(allGlitches);
             setActiveId(clickedId);
@@ -57,7 +57,7 @@ const Agenda = () => {
 
         setTimeout(() => {
             setIsReady(true);
-        }, 50);
+        }, 100);
     };
 
     const currentItems = isMobile ? mobileOrderedItems : desktopOrderedItems;
