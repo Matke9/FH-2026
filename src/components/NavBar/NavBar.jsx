@@ -37,7 +37,7 @@ export default function NavBar() {
 
   return (
     <>
-    <header className="fixed left-0 top-0 z-[70] w-full">
+    <header className="fixed left-0 top-0 z-[70] w-full bg-[#000000]/[.2] backdrop-blur-sm">
       <div className="mx-auto flex h-24 max-w-6xl items-center justify-between px-4">
         {/* slika*/}
         <Link to="/" className="flex items-center gap-2" onClick={() => handleSectionClick("hero")}>
