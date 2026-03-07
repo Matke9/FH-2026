@@ -34,7 +34,7 @@ export default function Pravilnik() {
         <div className={`pravilnik-page-wrapper tema-${tema}`}>
             <div className='bg-overlay'></div>
 
-            <button className='theme-toggle mt-24' onClick={toggleTema}>
+            <button className='theme-toggle' onClick={toggleTema}>
                 {tema === 'plava' ? 'GAME JAM': 'FON HACKATHON'}
             </button>
 
