@@ -1,8 +1,25 @@
 /* Stilovi za OrganizacioniTim komponentu */
 
-/* Pozadina sekcije - tamno plava */
+/* Pozadina sekcije - gradijent pri vrhu, zatim tamno plava */
 .org-tim-section {
-  background: #002440;
+  background: linear-gradient(to bottom, 
+    #12375B 0%, 
+    #10355A 3%,
+    #0F3458 6%,
+    #0D3256 9%,
+    #0C3054 12%,
+    #0A2F52 15%,
+    #092D50 18%,
+    #082C4E 21%,
+    #072A4C 24%,
+    #05284A 27%,
+    #042748 30%,
+    #032646 33%,
+    #022544 36%,
+    #012442 39%,
+    #002440 42%,
+    #002440 100%
+  );
 }
 
 /* Zvezdice u pozadini */
