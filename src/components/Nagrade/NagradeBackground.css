@@ -1,8 +1,21 @@
 ﻿.nagrade-background {
-    background-image: url('../../assets/zvezde.svg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
     background-color: #002440;
+    position: relative;
 }
 
+.nagrade-background .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: nagrade-twinkle 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes nagrade-twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}

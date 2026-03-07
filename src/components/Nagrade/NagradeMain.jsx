@@ -15,11 +15,34 @@ import HT_logo from "../../assets/Nagrade/main/HT_Logo.svg";
 import BC_logo from "../../assets/Nagrade/main/BC_Logo.svg";
 import GJ_logo from "../../assets/Nagrade/main/GJ_Logo.svg";
 
+const stars = Array.from({ length: 250 }, (_, i) => ({
+  id: i,
+  left: Math.random() * 100,
+  top: Math.random() * 100,
+  size: Math.random() * 2 + 1,
+  delay: Math.random() * 3,
+}));
+
 export default function NagradeMain() {
   const [activeType, setActiveType] = useState(null);
 
   return (
     <section className="nagrade-background flex flex-col justify-between relative w-full min-h-[100vw] sm:min-h-screen">
+      {/* Zvezdice u pozadini */}
+      {stars.map((star) => (
+        <div
+          key={star.id}
+          className="star"
+          style={{
+            left: `${star.left}%`,
+            top: `${star.top}%`,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            animationDelay: `${star.delay}s`,
+          }}
+        />
+      ))}
+
       {/* Fixed title that stays the same */}
       <div className="relative z-30 pt-[8vh] md:pt-[10vh]">
         <h2 className="font-dune text-white text-center text-[clamp(1.25rem,8vw,4.5rem)] mb-2 md:mb-12">
