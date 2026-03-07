@@ -78,8 +78,8 @@ function NagradeSelector({ onSelect }) {
       {/* CONTENT WRAPPER */}
       <div className="relative z-10 flex flex-col items-center justify-center w-full min-h-screen">
         {/* NASLOV */}
-        <h2 className="font-['DuneRise'] text-white text-center text-[clamp(1.25rem,8vw,4.5rem)] mb-12 md:mb-16">
-          nagrade
+        <h2 className="font-dune text-white text-center text-[clamp(1.25rem,8vw,4.5rem)] mb-12 md:mb-16">
+          NAGRADE
         </h2>
 
         {/* DUGMIĆI */}

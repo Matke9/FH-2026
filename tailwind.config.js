@@ -10,7 +10,6 @@ export default {
       fontFamily: {
         dune: ['DuneRise', 'sans-serif'],
         noto: ['NotoSans', 'sans-serif'],
-        'dune-rise': ['"Dune Rise"', 'sans-serif'],
       },
       colors: {
         'fon-hackathon': {

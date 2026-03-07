@@ -14,15 +14,15 @@ import openWeb4Phone from '../../assets/agenda/web4_mapa_telefon.svg';
 
 const Agenda = () => {
     const mobileOrderedItems = [
-        { id: 'hakaton', title: 'Hakaton', desk: openHakaton, mob: openHakatonPhone },
-        { id: 'gamejam', title: 'Game jam', desk: openGamejam, mob: openGamejamPhone },
-        { id: 'web4', title: 'Web4 challenge', desk: openWeb4, mob: openWeb4Phone }
+        { id: 'hakaton', title: 'HAKATON', desk: openHakaton, mob: openHakatonPhone },
+        { id: 'gamejam', title: 'GAME JAM', desk: openGamejam, mob: openGamejamPhone },
+        { id: 'web4', title: 'WEB4 CHALLENGE', desk: openWeb4, mob: openWeb4Phone }
     ];
 
     const desktopOrderedItems = [
-        { id: 'web4', title: 'Web4 challenge', desk: openWeb4, mob: openWeb4Phone },
-        { id: 'hakaton', title: 'Hakaton', desk: openHakaton, mob: openHakatonPhone },
-        { id: 'gamejam', title: 'Game jam', desk: openGamejam, mob: openGamejamPhone }
+        { id: 'web4', title: 'WEB4 CHALLENGE', desk: openWeb4, mob: openWeb4Phone },
+        { id: 'hakaton', title: 'HAKATON', desk: openHakaton, mob: openHakatonPhone },
+        { id: 'gamejam', title: 'GAME JAM', desk: openGamejam, mob: openGamejamPhone }
     ];
 
     const [activeId, setActiveId] = useState('hakaton');

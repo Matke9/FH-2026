@@ -24,7 +24,7 @@
 
     return(
       <div className = "stranica-kontejner pt-8 md:pt-32 px-4 md:px-20 flex flex-col items-center">
-        <h1 className = "glavni-naslov text-4xl md:text-7xl mt-10 mb-12 md:mb-48  ">
+        <h1 className = "glavni-naslov font-dune text-4xl md:text-7xl mt-10 mb-12 md:mb-48  ">
           O TAKMICENJU
         </h1>
 

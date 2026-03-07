@@ -34,7 +34,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/fonis"
                 target="_blank"
                 aria-label="LinkedIn"
-                className="grid h-9 w-9 place-items-center rounded-md bg-white text-black transition hover:scale-105"
+                className="grid h-9 w-9 place-items-center rounded-md bg-[#002440] text-black transition hover:scale-105"
               >
                 <FaLinkedinIn size={18} />
               </a>
@@ -42,7 +42,7 @@ export default function Footer() {
                 href="https://www.instagram.com/fonis_fon/?hl=en"
                 target="_blank"
                 aria-label="Instagram"
-                className="grid h-9 w-9 place-items-center rounded-md bg-white text-black transition hover:scale-105"
+                className="grid h-9 w-9 place-items-center rounded-md bg-[#002440] text-black transition hover:scale-105"
               >
                 <FiInstagram size={18} />
               </a>
@@ -50,7 +50,7 @@ export default function Footer() {
                 href="https://www.tiktok.com/@fonis_fon"
                 target="_blank"
                 aria-label="TikTok"
-                className="grid h-9 w-9 place-items-center rounded-md bg-white text-black transition hover:scale-105"
+                className="grid h-9 w-9 place-items-center rounded-md bg-[#002440] text-black transition hover:scale-105"
               >
                 <FaTiktok size={18} />
               </a>
@@ -58,7 +58,7 @@ export default function Footer() {
                 href="https://mail.google.com/mail/?view=cm&to=hakaton@fonis.rs"
                 target="_blank"
                 aria-label="Email"
-                className="grid h-9 w-9 place-items-center rounded-md bg-white text-black transition hover:scale-105"
+                className="grid h-9 w-9 place-items-center rounded-md bg-[#002440] text-black transition hover:scale-105"
               >
                 <FiMail size={18} />
               </a>

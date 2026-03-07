@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // Importi assets-a
+// @ts-ignore
 import slikaOblak from "../../assets/Iskustva/IskustvaOblak.png";
+// @ts-ignore
 import StrelicaGore from "../../assets/Iskustva/IskustvaStrelica.svg";
+// @ts-ignore
 import StrelicaDole from "../../assets/Iskustva/IskustvaStrelicaDonja.svg";
+// @ts-ignore
 import IskustvaKamile from "../../assets/Iskustva/IskustvaKamile.png";
 import '../../styles/tailwind.css';
 
@@ -52,7 +56,7 @@ const Iskustva = () => {
 
 
       {/* Kamile */}
-      <div className="absolute bottom-0 w-full  max-w-[1800px] z-0 leading-[0]">
+      <div className="absolute bottom-0 w-full  max-w-[2400px] z-0 leading-[0]">
         <img
           src={IskustvaKamile}
           alt="Kamile"
