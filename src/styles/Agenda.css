@@ -61,6 +61,12 @@ body {
   height: auto;
 }
 
+.small-scroll img, .big-scroll img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 .section-subtitle-side,
 .section-subtitle-center {
   color: white;
@@ -111,6 +117,18 @@ body {
   60% { transform: translate(-2px, 2px); filter: contrast(150%); }
   80% { transform: translate(2px, -2px); }
   100% { transform: translate(0, 0); filter: none; }
+}
+
+.layout-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+    transition: none; 
+}
+
+.layout-visible {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* ==========================================
