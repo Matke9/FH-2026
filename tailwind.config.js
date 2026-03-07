@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'lg-plus': '1224px',
+      },
       // Boje za discipline
       fontFamily: {
         dune: ['DuneRise', 'sans-serif'],

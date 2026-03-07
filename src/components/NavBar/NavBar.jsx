@@ -45,8 +45,8 @@ export default function NavBar() {
         </Link>
 
         {/* Desktop*/}
-        <nav className="hidden md:flex items-center">
-          {navItems.map((item) => 
+        <nav className="hidden lg-plus:flex items-center">
+          {navItems.map((item) =>
             item.isAnchor ? (
               <button
                 key={item.label}
@@ -77,7 +77,7 @@ export default function NavBar() {
         {/* hamburger meni*/}
               <button
               type="button"
-              className="md:hidden flex flex-col justify-center items-center gap-1.5 p-2 bg-transparent"
+              className="lg-plus:hidden flex flex-col justify-center items-center gap-1.5 p-2 bg-transparent"
               onClick={() => setIsOpen((v) => !v)}
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
