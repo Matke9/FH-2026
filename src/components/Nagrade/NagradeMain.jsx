@@ -18,12 +18,22 @@ import GJ_logo from "../../assets/Nagrade/main/GJ_Logo.svg";
 export default function NagradeMain() {
   const [activeType, setActiveType] = useState(null);
 
-  if (!activeType) {
-    return <NagradeSelector onSelect={setActiveType} />;
-  }
-
   return (
-    <NagradeContent type={activeType} onBack={() => setActiveType(null)} />
+    <section className="nagrade-background flex flex-col justify-between relative w-full min-h-screen">
+      {/* Fixed title that stays the same */}
+      <div className="relative z-30 pt-[8vh] md:pt-[10vh]">
+        <h2 className="font-dune text-white text-center text-[clamp(1.25rem,8vw,4.5rem)] mb-2 md:mb-12">
+          NAGRADE
+        </h2>
+      </div>
+
+      {/* Content that changes */}
+      {!activeType ? (
+        <NagradeSelector onSelect={setActiveType} />
+      ) : (
+        <NagradeContent type={activeType} onBack={() => setActiveType(null)} />
+      )}
+    </section>
   );
 }
 
@@ -67,21 +77,9 @@ function NagradeSelector({ onSelect }) {
   ];
 
   return (
-    <section className="nagrade-background relative w-full min-h-screen overflow-hidden px-6">
-      {/* ZVEZDE BACKGROUND */}
-      {/*<img*/}
-      {/*  src={zvezde}*/}
-      {/*  alt=""*/}
-      {/*  className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"*/}
-      {/*/>*/}
-
+    <div className="relative w-full px-6 md:pt-[4vh]">
       {/* CONTENT WRAPPER */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full min-h-screen">
-        {/* NASLOV */}
-        <h2 className="font-dune text-white text-center text-[clamp(1.25rem,8vw,4.5rem)] mb-12 md:mb-16">
-          NAGRADE
-        </h2>
-
+      <div className="relative z-10 flex flex-col items-center justify-center w-full">
         {/* DUGMIĆI */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-[4vw] w-full pb-[15vh] z-20">
           {buttons.map((btn) => (
@@ -119,6 +117,6 @@ function NagradeSelector({ onSelect }) {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -57,7 +57,7 @@ const Agenda = () => {
     const currentItems = isMobile ? mobileOrderedItems : desktopOrderedItems;
 
     return (
-        <div className="agenda-wrapper">
+        <div className="agenda-wrapper ">
             {/* Gradient transition from previous section */}
 
             <h1 className="agenda-title font-dune">AGENDA</h1>

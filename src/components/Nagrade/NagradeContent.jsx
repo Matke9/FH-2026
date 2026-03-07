@@ -68,16 +68,17 @@ export default function NagradeContent({ type, onBack }) {
   const config = variants[type];
 
   return (
-    <section className="nagrade-background relative w-full min-h-screen overflow-hidden">
+    <div className="relative w-full min-h-[50vh] md:min-h-[70vw] md:mt-[5vh] mt-0 flex flex-col">
       {/* Back dugme */}
       <button
         onClick={onBack}
         className="
-    absolute top-[3vw] left-[3vw] z-50
+    absolute top-[12vh] md:top-[12vh] left-[10vw] md:left-[8vw] z-50
     flex items-center justify-center
     w-[clamp(40px,6vw,60px)]
     h-[clamp(40px,6vw,60px)]
     backdrop-blur-md
+    border-2 border-white
     rounded-[clamp(8px,1.2vw,16px)]
     transition-all duration-300 ease-out
     hover:scale-105
@@ -87,26 +88,13 @@ export default function NagradeContent({ type, onBack }) {
         <img
           src={strelica}
           alt="Back"
-          className="w-full h-full object-fit pointer-events-none translate-y-[2%]"
+          className="w-full h-full object-fit pointer-events-none translate-y-[2%] brightness-0 invert"
         />
       </button>
 
-      {/* Zvezde */}
-      {/*<img*/}
-      {/*  src={zvezde}*/}
-      {/*  alt=""*/}
-      {/*  className={`absolute inset-0 w-full h-full object-cover z-0 ${config.bg}`}*/}
-      {/*/>*/}
-
-      {/* Naslov */}
-      <div className="relative w-full h-screen pt-[10vh] z-30">
-        <h2 className="text-center mt-[clamp[50px,25vh,80px]] w-full font-['DuneRise'] text-[4em] text-white md:mt-[10vh]">
-          nagrade
-        </h2>
-      </div>
 
       {/* Donji deo */}
-      <div className="absolute bottom-0 w-full max-w-[1600px] left-1/2 -translate-x-1/2 z-20 md:relative md:bottom-auto">
+      <div className="relative w-full max-w-[2400px] left-1/2 -translate-x-1/2 z-20 mt-auto">
         <img
           src={config.pustinja}
           alt=""
@@ -144,6 +132,6 @@ export default function NagradeContent({ type, onBack }) {
         alt=""
         className="absolute w-full h-auto block z-40 bottom-0 translate-y-[30%]"
       />
-    </section>
+    </div>
   );
 }
