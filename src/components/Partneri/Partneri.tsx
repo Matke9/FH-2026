@@ -190,11 +190,12 @@ const Partneri: React.FC = () => {
         </div>
       </div>
 
-      {/* ERSTE footer */}
+      {/* Pokrovitelj footer */}
       <div className="absolute bottom-[0%] left-0 w-full z-30 flex flex-col items-center px-4">
-          <img src={erste} className="w-[220px] md:w-64 mb-[2%] xl:w-[350px]" alt="Erste"/>
+          {/* TODO: Zameni placeholder div sa logom pokrovitelja */}
+          <div className="w-[220px] md:w-64 xl:w-[350px] h-[80px] md:h-[90px] xl:h-[120px] mb-[2%] bg-white rounded-lg" />
         <p className="text-white text-[14px] md:text-[20px] lg:text-[24px] xl:text-[28px] 2xl:text-[32px] font-dune mt-[-1%] md:mt-[0%]">
-          POKROVITELJ TAKMIČENJA
+          POKROVITELJ TAKMICENJA
         </p>
       </div>
     </section>
