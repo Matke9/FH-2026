@@ -9,11 +9,16 @@ import light from "../../assets/FAQ/FAQSvetlo.svg";
 
 export default function FAQSection() {
   const cards = [
-    { question: "Pitanje 1", answer: "Odgovor 1" },
-    { question: "Pitanje 2", answer: "Odgovor 2" },
-    { question: "Pitanje 3", answer: "Odgovor 3" },
-    { question: "Pitanje 4", answer: "Odgovor 4" },
-    { question: "Pitanje 5", answer: "Odgovor 5" },
+    { question: "Ko ima pravo učešća na FON Hakatonu?", answer: "Pravo učešća na Hakatonu imaju svi stariji od 16 i mlađi od 26 godina iz Srbije, bez obzira na nivo formalnog obrazovanja." },
+    { question: "Da li mogu da učestvujem ako nisam iz Srbije?", answer: "Studenti koji nisu državljani Srbije mogu učestvovati na Web4 Challenge-u, bez obzira na državljanstvo ili nivo formalnog obrazovanja." },
+    { question: "Da li se učešće na takmičenju plaća?", answer: "Ne, učešće je potpuno besplatno." },
+    { question: "Koja je tema ovogodišnjeg FON Hakatona?", answer: "Tema Hakatona, kao i Game Jam izazova, biće otkrivene na brifingu nakon otvaranja takmičenja." },
+    { question: "Da li je moguća individualna prijava?", answer: "Nije moguća individualna prijava. Šalje se timska prijava, a tim može imati tri ili četiri člana." },
+    { question: "Da li se naš tim može prijaviti za više disciplina?", answer: "Možete se prijaviti za više disciplina, ali u slučaju da vaš tim bude izabran za oba takmičenja, možete se takmičiti samo u jednoj disciplini." },
+    { question: "Koje tehnologije je dozvoljeno koristiti pri izradi rešenja?", answer: "Takmičari mogu koristiti tehnologije po svom izboru." },
+    { question: "Kada počinju prijave za FON Hakaton?", answer: "Prijave za ovogodišnji FON Hakaton počinju od 8. marta i traju do 22. marta." },
+    { question: "Da li je obavezno poneti sopstvenu opremu?", answer: "Nije obavezno, ali je poželjno poneti sopstvenu opremu (laptop/računar i prateću opremu)." },
+    { question: "Da li će takmičarima biti obezbeđena hrana i piće tokom takmičenja?", answer: "Takmičarima će tokom trajanja takmičenja biti obezbeđena 4 obroka." },
   ];
 
   const extendedCards = [...cards, ...cards, ...cards];

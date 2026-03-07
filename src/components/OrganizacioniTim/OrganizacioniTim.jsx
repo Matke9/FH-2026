@@ -4,7 +4,6 @@ import krunicaPozadina from '../../assets/OrganizacioniTim/krunica-pozadina.svg'
 import krunicaSimbol from '../../assets/OrganizacioniTim/krunica-simbol.png'
 import hakatonLogo from '../../assets/OrganizacioniTim/hakaton logo.svg'
 import planine from '../../assets/OrganizacioniTim/planine.svg'
-import faqPozadina from '../../assets/FAQ/FAQPozadina.svg'
 
 // Podaci o clanovima organizacionog tima
 const teamMembers = [
@@ -14,6 +13,7 @@ const teamMembers = [
     photo: null,
     teamImage: null,
     teamLabel: 'Tim koordinatora',
+    description: 'Tim koordinatora u saradnji sa članovima svojih timova radi na tome da FON Hakaton 2026 premaši sva moguća očekivanja.',
   },
   {
     name: 'Sava Stević',
@@ -21,6 +21,7 @@ const teamMembers = [
     photo: null,
     teamImage: null,
     teamLabel: 'Tim za dizajn',
+    description: 'Tim za dizajn na kreativan način osmišlja vizuelni identitet takmičenja, kreira objave na društvenim mrežama, kao i celokupni promo materijal.',
   },
   {
     name: 'Mihailo Matović',
@@ -28,6 +29,7 @@ const teamMembers = [
     photo: null,
     teamImage: null,
     teamLabel: 'Tim za informacione tehnologije',
+    description: 'Tim za informacione tehnologije zadužen je za izradu veb-sajta takmičenja.',
   },
   {
     name: 'Anastasija Rus',
@@ -35,6 +37,7 @@ const teamMembers = [
     photo: null,
     teamImage: null,
     teamLabel: 'Tim za logistiku',
+    description: 'Tim za logistiku zadužen je za organizaciju i nesmetano odvijanje takmičenja, kao i za stvaranje prijatnog iskustva za sve učesnike Hakatona.',
   },
   {
     name: 'Željana Košanin',
@@ -42,6 +45,7 @@ const teamMembers = [
     photo: null,
     teamImage: null,
     teamLabel: 'Tim za korporativne komunikacije',
+    description: 'Tim za odnose sa kompanijama ostvaruje saradnju i sklapa partnerstva sa mnogobrojnim kompanijama, što izuzetno doprinosi realizaciji takmičenja.',
   },
   {
     name: 'Đorđe Grubić',
@@ -49,6 +53,7 @@ const teamMembers = [
     photo: null,
     teamImage: null,
     teamLabel: 'Tim za odnose sa javnošću',
+    description: 'Tim za odnose s javnošću bavi se marketinškom kampanjom takmičenja, sa ciljem da što više mladih programera sazna za FON Hakaton i dobije želju da se oproba u tom izazovu.',
   },
   {
     name: 'Anja Krstić',
@@ -56,6 +61,7 @@ const teamMembers = [
     photo: null,
     teamImage: null,
     teamLabel: 'Tim za ljudske resurse',
+    description: 'Tim za ljudske resurse zadužen je za selekciju prijavljenih timova i održavanje pozitivne atmosfere unutar organizacionog tima.',
   },
 ]
 
@@ -173,6 +179,11 @@ export default function OrganizacioniTim() {
           <p className="text-white/80 text-xs sm:text-sm md:text-base tracking-wide mt-3 sm:mt-4">
             {currentMember.teamLabel}
           </p>
+          {currentMember.description && (
+            <p className="text-white/60 text-xs sm:text-sm md:text-base text-center max-w-md mt-2 leading-relaxed">
+              {currentMember.description}
+            </p>
+          )}
         </div>
 
         {/* Desna strana - strelice oko kruzne slike clana */}
