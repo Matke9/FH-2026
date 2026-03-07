@@ -37,8 +37,8 @@ const InfoCard = ({ naslovIznad, naslovIspod, tekstovi, bojaOkvir }) => {
                     bojaOkvir === 'fon-hackathon' ? 'shadow-fon-hackathon' : 
                     bojaOkvir === 'gamejam' ? 'shadow-gamejam' : 
                     'shadow-blockchain-challenge'
-                } bg-transparent mt-8 mb-8 min-h-[300px] sm:min-h-[400px] flex items-center justify-center`}>
-                    
+                } backdrop-blur-md bg-black/20 mt-8 mb-8 min-h-[300px] sm:min-h-[400px] flex items-center justify-center`}>
+
                     {/* TEKST UNUTAR KARTICE */}
                     {/* PROMENA: text-base na mobilnom, raste do 2xl */}
                     <p className="text-white text-center text-base sm:text-lg md:text-4xl font-sans font-semibold leading-relaxed">
