@@ -42,7 +42,7 @@
           {/* Druga kartica - BLOCKCHAIN CHALLENGE */}
           <div className="w-full flex justify-end mb-40">
             <InfoCard
-              naslovIznad="BLOCKCHAIN"
+              naslovIznad="WEB4"
               naslovIspod="CHALLENGE"
               bojaOkvir="blockchain-challenge"
               tekstovi={blockchainTekstovi}
