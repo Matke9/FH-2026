@@ -28,6 +28,7 @@ const Agenda = () => {
     const [activeId, setActiveId] = useState('hakaton');
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
     const [glitchingIds, setGlitchingIds] = useState({});
+    const [isReady, setIsReady] = useState(true);
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 1024);
@@ -36,9 +37,10 @@ const Agenda = () => {
     }, []);
 
     const handleSwitch = (clickedId) => {
-        // eslint-disable-next-line react-hooks/purity
         const now = Date.now();
         const currentItems = isMobile ? mobileOrderedItems : desktopOrderedItems;
+
+        setIsReady(false);
 
         if (clickedId === activeId) {
             // Samo kliknuti dobija novi timestamp
@@ -52,20 +54,22 @@ const Agenda = () => {
             setGlitchingIds(allGlitches);
             setActiveId(clickedId);
         }
+
+        setTimeout(() => {
+            setIsReady(true);
+        }, 50);
     };
 
     const currentItems = isMobile ? mobileOrderedItems : desktopOrderedItems;
 
     return (
         <div className="agenda-wrapper ">
-            {/* Gradient transition from previous section */}
-
             <h1 className="agenda-title font-dune">AGENDA</h1>
             <div className="agenda-content">
                 {currentItems.map((item) => {
                     const isOpen = item.id === activeId;
                     return (
-                        <div key={item.id} className={isOpen ? "open-scroll" : "closed-scroll"}>
+                        <div key={item.id} className={`${isOpen ? "open-scroll" : "closed-scroll"} ${!isReady ? 'layout-hidden' : 'layout-visible'}`}>
                             <h3 className={`font-dune ${isOpen ? 'section-subtitle-center' : 'section-subtitle-side'}`}>
                                 {item.title}
                             </h3>
