@@ -101,29 +101,16 @@ body {
 }
 
 .glitch-action {
-  animation: dune-move 0.4s steps(1) infinite;
+  animation: scroll-move 0.4s steps(1) infinite;
 }
 
-@keyframes dune-move {
-  0% {
-    transform: translate(0, 0);
-    filter: hue-rotate(280deg) brightness(1.5) drop-shadow(0 0 10px #bc13fe);
-  }
-
-  25% {
-    transform: translate(15px, -15px);
-    filter: hue-rotate(120deg) brightness(1.2) drop-shadow(0 0 15px #39ff14);
-  }
-
-  50% {
-    transform: translate(-15px, 15px);
-    filter: hue-rotate(280deg) contrast(150%);
-  }
-
-  100% {
-    transform: translate(0, 0);
-    filter: none;
-  }
+@keyframes scroll-move {
+  0% { transform: translate(0, 0); filter: hue-rotate(0deg) brightness(1.5); }
+  20% { transform: translate(-4px, 3px); filter: hue-rotate(280deg) drop-shadow(0 0 8px #bc13fe); }
+  40% { transform: translate(4px, -3px); filter: hue-rotate(120deg) drop-shadow(0 0 8px #39ff14); }
+  60% { transform: translate(-2px, 2px); filter: contrast(150%); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0, 0); filter: none; }
 }
 
 /* ==========================================
@@ -161,12 +148,21 @@ body {
     justify-content: center;
     align-items: stretch;
     margin: 0;
+    height: 600px;
   }
 
   .closed-scroll .open-scroll {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+  }
+
+  .small-scroll img, .big-scroll img {
+    transition: opacity 0.3s ease;
+    object-fit: contain;
   }
 
   .closed-scroll {
