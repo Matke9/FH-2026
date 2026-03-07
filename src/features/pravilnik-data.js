@@ -25,7 +25,7 @@ export const straniceHackathon = [
     },
     {
         naslov:"Pravila takmičenja",
-        tekst:"4. Organizator zadržava pravo da produži rok za prijave. 5. Prijava i učešće na takmičenju su besplatni.  6. Naziv tima dodeljuju članovi istog prilikom prijavljivanja na Hakaton. Naziv tima  mora da bude bez nepristojnih izraza, verskih, seksualnih, nacionalnih i sličnih diskriminacija i sadržaja koji je uvredljiv"
+        tekst:"4. Organizator zadržava pravo da produži rok za prijave.\n\n5. Prijava i učešće na takmičenju su besplatni.\n\n6. Naziv tima dodeljuju članovi istog prilikom prijavljivanja na Hakaton. Naziv tima  mora da bude bez nepristojnih izraza, verskih, seksualnih, nacionalnih i sličnih diskriminacija i sadržaja koji je uvredljiv"
     },
     {
         naslov:"Pravila takmičenja",
@@ -45,15 +45,15 @@ export const straniceHackathon = [
     },
     {
         naslov:"Pravila takmičenja",
-        tekst:"12. Finalistima strogo zabranjeno korišćenje bilo koje druge opreme iz računarskog centra osim one za koju je zaključen ugovor. 13. Takmičari snose odgovornost za eventualnu štetu koju prouzrokuju na fakultetskoj opremi i/ili imovini."
+        tekst:"12. Finalistima strogo zabranjeno korišćenje bilo koje druge opreme iz računarskog centra osim one za koju je zaključen ugovor.\n\n13. Takmičari snose odgovornost za eventualnu štetu koju prouzrokuju na fakultetskoj opremi i/ili imovini."
     },
     {
         naslov:"Pravila takmičenja",
-        tekst:"14. Takmičarima je dozvoljena upotreba mobilnih telefona i interneta.  15. Takmičari imaju priliku da koriste tehnologije po svom izboru i nema ograničenja od strane organizatora po pitanju konkretnih tehničkih rešenja."
+        tekst:"14. Takmičarima je dozvoljena upotreba mobilnih telefona i interneta.\n\n15. Takmičari imaju priliku da koriste tehnologije po svom izboru i nema ograničenja od strane organizatora po pitanju konkretnih tehničkih rešenja."
     },
     {
         naslov:"Pravila takmičenja",
-        tekst:"16. Takmičari imaju priliku da u svakom trenutku konsultuju organizatora ukoliko im zadatak nije potpuno tehnički jasan.  17. Vreme za izradu softverskog rešenja je 24 sata.  18. Takmičari moraju u svakom momentu takmičenja imati istaknutu akreditaciju koju će dobiti prilikom registracije."
+        tekst:"16. Takmičari imaju priliku da u svakom trenutku konsultuju organizatora ukoliko im zadatak nije potpuno tehnički jasan.\n\n17. Vreme za izradu softverskog rešenja je 24 sata.\n\n18. Takmičari moraju u svakom momentu takmičenja imati istaknutu akreditaciju koju će dobiti prilikom registracije."
     },
     {
         naslov:"Pravila takmičenja",
