@@ -30,6 +30,7 @@ const TimForma = ({ onBack, onTimSubmitted, localClanovi = [], discipline = 'fon
     prethodnaIskustva: '',
     konfliktResenje: '',
     prioritetiVreme: '', // FON Hakaton specifično
+    tehnologije: '', // FON Hakaton specifično
     iskustvoVideoIgre: '' // GameJam specifično
   });
 
@@ -59,8 +60,20 @@ const TimForma = ({ onBack, onTimSubmitted, localClanovi = [], discipline = 'fon
       return;
     }
 
+    if (discipline === 'fon-hackathon' && !formData.tehnologije) {
+      setMessage({ type: 'error', text: 'Molimo popunite polje o tehnologijama i alatima!' });
+      if (containerRef.current) containerRef.current.scrollTop = 0;
+      return;
+    }
+
     if (discipline === 'gamejam' && !formData.iskustvoVideoIgre) {
       setMessage({ type: 'error', text: 'Molimo popunite polje o iskustvu u pravljenju video igara!' });
+      if (containerRef.current) containerRef.current.scrollTop = 0;
+      return;
+    }
+
+    if (discipline === 'gamejam' && !formData.prioritetiVreme) {
+      setMessage({ type: 'error', text: 'Molimo popunite polje o prioritetima i vremenu!' });
       if (containerRef.current) containerRef.current.scrollTop = 0;
       return;
     }
@@ -89,7 +102,8 @@ const TimForma = ({ onBack, onTimSubmitted, localClanovi = [], discipline = 'fon
         motivacija: formData.motivacija,
         prethodna_iskustva: formData.prethodnaIskustva,
         konflikt_resenje: formData.konfliktResenje,
-        prioriteti_vreme: discipline === 'fon-hackathon' ? formData.prioritetiVreme : null,
+        prioriteti_vreme: (discipline === 'fon-hackathon' || discipline === 'gamejam') ? formData.prioritetiVreme : null,
+        tehnologije: discipline === 'fon-hackathon' ? formData.tehnologije : null,
         iskustvo_video_igre: discipline === 'gamejam' ? formData.iskustvoVideoIgre : null
       };
       
@@ -104,6 +118,7 @@ const TimForma = ({ onBack, onTimSubmitted, localClanovi = [], discipline = 'fon
           prethodnaIskustva: '',
           konfliktResenje: '',
           prioritetiVreme: '',
+          tehnologije: '',
           iskustvoVideoIgre: ''
         });
         setKakoSteCuli([]);
@@ -251,6 +266,25 @@ const TimForma = ({ onBack, onTimSubmitted, localClanovi = [], discipline = 'fon
           />
         </div>
 
+        {/* FON Hakaton - Tehnologije */}
+        {discipline === 'fon-hackathon' && (
+          <div className="space-y-2">
+            <label className="text-white text-sm text-center block font-normal leading-relaxed px-4">
+              Koje programske jezike, tehnologije i razvojne alate najbolje poznajete? Koje od njih planirate da primenite tokom hakatona?
+            </label>
+            <textarea
+              name="tehnologije"
+              value={formData.tehnologije}
+              onChange={handleChange}
+              required
+              rows="5"
+              className="w-full bg-transparent border-2 border-white rounded-3xl px-6 py-4 text-white 
+                         placeholder-gray-300 focus:outline-none focus:border-white resize-none"
+              placeholder=""
+            />
+          </div>
+        )}
+
         {/* GameJam specifično pitanje */}
         {discipline === 'gamejam' && (
           <div className="space-y-2">
@@ -273,7 +307,7 @@ const TimForma = ({ onBack, onTimSubmitted, localClanovi = [], discipline = 'fon
         {/* Konflikt u timu */}
         <div className="space-y-2">
           <label className="text-white text-sm text-center block font-normal leading-relaxed px-4">
-            Šta biste radili ukoliko dođe do konflikta u timu?
+            Kako biste postupili u slučaju da se pojave konflikti unutar tima?
           </label>
           <textarea
             name="konfliktResenje"
@@ -287,8 +321,8 @@ const TimForma = ({ onBack, onTimSubmitted, localClanovi = [], discipline = 'fon
           />
         </div>
 
-        {/* FON Hakaton specifično pitanje */}
-        {discipline === 'fon-hackathon' && (
+        {/* FON Hakaton i GameJam - Prioriteti i vreme */}
+        {(discipline === 'fon-hackathon' || discipline === 'gamejam') && (
           <div className="space-y-2">
             <label className="text-white text-sm text-center block font-normal leading-relaxed px-4">
               Kako biste se snašli u situaciji gde vam je preostalo malo vremena, a puno posla? Kako određujete prioritete?

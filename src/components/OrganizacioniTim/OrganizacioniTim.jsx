@@ -4,6 +4,7 @@ import krunicaPozadina from '../../assets/OrganizacioniTim/krunica-pozadina.svg'
 import krunicaSimbol from '../../assets/OrganizacioniTim/krunica-simbol.png'
 import hakatonLogo from '../../assets/OrganizacioniTim/hakaton logo.svg'
 import planine from '../../assets/OrganizacioniTim/planine.svg'
+import faqPozadina from '../../assets/FAQ/FAQPozadina.svg'
 
 // Podaci o clanovima organizacionog tima
 const teamMembers = [
@@ -103,6 +104,7 @@ export default function OrganizacioniTim() {
 
   return (
     <section className="org-tim-section relative w-full py-12 sm:py-14 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 overflow-hidden">
+      
       {/* Zvezdice u pozadini */}
       {stars.map((star) => (
         <div
