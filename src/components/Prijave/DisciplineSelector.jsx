@@ -15,10 +15,10 @@ export default function DisciplineSelector({ activeDiscipline, onDisciplineChang
         <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
           <button
             onClick={() => onDisciplineChange('fon-hackathon')}
-            className={`bg-transparent text-white rounded-xl px-4 md:px-6 py-2 md:py-2.5 border-2 transition-all text-sm md:text-base ${
+            className={`rounded-xl px-4 md:px-6 py-2 md:py-2.5 border-2 transition-all text-sm md:text-base font-medium ${
               activeDiscipline === 'fon-hackathon'
-                ? 'border-white bg-white text-gray-800 font-semibold'
-                : 'border-white/70 hover:bg-white hover:text-gray-800'
+                ? 'border-white bg-white text-black shadow-lg'
+                : 'border-white bg-transparent text-white hover:bg-white/10'
             }`}
           >
             FON HAKATON
@@ -26,10 +26,10 @@ export default function DisciplineSelector({ activeDiscipline, onDisciplineChang
           
           <button
             onClick={() => onDisciplineChange('gamejam')}
-            className={`bg-transparent text-white rounded-xl px-4 md:px-6 py-2 md:py-2.5 border-2 transition-all text-sm md:text-base ${
+            className={`rounded-xl px-4 md:px-6 py-2 md:py-2.5 border-2 transition-all text-sm md:text-base font-medium ${
               activeDiscipline === 'gamejam'
-                ? 'border-white bg-white text-gray-800 font-semibold'
-                : 'border-white/70 hover:bg-white hover:text-gray-800'
+                ? 'border-white bg-white text-black shadow-lg'
+                : 'border-white bg-transparent text-white hover:bg-white/10'
             }`}
           >
             GAME JAM
@@ -37,7 +37,7 @@ export default function DisciplineSelector({ activeDiscipline, onDisciplineChang
           
           <button
             onClick={onBlockchainClick}
-            className="bg-transparent text-white rounded-xl px-4 md:px-6 py-2 md:py-2.5 border-2 border-white/70 transition-all hover:bg-white hover:text-gray-800 text-sm md:text-base"
+            className="rounded-xl px-4 md:px-6 py-2 md:py-2.5 border-2 border-white bg-transparent text-white transition-all hover:bg-white/10 text-sm md:text-base font-medium"
           >
             WEB4 CHALLENGE
           </button>
