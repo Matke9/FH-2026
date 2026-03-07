@@ -48,6 +48,14 @@ const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClano
     }
   }, [selectedStatus, formData]);
 
+  // Proveri da li je neko drugi već kapiten
+  const isAnotherCaptain = () => {
+    return Object.entries(allClanovi).some(([key, clan]) => {
+      const memberNumber = parseInt(key);
+      return memberNumber !== clanNumber && clan.formData && clan.formData.kapiten === true;
+    });
+  };
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -283,18 +291,29 @@ const ClanForma = ({ clanNumber = 1, onBack, initialData, onDataChange, allClano
           </div>
 
           {/* Kapiten tima checkbox */}
-          <div className="flex items-center justify-center gap-3">
-            <input
-              type="checkbox"
-              id="kapiten"
-              name="kapiten"
-              checked={formData.kapiten}
-              onChange={handleChange}
-              className="w-5 h-5 rounded border-2 border-white bg-transparent checked:bg-white"
-            />
-            <label htmlFor="kapiten" className="text-white text-base font-normal cursor-pointer">
-              Kapiten tima
-            </label>
+          <div className="space-y-2">
+            <div className="flex items-center justify-center gap-3">
+              <input
+                type="checkbox"
+                id="kapiten"
+                name="kapiten"
+                checked={formData.kapiten}
+                onChange={handleChange}
+                disabled={isAnotherCaptain() && !formData.kapiten}
+                className="w-5 h-5 rounded border-2 border-white bg-transparent checked:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
+              />
+              <label 
+                htmlFor="kapiten" 
+                className={`text-white text-base font-normal ${isAnotherCaptain() && !formData.kapiten ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+              >
+                Kapiten tima
+              </label>
+            </div>
+            {isAnotherCaptain() && !formData.kapiten && (
+              <p className="text-white text-xs text-center font-light">
+                Drugi član je već označen kao kapiten
+              </p>
+            )}
           </div>
 
           {/* Godine - Slider */}
