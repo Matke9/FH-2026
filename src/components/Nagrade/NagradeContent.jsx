@@ -88,7 +88,7 @@ export default function NagradeContent({ type, onBack }) {
         <img
           src={strelica}
           alt="Back"
-          className="w-full h-full object-fit pointer-events-none translate-y-[2%] brightness-0 invert"
+          className="w-full h-full object-contain pointer-events-none translate-y-[2%] drop-shadow-[0_0_6px_rgba(255,255,255,0.95)]"
         />
       </button>
 

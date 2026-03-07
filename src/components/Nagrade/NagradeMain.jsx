@@ -19,7 +19,7 @@ export default function NagradeMain() {
   const [activeType, setActiveType] = useState(null);
 
   return (
-    <section className="nagrade-background flex flex-col justify-between relative w-full min-h-screen">
+    <section className="nagrade-background flex flex-col justify-between relative w-full min-h-[100vw] sm:min-h-screen">
       {/* Fixed title that stays the same */}
       <div className="relative z-30 pt-[8vh] md:pt-[10vh]">
         <h2 className="font-dune text-white text-center text-[clamp(1.25rem,8vw,4.5rem)] mb-2 md:mb-12">
