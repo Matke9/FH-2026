@@ -235,7 +235,10 @@ const TimForma = ({ onBack, onTimSubmitted, localClanovi = [], discipline = 'fon
         {/* Motivacija */}
         <div className="space-y-2">
           <label className="text-white text-sm text-center block font-normal leading-relaxed px-4">
-            Šta vas je motivisalo da se prijavite za {eventName}? Kakva su vaša očekivanja od samog takmičenja?
+            {discipline === 'fon-hackathon' 
+              ? 'Šta vas je motivisalo da se prijavite za FON Hakaton? Kakva su vaša očekivanja od samog takmičenja?'
+              : 'Šta vas je motivisalo da se prijavite za disciplinu GameJam na FON Hakatonu? Kakva su vaša očekivanja od samog takmičenja?'
+            }
           </label>
           <textarea
             name="motivacija"

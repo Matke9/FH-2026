@@ -281,6 +281,7 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
           prethodna_iskustva: createdTim.prethodna_iskustva,
           konflikt_resenje: createdTim.konflikt_resenje,
           prioriteti_vreme: createdTim.prioriteti_vreme || null,
+          tehnologije: createdTim.tehnologije || null,
           iskustvo_video_igre: createdTim.iskustvo_video_igre || null
         },
         localMembers

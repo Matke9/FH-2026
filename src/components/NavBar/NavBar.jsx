@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import logo from "../../assets/NavBar/logo1.svg";
 import pozadina from "../../assets/NavBar/Group.svg"
@@ -20,6 +20,31 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Sprečava skrolovanje kada je mobilni meni otvoren
+  useEffect(() => {
+    if (isOpen) {
+      // Sačuvaj trenutnu poziciju skrola
+      const scrollY = window.scrollY;
+      
+      // Primeni stilove za blokiranje skrola
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        // Vrati sve na prvobitno stanje
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        
+        // Vrati skrol na prethodnu poziciju
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [isOpen]);
 
   const closeMenu = () => setIsOpen(false);
 
@@ -107,6 +132,8 @@ export default function NavBar() {
               justify-center
               px-4
             "
+            onTouchMove={(e) => e.preventDefault()}
+            onClick={closeMenu}
           >
             {/* Panel */}
             <div
@@ -119,6 +146,8 @@ export default function NavBar() {
                   shadow-2xl
                 
               "
+              onTouchMove={(e) => e.stopPropagation()}
+              onClick={(e) => e.stopPropagation()}
             >
               <div
                  className="relative p-8 text-white bg-[#002440] overflow-hidden"
