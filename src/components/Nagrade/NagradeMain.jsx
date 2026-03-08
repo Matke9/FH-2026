@@ -27,7 +27,7 @@ export default function NagradeMain() {
   const [activeType, setActiveType] = useState(null);
 
   return (
-    <section className="nagrade-background flex flex-col justify-between relative w-full min-h-[100vw] sm:min-h-screen">
+    <section className="nagrade-background flex flex-col justify-between relative w-full min-h-[clamp(70vh,100vw,250vh)] sm:min-h-screen">
       {/* Zvezdice u pozadini */}
       {stars.map((star) => (
         <div
