@@ -13,7 +13,7 @@ import GJ_planina from "../../assets/Nagrade/content/GJ_planina.svg";
 function PrizeGlowText({ children, size = "text-[4rem]", glow = true }) {
   return (
     <span
-      className={`relative inline-block text-white font-['DuneRise'] ${size}`}
+      className={`relative inline-block text-white font-['DuneRise'] ${size} whitespace-pre-line text-center leading-tight`}
     >
       {glow && (
         <span
@@ -34,18 +34,27 @@ function PrizeGlowText({ children, size = "text-[4rem]", glow = true }) {
 const variants = {
   Hackathon: {
     pustinja: HT_pustinja,
+    nagrada1: "120.000\nRSD",
+    nagrada2: "80.000\nRSD",
+    nagrada3: "50.000\nRSD",
     bg: "bg-[#0B1C2D]",
     extraLayers: null,
   },
 
   Blockchain: {
     pustinja: BC_pustinja,
+    nagrada1: "1000 EUR",
+    nagrada2: "600 EUR",
+    nagrada3: "400 EUR",
     bg: "bg-gradient-to-b from-[#002440] to-[#832091]",
     extraLayers: null,
   },
 
   Gamejam: {
     pustinja: GJ_pustinja,
+    nagrada1: "",
+    nagrada2: "coming",
+    nagrada3: "soon",
     bg: "bg-gradient-to-b from-[#002440] to-[#07021A]",
     extraLayers: (
       <div className="absolute inset-0 pointer-events-none z-10">
@@ -105,23 +114,23 @@ export default function NagradeContent({ type, onBack }) {
 
         <div className="absolute inset-0 pointer-events-none z-30">
           <div className="absolute left-[24%] -translate-x-1/2 bottom-[80%]">
-            <PrizeGlowText size="text-[clamp(0.75rem,5vw,7rem)]">
-              700e
+            <PrizeGlowText size="text-[clamp(0.75rem,5vw,3.5rem)]">
+              {config.nagrada2}
             </PrizeGlowText>
           </div>
 
           <div className="absolute left-1/2 -translate-x-1/2 bottom-[100%]">
             <PrizeGlowText
-              size="text-[clamp(1rem,8vw,8rem)]"
+              size="text-[clamp(1rem,8vw,4rem)]"
               glow={type !== "Gamejam"}
             >
-              1000e
+              {config.nagrada1}
             </PrizeGlowText>
           </div>
 
           <div className="absolute left-[75%] -translate-x-1/2 bottom-[70%]">
-            <PrizeGlowText size="text-[clamp(0.75rem,6vw,4.5rem)]">
-              500e
+            <PrizeGlowText size="text-[clamp(0.75rem,6vw,3rem)] w-full">
+              {config.nagrada3}
             </PrizeGlowText>
           </div>
         </div>
