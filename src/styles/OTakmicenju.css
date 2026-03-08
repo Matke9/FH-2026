@@ -7,10 +7,10 @@
     .stranica-kontejner{
         display: flex;
         flex-direction: column;
-        align-items: center;    
+        align-items: center;
         min-height: 100vh;
         width: 100%;
-        overflow-x: hidden;
+        overflow: hidden;
         background-color: #002440;
         position: relative;
     }
@@ -23,6 +23,7 @@
         animation: ot-twinkle 3s ease-in-out infinite;
         pointer-events: none;
         z-index: 0;
+        
     }
 
     @keyframes ot-twinkle {
