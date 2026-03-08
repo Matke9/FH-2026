@@ -31,7 +31,6 @@ const GlitchScroll = ({ desktopImg, mobileImg, className, onClick, triggerGlitch
             className={`${className} ${isGlitching ? 'glitch-action' : ''}`} 
             onClick={handleClick}
             style={{ 
-                cursor: 'pointer',
                 willChange: 'transform, filter',
                 backfaceVisibility: 'hidden'
             }}

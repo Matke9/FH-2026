@@ -23,6 +23,10 @@ body {
   padding: calc(20px + 10vh) 0 0 0;
   overflow: hidden;
   height: fit-content;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .agenda-title {
@@ -32,6 +36,10 @@ body {
   margin-top: 30px;
   text-align: center;
   color: white;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .agenda-content {
@@ -48,6 +56,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  outline: none;
 }
 
 .open-scroll {
@@ -55,6 +64,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  outline: none;
 }
 
 .small-scroll,
@@ -64,18 +74,35 @@ body {
   height: auto;
   line-height: 0;
   font-size: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.small-scroll:focus,
+.big-scroll:focus {
+  outline: none;
 }
 
 .small-scroll img, .big-scroll img {
     max-width: 100%;
     height: auto;
     display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
 }
 
 .section-subtitle-side,
 .section-subtitle-center {
   color: white;
   margin: 10px 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .section-subtitle-side {
@@ -155,8 +182,9 @@ body {
 @media (min-width: 1024px) {
   .agenda-wrapper {
     background: linear-gradient(var(--back-light) 0%, var(--back-dark) 100%);
-    overflow: hidden;
+    overflow-x: hidden;
     margin: 0;
+    padding-bottom: 60px;
   }
 
   .agenda-title {
@@ -170,9 +198,10 @@ body {
     width: 100%;
     flex-direction: row;
     justify-content: center;
-    align-items: stretch;
+    align-items: flex-end;
     margin: 0;
-    height: 600px;
+    height: auto;
+    padding-bottom: 40px;
   }
 
   .closed-scroll .open-scroll {
@@ -187,22 +216,40 @@ body {
   .small-scroll img, .big-scroll img {
     transition: opacity 0.3s ease;
     object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
   }
 
   .closed-scroll {
     flex: 1;
     max-width: 18%;
-    margin: 10px; 
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
   }
 
   .open-scroll {
     flex: 2;
     max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
   }
 
   .small-scroll {
     transition: filter 0.4s ease-in-out, transform 0.3s ease;
     max-width: 315px;
+    max-height: 600px;
+  }
+  
+  .small-scroll img {
+    max-height: 600px;
+    width: auto;
+    object-fit: contain;
   }
 
   .closed-scroll:hover .small-scroll {
@@ -217,14 +264,20 @@ body {
 
   .big-scroll {
     max-width: 912px;
+    max-height: 700px;
+  }
+  
+  .big-scroll img {
+    max-height: 700px;
+    width: auto;
+    object-fit: contain;
   }
 
   .small-scroll,
   .big-scroll {
     width: 100%;
     height: auto;
-    margin-top: auto;
-    margin-bottom: auto;
+    cursor: pointer;
   }
 
   .section-subtitle-side {
