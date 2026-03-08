@@ -21,7 +21,7 @@ export const straniceHackathon = [
     },
     {
         naslov:"Pravila takmičenja",
-        tekst:"3. Prijavljivanje timova za učešće na Hakatonu traje od 2.3.2024. do 16.3.2024. Tim može imati 3 ili 4 člana. Timove ne formiraju organizatori, već se takmičari pri prijavljivanju izjašnjavaju ko su članovi tima.Takmičari se prijavljuju timski. Prijavu šalje samo jedan član tima putem zvanične veb strane Hakatona (https:// www.hakaton.fonis.rs)."
+        tekst:"3. Prijavljivanje timova za učešće na Hakatonu traje od 8.3.2026. do 22.3.2026. Tim može imati 3 ili 4 člana. Timove ne formiraju organizatori, već se takmičari pri prijavljivanju izjašnjavaju ko su članovi tima.Takmičari se prijavljuju timski. Prijavu šalje samo jedan član tima putem zvanične veb strane Hakatona (https:// www.hakaton.fonis.rs)."
     },
     {
         naslov:"Pravila takmičenja",
@@ -124,7 +124,7 @@ export const straniceGameJam = [
     },
     {
         naslov:"Pravila takmičenja",
-        tekst:"3. Prijavljivanje timova za učešće na Hakatonu traje od 2.3.2024. do 16.3.2024. Tim može imati 3 ili 4 člana. Timove ne formiraju organizatori, već se takmičari pri prijavljivanju izjašnjavaju ko su članovi tima.Takmičari se prijavljuju timski. Prijavu šalje samo jedan član tima putem zvanične veb strane Hakatona (https:// www.hakaton.fonis.rs)."
+        tekst:"3. Prijavljivanje timova za učešće na Hakatonu traje od 8.3.2026. do 22.3.2026. Tim može imati 3 ili 4 člana. Timove ne formiraju organizatori, već se takmičari pri prijavljivanju izjašnjavaju ko su članovi tima.Takmičari se prijavljuju timski. Prijavu šalje samo jedan član tima putem zvanične veb strane Hakatona (https:// www.hakaton.fonis.rs)."
     },
     {
         naslov:"Pravila takmičenja",
