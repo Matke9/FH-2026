@@ -5,61 +5,84 @@ import krunicaSimbol from '../../assets/OrganizacioniTim/krunica-simbol.png'
 import hakatonLogo from '../../assets/OrganizacioniTim/hakaton logo.svg'
 import planine from '../../assets/OrganizacioniTim/planine.svg'
 
+// Importi slika timova i clanova
+import anastasijaVojinovicPhoto from '../../assets/OrganizacioniTim/SlikeTimova/Anastasija_Vojinovic.JPG'
+import coreTeamImg from '../../assets/OrganizacioniTim/SlikeTimova/core_team.JPG'
+
+import savaStevicPhoto from '../../assets/OrganizacioniTim/SlikeTimova/Sava_Stević.JPG'
+import dizajnTeamImg from '../../assets/OrganizacioniTim/SlikeTimova/dizajn.JPG'
+
+import mihailoMatovicPhoto from '../../assets/OrganizacioniTim/SlikeTimova/Mihailo_Matović.JPG'
+import itTeamImg from '../../assets/OrganizacioniTim/SlikeTimova/it.JPG'
+
+import anastasijaRusPhoto from '../../assets/OrganizacioniTim/SlikeTimova/Anastasija_Rus.JPG'
+import logistikaTeamImg from '../../assets/OrganizacioniTim/SlikeTimova/Logistika.jpg'
+
+import zeljanaKosaninPhoto from '../../assets/OrganizacioniTim/SlikeTimova/Željana_Košanin.JPG'
+import crTeamImg from '../../assets/OrganizacioniTim/SlikeTimova/cr.JPG'
+
+import djordjeGrubicPhoto from '../../assets/OrganizacioniTim/SlikeTimova/Djordje_Grubic.jpg'
+import prTeamImg from '../../assets/OrganizacioniTim/SlikeTimova/PR.JPG'
+
+import anjaKrsticPhoto from '../../assets/OrganizacioniTim/SlikeTimova/Anja_Krstic.jpg'
+import hrTeamImg from '../../assets/OrganizacioniTim/SlikeTimova/hr.jpg'
+
+
 // Podaci o clanovima organizacionog tima
 const teamMembers = [
   {
     name: 'Anastasija Vojinović',
     role: 'Koordinator takmičenja',
-    photo: null,
-    teamImage: null,
+    photo: anastasijaVojinovicPhoto,
+    teamImage: coreTeamImg,
     teamLabel: 'Tim koordinatora',
     description: 'Tim koordinatora u saradnji sa članovima svojih timova radi na tome da FON Hakaton 2026 premaši sva moguća očekivanja.',
   },
   {
     name: 'Sava Stević',
     role: 'Koordinator tima za dizajn',
-    photo: null,
-    teamImage: null,
+    photo: savaStevicPhoto,
+    teamImage: dizajnTeamImg,
     teamLabel: 'Tim za dizajn',
     description: 'Tim za dizajn na kreativan način osmišlja vizuelni identitet takmičenja, kreira objave na društvenim mrežama, kao i celokupni promo materijal.',
   },
   {
     name: 'Mihailo Matović',
     role: 'Koordinator tima za informacione tehnologije',
-    photo: null,
-    teamImage: null,
+    photo: mihailoMatovicPhoto,
+    teamImage: itTeamImg,
     teamLabel: 'Tim za informacione tehnologije',
     description: 'Tim za informacione tehnologije zadužen je za izradu veb-sajta takmičenja.',
   },
   {
     name: 'Anastasija Rus',
     role: 'Koordinator tima za logistiku',
-    photo: null,
-    teamImage: null,
+    photo: anastasijaRusPhoto,
+    teamImage: logistikaTeamImg,
     teamLabel: 'Tim za logistiku',
     description: 'Tim za logistiku zadužen je za organizaciju i nesmetano odvijanje takmičenja, kao i za stvaranje prijatnog iskustva za sve učesnike Hakatona.',
   },
   {
     name: 'Željana Košanin',
     role: 'Koordinator tima za korporativne komunikacije',
-    photo: null,
-    teamImage: null,
+    photo: zeljanaKosaninPhoto,
+    teamImage: crTeamImg,
     teamLabel: 'Tim za korporativne komunikacije',
     description: 'Tim za odnose sa kompanijama ostvaruje saradnju i sklapa partnerstva sa mnogobrojnim kompanijama, što izuzetno doprinosi realizaciji takmičenja.',
   },
   {
     name: 'Đorđe Grubić',
     role: 'Koordinator tima za odnose sa javnošću',
-    photo: null,
-    teamImage: null,
+    photo: djordjeGrubicPhoto, // Nedostaje slika u prosledjenom spisku
+    teamImage: prTeamImg,
     teamLabel: 'Tim za odnose sa javnošću',
     description: 'Tim za odnose s javnošću bavi se marketinškom kampanjom takmičenja, sa ciljem da što više mladih programera sazna za FON Hakaton i dobije želju da se oproba u tom izazovu.',
   },
   {
     name: 'Anja Krstić',
     role: 'Koordinator tima za ljudske resurse',
-    photo: null,
-    teamImage: null,
+    photo: anjaKrsticPhoto,
+    teamImage: hrTeamImg,
     teamLabel: 'Tim za ljudske resurse',
     description: 'Tim za ljudske resurse zadužen je za selekciju prijavljenih timova i održavanje pozitivne atmosfere unutar organizacionog tima.',
   },
@@ -137,16 +160,16 @@ export default function OrganizacioniTim() {
           <div className="relative">
             {/* Ikonica krunice pozicionirana na vrhu slike tima */}
             <div className="absolute -top-5 sm:-top-6 md:-top-7 lg:-top-8 left-1/2 transform -translate-x-1/2 z-10">
-              <div className="relative w-16 h-11 sm:w-18 sm:h-12 md:w-20 md:h-14 lg:w-24 lg:h-16">
+              <div className="relative w-16 sm:w-18 md:w-20 lg:w-24">
                 <img
                   src={krunicaPozadina}
                   alt="Crown background"
-                  className="absolute inset-0 w-full h-full"
+                  className="w-full h-auto block"
                 />
                 <img
                   src={krunicaSimbol}
                   alt="Crown symbol"
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9"
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-auto sm:w-7 sm:h-auto md:w-8 md:h-auto lg:w-10 lg:h-auto"
                 />
               </div>
             </div>
@@ -187,7 +210,7 @@ export default function OrganizacioniTim() {
         </div>
 
         {/* Desna strana - strelice oko kruzne slike clana */}
-        <div className="flex items-center gap-3 sm:gap-5 md:gap-6 lg:gap-8">
+        <div className="flex items-center gap-3 sm:gap-5 md:gap-6 lg:gap-8 mt-4 md:mt-12">
           {/* Strelica levo */}
           <button
             onClick={handlePrev}
@@ -203,12 +226,12 @@ export default function OrganizacioniTim() {
           <div className={`flex flex-col items-center ${fade}`}>
             <div className="relative">
               {/* Hakaton logo badge pozicioniran na vrhu kruzne slike */}
-              <div className="absolute -top-5 sm:-top-6 md:-top-7 lg:-top-8 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="relative w-16 h-11 sm:w-18 sm:h-12 md:w-20 md:h-14 lg:w-24 lg:h-16">
+              <div className="absolute -top-9 sm:-top-10 md:-top-12 lg:-top-14 left-1/2 transform -translate-x-1/2 z-10">
+                <div className="relative w-16 sm:w-18 md:w-20 lg:w-24">
                   <img
                     src={krunicaPozadina}
                     alt="Badge background"
-                    className="absolute inset-0 w-full h-full"
+                    className="w-full h-auto block"
                   />
                   <img
                     src={hakatonLogo}
