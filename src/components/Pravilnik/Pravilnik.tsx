@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { straniceHackathon, straniceGameJam} from '../../features/pravilnik-data';
 // @ts-ignore
 import svitak from '../../assets/svitak.svg';
@@ -9,9 +9,12 @@ import './Pravilnik.css';
 
 export default function Pravilnik() {
 
-
     const [index, setIndex] = useState(0);
     const [tema, setTema] = useState('plava');
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const aktivniPodaci = tema === 'plava' ? straniceHackathon: straniceGameJam;
 

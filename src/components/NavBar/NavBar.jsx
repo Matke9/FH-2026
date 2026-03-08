@@ -48,15 +48,26 @@ export default function NavBar() {
 
   const closeMenu = () => setIsOpen(false);
 
+  const NAVBAR_HEIGHT = 96;
+
+  const scrollToSection = (sectionId) => {
+    const el = document.getElementById(sectionId);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - NAVBAR_HEIGHT;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
+
   const handleSectionClick = (sectionId) => {
     closeMenu();
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+        scrollToSection(sectionId);
+      }, 150);
     } else {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        scrollToSection(sectionId);
+      }, 50);
     }
   };
 
