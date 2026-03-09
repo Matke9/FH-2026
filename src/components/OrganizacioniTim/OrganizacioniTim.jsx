@@ -1,7 +1,13 @@
 import { useState } from 'react'
 import './OrganizacioniTim.css'
-import krunicaPozadina from '../../assets/OrganizacioniTim/krunica-pozadina.svg'
-import krunicaSimbol from '../../assets/OrganizacioniTim/krunica-simbol.png'
+import krunicaPozadina from '../../assets/OrganizacioniTim/TimskeIkonice/krunica-pozadina.svg'
+import simbolKoordinatori from '../../assets/OrganizacioniTim/TimskeIkonice/simbol_koordinatori.svg'
+import simbolDizajn from '../../assets/OrganizacioniTim/TimskeIkonice/simbol_dizajn.svg'
+import simbolIT from '../../assets/OrganizacioniTim/TimskeIkonice/simbol_IT.svg'
+import simbolLogistika from '../../assets/OrganizacioniTim/TimskeIkonice/simbol_logistika.svg'
+import simbolCR from '../../assets/OrganizacioniTim/TimskeIkonice/simbol_CR.svg'
+import simbolPR from '../../assets/OrganizacioniTim/TimskeIkonice/simbol_PR.svg'
+import simbolHR from '../../assets/OrganizacioniTim/TimskeIkonice/Simbol_HR.svg'
 import hakatonLogo from '../../assets/OrganizacioniTim/hakaton logo.svg'
 import planine from '../../assets/OrganizacioniTim/planine.svg'
 
@@ -36,6 +42,8 @@ const teamMembers = [
     photo: anastasijaVojinovicPhoto,
     teamImage: coreTeamImg,
     teamLabel: 'Tim koordinatora',
+    symbol: simbolKoordinatori,
+    symbolClass: 'w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-11 lg:h-11',
     description: 'Tim koordinatora u saradnji sa članovima svojih timova radi na tome da FON Hakaton 2026 premaši sva moguća očekivanja.',
   },
   {
@@ -44,6 +52,8 @@ const teamMembers = [
     photo: savaStevicPhoto,
     teamImage: dizajnTeamImg,
     teamLabel: 'Tim za dizajn',
+    symbol: simbolDizajn,
+    symbolClass: 'w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-11 lg:h-11',
     description: 'Tim za dizajn na kreativan način osmišlja vizuelni identitet takmičenja, kreira objave na društvenim mrežama, kao i celokupni promo materijal.',
   },
   {
@@ -52,6 +62,8 @@ const teamMembers = [
     photo: mihailoMatovicPhoto,
     teamImage: itTeamImg,
     teamLabel: 'Tim za informacione tehnologije',
+    symbol: simbolIT,
+    symbolClass: 'w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-11 lg:h-11',
     description: 'Tim za informacione tehnologije zadužen je za izradu veb-sajta takmičenja.',
   },
   {
@@ -60,6 +72,8 @@ const teamMembers = [
     photo: anastasijaRusPhoto,
     teamImage: logistikaTeamImg,
     teamLabel: 'Tim za logistiku',
+    symbol: simbolLogistika,
+    symbolClass: 'w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-11 lg:h-11',
     description: 'Tim za logistiku zadužen je za organizaciju i nesmetano odvijanje takmičenja, kao i za stvaranje prijatnog iskustva za sve učesnike Hakatona.',
   },
   {
@@ -68,14 +82,18 @@ const teamMembers = [
     photo: zeljanaKosaninPhoto,
     teamImage: crTeamImg,
     teamLabel: 'Tim za korporativne komunikacije',
+    symbol: simbolCR,
+    symbolClass: 'w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-11 lg:h-11',
     description: 'Tim za odnose sa kompanijama ostvaruje saradnju i sklapa partnerstva sa mnogobrojnim kompanijama, što izuzetno doprinosi realizaciji takmičenja.',
   },
   {
     name: 'Đorđe Grubić',
     role: 'Koordinator tima za odnose sa javnošću',
-    photo: djordjeGrubicPhoto, // Nedostaje slika u prosledjenom spisku
+    photo: djordjeGrubicPhoto,
     teamImage: prTeamImg,
     teamLabel: 'Tim za odnose sa javnošću',
+    symbol: simbolPR,
+    symbolClass: 'w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 lg:w-14 lg:h-14',
     description: 'Tim za odnose s javnošću bavi se marketinškom kampanjom takmičenja, sa ciljem da što više mladih programera sazna za FON Hakaton i dobije želju da se oproba u tom izazovu.',
   },
   {
@@ -84,6 +102,8 @@ const teamMembers = [
     photo: anjaKrsticPhoto,
     teamImage: hrTeamImg,
     teamLabel: 'Tim za ljudske resurse',
+    symbol: simbolHR,
+    symbolClass: 'w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-12 lg:h-12',
     description: 'Tim za ljudske resurse zadužen je za selekciju prijavljenih timova i održavanje pozitivne atmosfere unutar organizacionog tima.',
   },
 ]
@@ -166,11 +186,13 @@ export default function OrganizacioniTim() {
                   alt="Crown background"
                   className="w-full h-auto block"
                 />
-                <img
-                  src={krunicaSimbol}
-                  alt="Crown symbol"
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-auto sm:w-7 sm:h-auto md:w-8 md:h-auto lg:w-10 lg:h-auto"
-                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <img
+                    src={currentMember.symbol}
+                    alt="Crown symbol"
+                    className={`${currentMember.symbolClass} object-contain animate-pulse`}
+                  />
+                </div>
               </div>
             </div>
 
