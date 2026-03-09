@@ -5,7 +5,7 @@ import fonisLogo from '../../assets/hero/fonisLogo.png'
 function HeroMain(){
     return(
         <>
-            <div className="main-content">
+            <div className="main-content pt-24">
                 <h1 className="main-title font-dune">
                     <span>FON </span>
                     <span>HAKATON </span>
