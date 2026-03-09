@@ -50,7 +50,7 @@ export default function Pravilnik() {
                 <div className='svitak-boja'></div>
                 <div className='svitak-content'>
                     <h2 className='podnaslov-pravilnik'>{aktivniPodaci[index].naslov}</h2>
-                    <p className='tekst-pravilnik'>{aktivniPodaci[index].tekst}</p>
+                    <p className='tekst-pravilnik whitespace-pre-line'>{aktivniPodaci[index].tekst}</p>
                 </div>
             </div>
             <div className='navigacija-pravilnik'>
