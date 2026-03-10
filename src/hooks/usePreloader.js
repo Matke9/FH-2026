@@ -20,6 +20,9 @@ import hourglass from '../assets/hero/hourglass.png'
 
 import iskustvaKamile from '../assets/Iskustva/IskustvaKamile.png'
 import iskustvaOblak from '../assets/Iskustva/IskustvaOblak.png'
+import iskustvaMilos from '../assets/Iskustva/slike/milos_mitrovic.png'
+import iskustvaStefan from '../assets/Iskustva/slike/stefan_neskovic.png'
+import iskustvaAnonymous from '../assets/Iskustva/slike/anonymous.png'
 
 import erstePartner from '../assets/Partneri/erste 1.png'
 import godisnjiPartner from '../assets/Partneri/godisnji.png'
@@ -49,6 +52,9 @@ const IMAGE_URLS = [
   hourglass,
   iskustvaKamile,
   iskustvaOblak,
+  iskustvaMilos,
+  iskustvaStefan,
+  iskustvaAnonymous,
   erstePartner,
   godisnjiPartner,
   medijskiPartner,

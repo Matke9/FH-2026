@@ -9,20 +9,40 @@ import StrelicaGore from "../../assets/Iskustva/IskustvaStrelica.svg";
 import StrelicaDole from "../../assets/Iskustva/IskustvaStrelicaDonja.svg";
 // @ts-ignore
 import IskustvaKamile from "../../assets/Iskustva/IskustvaKamile.png";
+// @ts-ignore
+import milosMitrovic from "../../assets/Iskustva/slike/milos_mitrovic.png";
+// @ts-ignore
+import stefanNeskovic from "../../assets/Iskustva/slike/stefan_neskovic.png";
+// @ts-ignore
+import anonymousImg from "../../assets/Iskustva/slike/anonymous.png";
 import '../../styles/tailwind.css';
 
 interface Person {
   id: number;
   image: string;
+  name: string;
   description: string;
 }
 
 const team: Person[] = [
-  { id: 1, image: "https://randomuser.me/api/portraits/men/1.jpg", description: "Fokusirani smo na razvoj modernih rešenja koja pomažu korisnicima." },
-  { id: 2, image: "https://randomuser.me/api/portraits/women/2.jpg", description: "Dizajn nije samo kako nešto izgleda, već kako funkcioniše. Naš cilj je besprekorno korisničko iskustvo kroz svaki piksel." },
-  { id: 3, image: "https://randomuser.me/api/portraits/men/3.jpg", description: "Sigurnost i stabilnost su osnova svakog sistema. Gradimo čvrstu infrastrukturu." },
-  { id: 4, image: "https://randomuser.me/api/portraits/women/4.jpg", description: "Kvalitet koda direktno utiče na uspeh. Testiranje osigurava najbolje rezultate." },
-  { id: 5, image: "https://randomuser.me/api/portraits/men/5.jpg", description: "Analitika nam pomaže da razumemo tržište i donosimo ispravne odluke." },
+  {
+    id: 1,
+    image: milosMitrovic,
+    name: "Miloš Mitrović, član tima MINDevelopment, FH24",
+    description: "Trenutak kada je izgovoreno ime našeg tima uvek je poseban jer se tada skupi svaki sat uloženog rada, ne samo na hakatonu već tokom čitavog života.",
+  },
+  {
+    id: 2,
+    image: stefanNeskovic,
+    name: "Stefan Nešković, član tima Michigan, Pobednik FH24",
+    description: "FON Hakaton je bio jedinstvena prilika da završimo šta smo započeli i ostvarimo potencijal našeg tima.",
+  },
+  {
+    id: 3,
+    image: anonymousImg,
+    name: "???",
+    description: "Coming soon...",
+  },
 ];
 
 const Iskustva = () => {
@@ -36,7 +56,7 @@ const Iskustva = () => {
     setPeople((prev) => [prev[prev.length - 1], ...prev.slice(0, prev.length - 1)]);
   };
 
-  const activePerson = people[2];
+  const activePerson = people[1];
 
   return (
     <section
@@ -83,9 +103,9 @@ const Iskustva = () => {
                 
                 let scale = "scale-75 opacity-30";
                 
-                if (index === 1 || index === 3) {
+                if (index === 0 || index === 2) {
                   scale = "scale-90 opacity-60";
-                } else if (index === 2) {
+                } else if (index === 1) {
                   scale = "scale-110 opacity-100";
                 }
 
@@ -93,9 +113,9 @@ const Iskustva = () => {
                   <div
                     key={person.id}
                     onClick={
-                      index < 2
+                      index < 1
                         ? rotateUp
-                        : index > 2
+                        : index > 1
                         ? rotateDown
                         : undefined
                     }
@@ -142,6 +162,9 @@ const Iskustva = () => {
             >
               <p className="font-noto text-gray-100 text-[14px] sm:text-[18px] md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
                 "{activePerson.description}"
+              </p>
+              <p className="font-noto text-gray-400 text-[12px] sm:text-[14px] md:text-base lg:text-lg xl:text-xl mt-4 md:text-left text-center">
+                — {activePerson.name}
               </p>
             </div>
           </div>

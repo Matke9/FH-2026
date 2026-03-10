@@ -33,6 +33,12 @@ body {
     }
 
 }
+
+@media screen and (min-width: 1024px) {
+    .hero-main{
+        margin-top: 100px;
+    }
+}
 @media screen and (max-width: 2000px) {
     .hero-main{
         min-height: 100vw;
