@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import ClanForma from './ClanForma';
 import TimForma from './TimForma';
-import { createPrijavaSaTimovimaIClanovima, getAllClanovi, getTimByName } from '../../lib/database';
+import { createPrijavaSaTimovimaIClanovima } from '../../lib/database';
 import Popup from './Popups/Popup';
 
 const StartMenu = ({ discipline = 'fon-hackathon' }) => {
@@ -19,11 +19,6 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
     sessionStorage.removeItem('timFormaData');
   }, []);
 
-  // Also clear any created team and local member data on mount
-  useEffect(() => {
-    setCreatedTim(null);
-    resetAllData();
-  }, []);
 
   // Čuvamo podatke za sve 4 člana
   const [clanoviData, setClanoviData] = useState({
@@ -112,10 +107,9 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
     }));
   };
 
-  const resetAllData = () => {
-    setClanoviData({
-      1: { 
-        selectedStatus: [], 
+  const resetAllData = () => {    setClanoviData({
+      1: {
+        selectedStatus: [],
         formData: { 
           imePrezime: '', 
           email: '', 
@@ -193,10 +187,6 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
     });
   };
 
-  // Funkcija koja broji unete članove
-  const getAddedMembersCount = () => {
-    return Object.values(clanoviData).filter(c => c.formData && c.formData.imePrezime && c.formData.imePrezime.trim() !== '').length;
-  };
 
   // Handler za prijavu tima i članova
   const handlePrijava = async () => {
@@ -225,35 +215,8 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
     }
 
     try {
-      // fetch existing members from DB once
-      const existing = await getAllClanovi();
-
       const localMembersRaw = Object.values(clanoviData).filter(c => c.formData && c.formData.imePrezime && c.formData.imePrezime.trim() !== '');
 
-      // validate team name uniqueness
-      const existingTeam = await getTimByName(createdTim.ime_tima).catch(() => null);
-      if (existingTeam) {
-        setPopup({ visible: true, type: 'error', text: 'Tim sa istim imenom već postoji u bazi.' });
-        return;
-      }
-
-      // validate against DB: emails and phones must not already exist
-      const conflicts = [];
-      for (const lm of localMembersRaw) {
-        const email = lm.formData.email ? lm.formData.email.toLowerCase() : '';
-        const phone = lm.formData.telefon ? lm.formData.telefon : '';
-        if (email && existing.some(e => e.email && e.email.toLowerCase() === email)) {
-          conflicts.push(`Email ${lm.formData.email} već postoji u bazi.`);
-        }
-        if (phone && existing.some(e => e.telefon && e.telefon === phone)) {
-          conflicts.push(`Telefon ${lm.formData.telefon} već postoji u bazi.`);
-        }
-      }
-
-      if (conflicts.length > 0) {
-        setPopup({ visible: true, type: 'error', text: conflicts[0] });
-        return;
-      }
 
       const localMembers = localMembersRaw.map((c) => ({
         ime_prezime: c.formData.imePrezime,
@@ -307,7 +270,21 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
       setCreatedTim(null);
     } catch (err) {
       console.error(err);
-      setPopup({ visible: true, type: 'error', text: 'Greška pri slanju prijave. Pokušajte ponovo.' });
+      // Handle database unique constraint violations (code 23505)
+      if (err.code === '23505') {
+        const msg = err.message || '';
+        if (msg.includes('ime_tima')) {
+          setPopup({ visible: true, type: 'error', text: 'Tim sa istim imenom već postoji u bazi.' });
+        } else if (msg.includes('email')) {
+          setPopup({ visible: true, type: 'error', text: 'Jedan od email adresa već postoji u bazi.' });
+        } else if (msg.includes('telefon')) {
+          setPopup({ visible: true, type: 'error', text: 'Jedan od telefona već postoji u bazi.' });
+        } else {
+          setPopup({ visible: true, type: 'error', text: 'Prijava nije moguća: podaci već postoje u bazi.' });
+        }
+      } else {
+        setPopup({ visible: true, type: 'error', text: 'Greška pri slanju prijave. Pokušajte ponovo.' });
+      }
     }
   };
 
