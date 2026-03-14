@@ -150,29 +150,30 @@ export const getTimSaClanovima = async (timId) => {
 
 // Funkcija za kreiranje kompletne prijave (tim sa članovima)
 export const createPrijavaSaTimovimaIClanovima = async (timData, clanoviData) => {
-  // Prvo kreiramo tim
-  const { data: tim, error: timError } = await supabase
+  // Generate UUID client-side so we never need to SELECT the inserted team row back.
+  // This avoids triggering a SELECT on 'timovi' which would be blocked by RLS
+  // when only an INSERT policy exists.
+  const timId = crypto.randomUUID();
+
+  const { error: timError } = await supabase
     .from('timovi')
-    .insert([timData])
-    .select()
-    .single();
-  
+    .insert([{ ...timData, id: timId }]);
+
   if (timError) throw timError;
-  
-  // Onda dodajemo članove sa tim_id
+
+  // Dodajemo članove sa tim_id koji smo sami generisali
   const clanoviSaTimId = clanoviData.map(clan => ({
     ...clan,
-    tim_id: tim.id
+    tim_id: timId
   }));
-  
-  const { data: clanovi, error: clanoviError } = await supabase
+
+  const { error: clanoviError } = await supabase
     .from('clanovi')
-    .insert(clanoviSaTimId)
-    .select();
-  
+    .insert(clanoviSaTimId);
+
   if (clanoviError) throw clanoviError;
-  
-  return { tim, clanovi };
+
+  return { timId };
 };
 
 // Funkcija za dobijanje svih prijava
