@@ -190,6 +190,7 @@ const StartMenu = ({ discipline = 'fon-hackathon' }) => {
 
   // Handler za prijavu tima i članova
   const handlePrijava = async () => {
+    setPopup({ visible: false, type: "success", text: "" });
     // count filled members (by name)
     const members = Object.values(clanoviData).filter(c => c.formData && c.formData.imePrezime && c.formData.imePrezime.trim() !== '');
     if (members.length < 3) {

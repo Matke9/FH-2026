@@ -37,6 +37,7 @@ body {
   text-align: center;
   color: white;
   user-select: none;
+  z-index: 100;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

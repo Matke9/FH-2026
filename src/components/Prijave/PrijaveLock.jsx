@@ -2,7 +2,7 @@ import React from 'react';
 
 // Dates are local. Adjust if you prefer UTC.
 const OPEN_DATE = new Date('2026-01-05T00:00:00');
-const CLOSE_DATE = new Date('2026-03-15T23:59:59');
+const CLOSE_DATE = new Date('2026-03-22T23:59:59');
 
 function getTimeLeft(target) {
   const now = new Date();
@@ -56,7 +56,7 @@ export default function PrijaveLock({ children, discipline = 'fon-hackathon' }) 
     <div className="min-h-[240px] w-full flex items-center justify-center p-6">
       <div className="max-w-2xl mx-auto p-6 rounded bg-transparent text-white">
         <h2 className="text-2xl font-semibold mb-2">Prijave su zatvorene</h2>
-        <p>Rok za prijave je bio do <strong>15. marta</strong>. Hvala na interesovanju.</p>
+        <p>Rok za prijave je bio do <strong>22. marta</strong>. Hvala na interesovanju.</p>
       </div>
     </div>
   );
