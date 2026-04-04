@@ -33,15 +33,7 @@ import fon from "../../assets/Partneri/godisnji/fon.png"
 //ROBNI I NAT
 
 // @ts-ignore
-import aleva from "../../assets/Partneri/naturalni-robni/aleva.png"
-// @ts-ignore
-import bedz from "../../assets/Partneri/naturalni-robni/bedz.png"
-// @ts-ignore
-import castellana from "../../assets/Partneri/naturalni-robni/Castellana.PNG"
-// @ts-ignore
-import gadget from "../../assets/Partneri/naturalni-robni/gadget.png"
-
-
+import { robniPartneri } from './partnerData';
 
 
 /* =========================
@@ -93,10 +85,12 @@ const PartnerElement = ({
 };
 
 const Partneri: React.FC = () => {
-  // Svaka kategorija ima svoj pool sponsor logo-ova koji se rotiraju
-  // Dodaj vise slika u nizove i menjace se svake 2 sekunde
   const partners = [
-    { id: 1, cactus: robni, sponsors: [aleva, castellana, gadget, bedz] },
+    {
+      id: 1,
+      cactus: robni,
+      sponsors: robniPartneri // Koristi uvezeni niz ovde
+    },
     { id: 2, cactus: godisnji, sponsors: [wargaming, knjaz, fon] },
     { id: 3, cactus: medijski, sponsors: [] },
   ];
@@ -231,15 +225,6 @@ const Partneri: React.FC = () => {
             </button>
           </div>
         </div>
-      </div>
-
-      {/* Pokrovitelj footer */}
-      <div className="absolute bottom-[0%] left-0 w-full z-30 flex flex-col items-center px-4">
-        {/* TODO: Zameni placeholder div sa logom pokrovitelja */}
-        <div className="w-[220px] md:w-64 xl:w-[350px] h-[80px] md:h-[90px] xl:h-[120px] mb-[2%] bg-white rounded-lg" />
-        <p className="text-white text-[14px] md:text-[20px] lg:text-[24px] xl:text-[28px] 2xl:text-[32px] font-dune mt-[-1%] md:mt-[0%]">
-          POKROVITELJ TAKMICENJA
-        </p>
       </div>
     </section>
   );
