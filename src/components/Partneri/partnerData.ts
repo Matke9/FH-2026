@@ -11,7 +11,7 @@ import anticafe from "../../assets/Partneri/naturalni-robni/Anticafe.png";
 // @ts-ignore
 import bedzStudio from "../../assets/Partneri/naturalni-robni/bedzStudio.png";
 // @ts-ignore
-import beoplast from "../../assets/Partneri/naturalni-robni/beoplast.png";
+import beoplast from "../../assets/Partneri/naturalni-robni/Beoplast.png";
 // @ts-ignore
 import castellana from "../../assets/Partneri/naturalni-robni/Castellana.PNG";
 // @ts-ignore
